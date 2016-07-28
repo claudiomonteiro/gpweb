@@ -14,6 +14,7 @@
                     </span>
                 </button>
             </div>
+            
             <div class="col-xs-8 col-sm-7">
                 <form name="searchForm" class="form-inline">
                     <div class="input-group pull-right" >
@@ -25,14 +26,14 @@
                         </span>
                         <span class="input-group-btn width-min" ng-if="vm.currentSearch">
                             <button class="btn btn-info ripple ripple-light" ng-click="vm.clear()">
-                                <span class="mdi mdi-delete"></span>
+                                <span class="mdi mdi-window-close"></span>
                             </button>
                         </span>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
+    </div><!-- /.box-header -->
     
     <div class="box-body">
         <div class="row">
@@ -43,10 +44,14 @@
                             <div class="col-xs-3">
                                 <div class="box-img-produto">
                                     <a ng-if="produto.blImagem" ng-click="vm.openFile(produto.blImagemContentType, produto.blImagem)">
-                                        <img class="img-responsive" data-ng-src="{{'data:' + produto.blImagemContentType + ';base64,' + produto.blImagem}}"/>
+                                        <img class="thumbnail img-responsive" data-ng-src="{{'data:' + produto.blImagemContentType + ';base64,' + produto.blImagem}}"/>
                                     </a>
-                                </div>    
+                                    <div class="thumbnail" ng-hide="produto.blImagem != null">
+                                        <img class="thumbnail-produto-catalogo"/>    
+                                    </div>                                    
+                                </div>
                             </div>
+                            
                             <div class="row col-xs-8 col-xs-push-1 no-padding-right">
                                 <div class="no-padding-left">
                                     <div>
@@ -55,19 +60,20 @@
                                 </div>    
                             </div>
                             
-                            <div class="row col-xs-8 col-xs-push-1 no-padding-right padding-top-10">                                
+                            <div class="row col-xs-8 col-xs-push-1 no-padding-right padding-top-10"> 
                                 <div class="col-xs-6 no-padding-left">
                                     <div>
                                         <strong translate="gpwebApp.produto.cdProduto">Código Produto</strong>
                                     </div>
-                                    {{produto.cdProduto}}
-
+                                    <span>{{produto.cdProduto}}</span>
+                                    <span ng-hide="produto.cdProduto != null"> - </span>
                                 </div>
                                 <div class="col-xs-6 no-padding">
                                     <div>
                                         <strong translate="gpwebApp.produto.cdBarras">Código de Barras</strong>
                                     </div> 
-                                    {{produto.cdBarras}}   
+                                    <span>{{produto.cdBarras}}</span>
+                                    <span ng-hide="produto.cdBarras != null"> - </span>   
                                 </div>
                             </div>
                             
@@ -76,13 +82,15 @@
                                     <div>
                                         <strong translate="gpwebApp.produto.marca">Marca</strong>
                                     </div>
-                                    {{produto.marca.nmFabricante}}
+                                    <span>{{produto.marca.nmFabricante}}</span>
+                                    <span ng-hide="produto.marca.nmFabricante != null"> - </span>
                                 </div>
                                 <div class="col-xs-6 no-padding">
                                     <div>
                                         <strong translate="gpwebApp.produto.vlReal">Valor Real</strong>
                                     </div>
-                                    {{produto.vlReal}}                             
+                                    <span>{{produto.vlReal}}</span>
+                                    <span ng-hide="produto.vlReal != null"> - </span>                             
                                 </div>
                             </div>                               
                         </div>
@@ -127,9 +135,8 @@
                             </div>    
                         </div>                                                                        
                     </div><!-- /.box-footer-produto -->
-                    
-                    <div class="clearfix"></div>
-                                 
+                                        
+                    <div class="clearfix"></div>                                 
                 </div><!-- /.box-produto -->                
             </div><!-- /.col-md-4 -->                        
         </div><!-- /.row -->       
@@ -199,10 +206,11 @@
         </div>/.table-responsive
     </div> -->
     
+    <!-- paginação -->
     <div class="text-center">
         <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
         <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
-    </div><!-- /.pagination -->
-</div>
+    </div><!-- /.text-center -->
+</div><!-- /.box -->
 
 

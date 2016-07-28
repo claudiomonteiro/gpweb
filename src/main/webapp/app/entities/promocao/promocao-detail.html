@@ -3,26 +3,29 @@
         <h1 class="box-title"><span translate="gpwebApp.promocao.detail.title">Promoção</span> {{vm.promocao.id}}</h1>
         <a class="btn btn-default btn-print pull-right hidden-xs" href="javascript:window.print();"><i class="mdi mdi-printer mdi-3x"></i></a>
     </div><!-- /.box-header -->
+       
+    <jhi-alert-error></jhi-alert-error>
         
     <div class="box-body">
         <div class="row">            
-            <div class="col-xs-12 col-sm-4">
+            <dl class="col-xs-12 col-sm-4">
                 <dt><span translate="gpwebApp.promocao.dsPromocao">Nome</span></dt>
                 <dd>
-                    <span>{{vm.promocao.dsPromocao}}</span>
+                    <span class="text-uppercase">{{vm.promocao.dsPromocao}}</span>
                 </dd>
                 <div class="box-detail-divider"></div>
-            </div>
+            </dl>
             
-            <div class="col-xs-12 col-sm-4">
-                <dt><span translate="gpwebApp.promocao.vlPromocao">Vl Promocao</span></dt>
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.promocao.vlPromocao">Desconto (%)</span></dt>
                 <dd>
-                    <span>{{vm.promocao.vlPromocao}}</span>
+                    <span>{{vm.promocao.vlPromocao | currency:'':2}}</span>
+                    <span ng-hide="vm.promocao.vlPromocao != null"> - </span>
                 </dd>
                 <div class="box-detail-divider"></div>
-            </div>
+            </dl>
             
-            <div class="col-xs-12 col-sm-4">
+            <dl class="col-xs-12 col-sm-4" ng-show="vm.promocao.nnTipo != null">
                 <!-- 1 - Setting promotion option by date -->
                 <dt ng-show="vm.promocao.nnTipo == 1"><span translate="gpwebApp.promocao.dtVencimento">Dt Vencimento</span></dt>
                 <dd ng-show="vm.promocao.nnTipo == 1">
@@ -36,26 +39,26 @@
                 <!-- 3 - Setting promotion option by week day -->
                 <dt ng-show="vm.promocao.nnTipo == 3"><span translate="gpwebApp.promocao.nnDiaSemana">Nn Dia Semana</span></dt>
                 <dd ng-show="vm.promocao.nnTipo == 3">
-                    <span>{{vm.promocao.nnDiaSemana}}</span>
-                </dd>
-                <div class="box-detail-divider" ng-show="vm.promocao.nnTipo != null"></div>
-            </div>
+                    <span>{{vm.promocao.nnDiaSemana}}</span>                    
+                </dd>                
+                <div class="box-detail-divider"></div>
+            </dl>
             
-            <div class="col-xs-12 col-sm-4">
+            <dl class="col-xs-12 col-sm-4">
                 <dt><span translate="gpwebApp.promocao.flInativo">Inativo</span></dt>
-                <dd class="text-uppercase">
-                    <span>{{vm.promocao.flInativo ? 'Sim': 'Não'}}</span>
+                <dd>
+                    <span class="text-uppercase">{{vm.promocao.flInativo ? 'Sim': 'Não'}}</span>
                 </dd>
                 <div class="box-detail-divider"></div>
-            </div>
+            </dl>
         </div>
     </div><!-- /.box-body -->
 
     <div class="box-footer no-border">
         <button type="submit"
                 onclick="window.history.back()"
-                class="btn btn-info">
-            <span translate="entity.action.back"> Back</span>
+                class="btn btn-info ripple ripple-light">
+            <span translate="entity.action.back"> Voltar</span>
         </button>
     </div><!-- /.box-footer -->
 </div><!-- /.box -->

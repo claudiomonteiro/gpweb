@@ -14,6 +14,7 @@
                     </span>
                 </button>
             </div>
+            
             <div class="col-xs-8 col-sm-7">
                 <form name="searchForm" class="form-inline">
                     <div class="input-group pull-right" >
@@ -25,14 +26,14 @@
                         </span>
                         <span class="input-group-btn width-min" ng-if="vm.currentSearch">
                             <button class="btn btn-info ripple ripple-light" ng-click="vm.clear()">
-                                <span class="mdi mdi-delete"></span>
+                                <span class="mdi mdi-window-close"></span>
                             </button>
                         </span>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
+    </div><!-- /.box-header -->
 
     <div class="box-body">
         <div class="table-responsive">
@@ -46,6 +47,7 @@
                         <th class="col-md-1 col-marca-acoes text-center" translate="global.field.actions">Ações</th>
                     </tr>
                 </thead>
+                
                 <tbody>
                     <tr ng-repeat="marca in vm.marcas track by marca.id">
                         <td><a ui-sref="marca-detail({id:marca.id})">{{marca.id}}</a></td>
@@ -85,8 +87,9 @@
         </div><!-- /.table-responsive -->
     </div><!-- /.box-body -->
     
+    <!-- paginação -->
     <div class="text-center">
         <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
         <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
-    </div><!-- /.pagination -->
-</div>
+    </div><!-- /.text-center -->
+</div><!-- /.box -->

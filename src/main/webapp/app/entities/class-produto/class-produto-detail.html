@@ -1,22 +1,38 @@
-
-<div>
-    <h2><span translate="gpwebApp.classProduto.detail.title">Class Produto</span> {{vm.classProduto.id}}</h2>
-    <hr>
+<div class="box">
+    <div class="box-header with-border">
+        <h1 class="box-title"><span translate="gpwebApp.classProduto.detail.title">Classificação do Produto</span> {{vm.classProduto.id}}</h1>
+        <a class=" btn btn-default btn-print pull-right hidden-xs" href="javascript:window.print();"><i class="mdi mdi-printer mdi-3x"></i></a>
+    </div><!-- /.box-header -->
+    
     <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span translate="gpwebApp.classProduto.cdClassProduto">Cd Class Produto</span></dt>
-        <dd>
-            <span>{{vm.classProduto.cdClassProduto}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.classProduto.dsClassProduto">Ds Class Produto</span></dt>
-        <dd>
-            <span>{{vm.classProduto.dsClassProduto}}</span>
-        </dd>
-    </dl>
+    
+    <div class="box-body">   
+        <div class="row">                
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.classProduto.cdClassProduto">Código Classificação</span></dt>
+                <dd>
+                    <span>{{vm.classProduto.cdClassProduto}}</span>
+                    <span ng-hide="vm.classProduto.cdClassProduto != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.classProduto.dsClassProduto">Nome</span></dt>
+                <dd>
+                    <span class="text-uppercase">{{vm.classProduto.dsClassProduto}}</span>
+                    <span ng-hide="vm.classProduto.dsClassProduto != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+        </div>
+    </div><!-- /.box-body -->
 
-    <button type="submit"
-            onclick="window.history.back()"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
-    </button>
-</div>
+    <div class="box-footer no-border">
+        <button type="submit"
+                onclick="window.history.back()"
+                class="btn btn-info ripple ripple-light">
+            <span translate="entity.action.back"> Voltar</span>
+        </button>
+    </div><!-- /.box-footer -->
+</div><!-- /.box -->

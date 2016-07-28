@@ -7,11 +7,11 @@
                 "createOrEditLabel": "Criar ou editar Grupo",
                 "search": "Pesquisar"
             },
-            "created": "Um novo Grupo é criado com o identificador {{ param }}",
-            "updated": "Um Grupo é atualizado com o identificador {{ param }}",
-            "deleted": "Um Grupo é deletado com o identificador {{ param }}",
+            "created": "Um novo Grupo foi criado com o identificador {{ param }}",
+            "updated": "O Grupo {{ param }} foi atualizado com sucesso!",
+            "deleted": "O Grupo {{ param }} foi deletado com sucesso!",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Grupo {{ id }}?"
+                "question": "Tem certeza de que deseja excluir o Grupo {{ id }}?"
             },
             "detail": {
                 "title": "Grupo"

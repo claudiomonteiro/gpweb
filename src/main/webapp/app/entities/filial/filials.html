@@ -14,6 +14,7 @@
                     </span>
                 </button>
             </div>
+            
             <div class="col-xs-8 col-sm-7">
                 <form name="searchForm" class="form-inline">
                     <div class="input-group pull-right" >
@@ -25,14 +26,14 @@
                         </span>
                         <span class="input-group-btn width-min" ng-if="vm.currentSearch">
                             <button class="btn btn-info ripple ripple-light" ng-click="vm.clear()">
-                                <span class="mdi mdi-delete"></span>
+                                <span class="mdi mdi-window-close"></span>
                             </button>
                         </span>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
+    </div><!-- /.box-header -->
     
     <div class="box-body">
         <div class="table-responsive">
@@ -48,13 +49,14 @@
                         <th class="col-md-1 col-filial-acoes text-center" translate="global.field.actions">Ações</th>
                     </tr>
                 </thead>
+                
                 <tbody>
                     <tr ng-repeat="filial in vm.filials track by filial.id">
                         <td><a ui-sref="filial-detail({id:filial.id})">{{filial.id}}</a></td>
                         <td class="text-uppercase">{{filial.nmFilial}}</td>
-                        <td class="text-center">{{filial.cdCnpj | brCnpj}}</td>                        
-                        <td class="text-center">{{filial.cdTel | brPhoneNumber}}</td>
-                        <td class="text-center">{{filial.cdFax | brPhoneNumber}}</td>
+                        <td>{{filial.cdCnpj | brCnpj}}</td>                        
+                        <td>{{filial.cdTel | brPhoneNumber}}</td>
+                        <td>{{filial.cdFax | brPhoneNumber}}</td>
                         <td class="text-uppercase text-center">
                             <i class="mdi"
                                 ng-class="{'mdi-check text-success': filial.flAtiva,
@@ -88,8 +90,10 @@
             </table>
         </div><!-- /.table-responsive -->
     </div><!-- /.box-body -->
+    
+    <!-- paginação -->
     <div class="text-center">
         <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
         <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
-    </div>
-</div>
+    </div><!-- /.text-center -->
+</div><!-- /.box -->

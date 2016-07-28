@@ -352,6 +352,38 @@ entity tables helpers
 .padding-bottom-20 { padding-bottom: 20px !important; }
 .padding-20 { padding: 20px !important; }
 
+/* Remove Bootstrap margin from the element */
+.no-margin-left { margin-left: 0 !important; }
+.no-margin-right { margin-right: 0 !important; }
+.no-margin-top { margin-top: 0 !important; }
+.no-margin-bottom { margin-bottom: 0 !important; }
+.no-margin { margin: 0 !important; }
+/* Add Bootstrap padding from the element */
+/* 5px */
+.margin-left-5 { margin-left: 5px !important; }
+.margin-right-5 { margin-right: 5px !important; }
+.margin-top-5 { margin-top: 5px !important; }
+.margin-bottom-5 { margin-bottom: 5px !important; }
+.margin-5 { margin: 5px !important; }
+/* 10px */
+.margin-left-10 { margin-left: 10px !important; }
+.margin-right-10 { margin-right: 10px !important; }
+.margin-top-10 { margin-top: 10px !important; }
+.margin-bottom-10 { margin-bottom: 10px !important; }
+.margin-10 { margin: 10px !important; }
+/* 15px */
+.margin-left-15 { margin-left: 15px !important; }
+.margin-right-15 { margin-right: 15px !important; }
+.margin-top-15 { margin-top: 15px !important; }
+.margin-bottom-15 { margin-bottom: 15px !important; }
+.margin-15 { margin: 15px !important; }
+/* 20px */
+.margin-left-20 { margin-left: 20px !important; }
+.margin-right-20 { margin-right: 20px !important; }
+.margin-top-20 { margin-top: 20px !important; }
+.margin-bottom-20 { margin-bottom: 20px !important; }
+.margin-20 { margin: 20px !important; }
+
 /* bootstrap 3 input-group 100% width
    http://stackoverflow.com/questions/23436430/bootstrap-3-input-group-100-width */
 .width-min { width: 1% !important; }
@@ -847,9 +879,8 @@ Página de Visualização de Itens Cadastrados
     padding: 0 20px;
 }
 .box-detail-divider{
-    margin: 20px 0;
-    border: 0;
-    border-top: 1px solid #eee;
+    margin-top: 20px;
+    border-bottom: 1px solid #eee;
 }
 
 /*
@@ -865,8 +896,8 @@ Página Unidades
   max-width: 352px;
 }
 .col-unidade-unidade{
-  min-width: 110px;
-  max-width: 110px;
+  min-width: 101px;
+  max-width: 101px;
 }
 .col-unidade-acoes{
   min-width: 155px;
@@ -1173,5 +1204,15 @@ Página Catalogo de Produtos - Blocos
 .box-footer-produto{
   padding: 0;
   padding-top: 15px;
+}
+.thumbnail-produto-catalogo{
+  min-width: 100%;
+  min-height: 116px;
+  background: #f2f2f2;
+}
+.thumbnail-produto-detalhe{
+  min-width: 100%;
+  min-height: 147px;
+  background: #f2f2f2;
 }
 

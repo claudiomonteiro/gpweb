@@ -25,14 +25,14 @@
                         </span>
                         <span class="input-group-btn width-min" ng-if="vm.currentSearch">
                             <button class="btn btn-info ripple ripple-light" ng-click="vm.clear()">
-                                <span class="mdi mdi-delete"></span>
+                                <span class="mdi mdi-window-close"></span>
                             </button>
                         </span>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
+    </div><!-- /.box-header -->
 
     <div class="box-body">
         <div class="table-responsive">
@@ -47,11 +47,12 @@
                         <th class="col-md-1 col-grupo-acoes text-center"><span translate="global.field.actions">Ações</span></th>
                     </tr>
                 </thead>
+                
                 <tbody>
                     <tr ng-repeat="grupo in vm.grupos track by grupo.id">
                         <td><a ui-sref="grupo-detail({id:grupo.id})">{{grupo.id}}</a></td>
                         <td class="text-uppercase">{{grupo.nmGrupo}}</td>
-                        <td class="text-right">{{grupo.vlComissao | currency:'':2}}</td>
+                        <td>{{grupo.vlComissao | currency:'':2}}</td>
                         <td class="text-center">
                             <i class="mdi"
                                 ng-class="{'mdi-check text-success': grupo.flPromo,
@@ -92,8 +93,9 @@
         </div><!-- /.table-responsive -->
     </div><!-- /.box-body -->
     
+    <!-- paginação -->
     <div class="text-center">
         <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
         <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
-    </div><!-- /.pagination -->
-</div>
+    </div><!-- /.text-center -->
+</div><!-- /.box -->

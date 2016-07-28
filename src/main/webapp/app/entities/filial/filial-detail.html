@@ -1,89 +1,150 @@
+<div class="box">
+    <div class="box-header with-border">
+        <h1 class="box-title"><span translate="gpwebApp.filial.detail.title">Filial</span> {{vm.filial.id}}</h1>
+        <a class="btn btn-default btn-print pull-right hidden-xs" href="javascript:window.print();"><i class="mdi mdi-printer mdi-3x"></i></a>
+    </div><!-- /.box-header -->
+    
+    <jhi-alert-error></jhi-alert-error>
 
-<div>
-    <h2><span translate="gpwebApp.filial.detail.title">Filial</span> {{vm.filial.id}}</h2>
-    <hr>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span translate="gpwebApp.filial.nmFilial">Nm Filial</span></dt>
-        <dd>
-            <span>{{vm.filial.nmFilial}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.nnNumero">Nn Numero</span></dt>
-        <dd>
-            <span>{{vm.filial.nnNumero}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.dsComplemento">Ds Complemento</span></dt>
-        <dd>
-            <span>{{vm.filial.dsComplemento}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.cdCnpj">Cd Cnpj</span></dt>
-        <dd>
-            <span>{{vm.filial.cdCnpj}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.cdCgf">Cd Cgf</span></dt>
-        <dd>
-            <span>{{vm.filial.cdCgf}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.dsSite">Ds Site</span></dt>
-        <dd>
-            <span>{{vm.filial.dsSite}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.flAtiva">Fl Ativa</span></dt>
-        <dd>
-            <span>{{vm.filial.flAtiva}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.nmRazao">Nm Razao</span></dt>
-        <dd>
-            <span>{{vm.filial.nmRazao}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.cdTel">Cd Tel</span></dt>
-        <dd>
-            <span>{{vm.filial.cdTel}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.cdTel1">Cd Tel 1</span></dt>
-        <dd>
-            <span>{{vm.filial.cdTel1}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.cdTel2">Cd Tel 2</span></dt>
-        <dd>
-            <span>{{vm.filial.cdTel2}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.cdFax">Cd Fax</span></dt>
-        <dd>
-            <span>{{vm.filial.cdFax}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.dtOperacao">Dt Operacao</span></dt>
-        <dd>
-            <span>{{vm.filial.dtOperacao | date:'mediumDate'}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.nnVersao">Nn Versao</span></dt>
-        <dd>
-            <span>{{vm.filial.nnVersao}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.flTprec">Fl Tprec</span></dt>
-        <dd>
-            <span>{{vm.filial.flTprec}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.dsPisCofins">Ds Pis Cofins</span></dt>
-        <dd>
-            <span>{{vm.filial.dsPisCofins}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.nnMdfVersao">Nn Mdf Versao</span></dt>
-        <dd>
-            <span>{{vm.filial.nnMdfVersao}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.flEnviaEmail">Fl Envia Email</span></dt>
-        <dd>
-            <span>{{vm.filial.flEnviaEmail}}</span>
-        </dd>
-        <dt><span translate="gpwebApp.filial.dsObs">Ds Obs</span></dt>
-        <dd>
-            <span>{{vm.filial.dsObs}}</span>
-        </dd>
-    </dl>
+    <div class="box-body">
+        <div class="row">
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.filial.nmFilial">Nome</span></dt>
+                <dd>
+                    <span class="text-uppercase">{{vm.filial.nmFilial}}</span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.filial.nmRazao">Razão Social</span></dt>
+                <dd>
+                    <span class="text-uppercase">{{vm.filial.nmRazao}}</span>
+                    <span ng-hide="vm.filial.nmRazao != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.filial.cdCnpj">CNPJ</span></dt>
+                <dd>
+                    <span>{{vm.filial.cdCnpj | brCnpj}}</span>
+                    <span ng-hide="vm.filial.cdCnpj != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>   
+        </div>
+        
+        <div class="row">
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.filial.cdCgf">Inscrição estadual</span></dt>
+                <dd>
+                    <span>{{vm.filial.cdCgf}}</span>
+                    <span ng-hide="vm.filial.cdCgf != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.filial.dsPisCofins">Pis/Cofins</span></dt>
+                <dd>
+                    <span>{{vm.filial.dsPisCofins}}</span>
+                    <span ng-hide="vm.filial.dsPisCofins != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.filial.nnVersao">Versao</span></dt>
+                <dd>
+                    <span>{{vm.filial.nnVersao}}</span>
+                    <span ng-hide="vm.filial.nnVersao != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>                               
+        </div>
+        
+        <div class="row">
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.filial.nnMdfVersao">Versao MDF</span></dt>
+                <dd>
+                    <span>{{vm.filial.nnMdfVersao}}</span>
+                    <span ng-hide="vm.filial.nnMdfVersao != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.filial.cdTel">Telefone</span></dt>
+                <dd>
+                    <span>{{vm.filial.cdTel | brPhoneNumber}}</span>
+                    <span ng-hide="vm.filial.cdTel != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.filial.cdTel1">Telefone 2</span></dt>
+                <dd>
+                    <span>{{vm.filial.cdTel1 | brPhoneNumber}}</span>
+                    <span ng-hide="vm.filial.cdTel1 != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>                           
+        </div>
+        
+        <div class="row">
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.filial.cdTel2">Telefone 3</span></dt>
+                <dd>
+                    <span>{{vm.filial.cdTel2 | brPhoneNumber}}</span>
+                    <span ng-hide="vm.filial.cdTel2 != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.filial.cdFax">Fax</span></dt>
+                <dd>
+                    <span>{{vm.filial.cdFax | brPhoneNumber}}</span>
+                    <span ng-hide="vm.filial.cdFax != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.filial.flEnviaEmail">Envio de Email</span></dt>
+                <dd>
+                    <span class="text-uppercase">{{vm.filial.flEnviaEmail ? 'Sim' : 'Não'}}</span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+        </div>
+        
+        <div class="row">
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.filial.dsSite">Site</span></dt>
+                <dd>
+                    <span class="text-uppercase">{{vm.filial.dsSite}}</span>
+                    <span ng-hide="vm.filial.dsSite != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.filial.dsObs">Obs.</span></dt>
+                <dd>
+                    <span class="text-uppercase">{{vm.filial.dsObs}}</span>
+                    <span ng-hide="vm.filial.dsObs != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.filial.flAtiva">Fl Ativa</span></dt>
+                <dd>
+                    <span class="text-uppercase">{{vm.filial.flAtiva ? 'Sim' : 'Não'}}</span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>  
+        </div>
+    </div><!-- /.box-body -->
 
-    <button type="submit"
-            onclick="window.history.back()"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
-    </button>
-</div>
+    <div class="box-footer no-border">
+        <button type="submit"
+                onclick="window.history.back()"
+                class="btn btn-info ripple ripple-light">
+            <span translate="entity.action.back"> Voltar</span>
+        </button>
+    </div><!-- /.box-footer -->
+</div><!-- /.box -->

@@ -14,6 +14,7 @@
                     </span>
                 </button>
             </div>
+            
             <div class="col-xs-8 col-sm-7 search-pad-col">
                 <form name="searchForm" class="form-inline">
                     <div class="input-group pull-right" >
@@ -25,14 +26,14 @@
                         </span>
                         <span class="input-group-btn width-min" ng-if="vm.currentSearch">
                             <button class="btn btn-info ripple ripple-light" ng-click="vm.clear()">
-                                <span class="mdi mdi-delete"></span>
+                                <span class="mdi mdi-window-close"></span>
                             </button>
                         </span>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
+    </div><!-- /.box-header -->
     
     <div class="box-body">
         <div class="table-responsive">
@@ -50,6 +51,7 @@
                         <span translate="global.field.actions">Ações</span></th>
                     </tr>
                 </thead>
+                
                 <tbody>
                     <tr ng-repeat="promocao in vm.promocaos track by promocao.id">
                         <td><a ui-sref="promocao-detail({id:promocao.id})">{{promocao.id}}</a></td>
@@ -66,7 +68,7 @@
                             <span ng-show="promocao.nnTipo == 3">{{promocao.nnDiaSemana}}</span>
                             <div ng-show="promocao.nnTipo != 3"> - </div>
                         </td>
-                        <td>{{promocao.vlPromocao}}</td>                        
+                        <td>{{promocao.vlPromocao | currency:'':2}}</td>                        
                         <td class="text-center">
                             <i class="mdi"
                                 ng-class="{'mdi-check text-success': promocao.flInativo,
@@ -101,8 +103,9 @@
         </div><!-- /.table-responsive -->
     </div><!-- /.box-body -->
     
+    <!-- paginação -->
     <div class="text-center">
         <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
         <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
-    </div><!-- /.pagination -->
-</div>
+    </div><!-- /.text-center -->
+</div><!-- /.box -->
