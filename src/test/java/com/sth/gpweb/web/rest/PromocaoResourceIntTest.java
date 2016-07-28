@@ -61,8 +61,8 @@ public class PromocaoResourceIntTest {
     private static final Integer DEFAULT_NN_DIA_DATA = 1;
     private static final Integer UPDATED_NN_DIA_DATA = 2;
 
-    private static final Integer DEFAULT_NN_DIA_SEMANA = 1;
-    private static final Integer UPDATED_NN_DIA_SEMANA = 2;
+    private static final String DEFAULT_NN_DIA_SEMANA = "AAAAA";
+    private static final String UPDATED_NN_DIA_SEMANA = "BBBBB";
 
     private static final Boolean DEFAULT_FL_INATIVO = false;
     private static final Boolean UPDATED_FL_INATIVO = true;
