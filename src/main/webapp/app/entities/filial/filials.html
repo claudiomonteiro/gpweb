@@ -1,11 +1,11 @@
 <div class="box">
-    <div class="box-header with-border">
+    <div class="box-header">
         <h1 class="box-title" translate="gpwebApp.filial.home.title">Filials</h1>
     </div><!-- /.box-header -->
     
     <jhi-alert></jhi-alert>
     
-    <div class="box-header">
+    <div class="box-body">
         <div class="row">
             <div class="col-xs-4 col-sm-5">
                 <button class="btn btn-success ripple ripple-light" ui-sref="filial.new" >
@@ -33,19 +33,19 @@
                 </form>
             </div>
         </div>
-    </div><!-- /.box-header -->
-    
-    <div class="box-body">
-        <div class="table-responsive">
-            <table class="jh-table table table-bordered table-hover">
+
+        <br>
+
+        <div class="table-responsive no-border-table-responsive">
+            <table class="jh-table table table-hover">
                 <thead>
                     <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                        <th jh-sort-by="id" class="col-md-1 col-filial-codigo"><span translate="global.field.id">Código</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th jh-sort-by="nmFilial"><span translate="gpwebApp.filial.nmFilial">Nm Filial</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th jh-sort-by="cdCnpj" class="col-md-1 col-filial-cnpj"><span translate="gpwebApp.filial.cdCnpj">Cd Cnpj</span> <span class="glyphicon glyphicon-sort pull-right"></span></th> 
-                        <th jh-sort-by="cdTel" class="col-md-1 col-filial-telefone"><span translate="gpwebApp.filial.cdTel">Cd Tel</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th jh-sort-by="cdFax" class="col-md-1 col-filial-fax"><span translate="gpwebApp.filial.cdFax">Cd Fax</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th jh-sort-by="flAtiva" class="col-md-1 col-filial-ativo"><span translate="gpwebApp.filial.flAtiva">Fl Ativa</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>  
+                        <th jh-sort-by="id" class="col-md-1 col-filial-codigo"><span translate="global.field.id">Código</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="nmFilial"><span translate="gpwebApp.filial.nmFilial">Nome</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="cdCnpj" class="col-md-1 col-filial-cnpj text-right"><span translate="gpwebApp.filial.cdCnpj">Cnpj</span> <span class="glyphicon glyphicon-sort"></span></th> 
+                        <th jh-sort-by="cdTel" class="col-md-1 col-filial-telefone text-right"><span translate="gpwebApp.filial.cdTel">Telefone</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="cdFax" class="col-md-1 col-filial-fax text-right"><span translate="gpwebApp.filial.cdFax">Fax</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="flInativo" class="col-md-1 col-filial-ativo text-center"><span translate="gpwebApp.filial.flInativo">Inativo</span> <span class="glyphicon glyphicon-sort"></span></th>  
                         <th class="col-md-1 col-filial-acoes text-center" translate="global.field.actions">Ações</th>
                     </tr>
                 </thead>
@@ -54,33 +54,40 @@
                     <tr ng-repeat="filial in vm.filials track by filial.id">
                         <td><a ui-sref="filial-detail({id:filial.id})">{{filial.id}}</a></td>
                         <td class="text-uppercase">{{filial.nmFilial}}</td>
-                        <td>{{filial.cdCnpj | brCnpj}}</td>                        
-                        <td>{{filial.cdTel | brPhoneNumber}}</td>
-                        <td>{{filial.cdFax | brPhoneNumber}}</td>
-                        <td class="text-uppercase text-center">
-                            <i class="mdi"
-                                ng-class="{'mdi-check text-success': filial.flAtiva,
-                                'mdi-close text-danger': !filial.flAtiva}">
-                            </i>
+                        <td class="text-right">
+                            <span ng-show="filial.cdCnpj">{{filial.cdCnpj | brCnpj}}</span>
+                            <span ng-show="!filial.cdCnpj"> - </span>
                         </td> 
-                        <td class="text-center">
+                        <td class="text-right">
+                            <span ng-show="filial.cdTel">{{filial.cdTel | brPhoneNumber}}</span>
+                            <span ng-show="!filial.cdTel"> - </span>
+                        </td>
+                        <td class="text-right">
+                            <span ng-show="filial.cdFax">{{filial.cdFax | brPhoneNumber}}</span>
+                            <span ng-show="!filial.cdFax"> - </span>
+                        </td>
+                        <td class="text-uppercase text-center">
+                            <small ng-show="filial.flInativo" class="label bg-green" translate="global.condition.true">Sim</small>
+                            <small ng-show="!filial.flInativo" class="label bg-red" translate="global.condition.false">Não</small>
+                        </td> 
+                        <td>
                             <div>
                                 <button type="submit"
                                         ui-sref="filial-detail({id:filial.id})"
-                                        class="btn btn-success btn-sm ripple ripple-light"
-                                        data-toggle="tooltip" data-placement="top" title="Visualizar">
+                                        class="btn btn-success btn-outline btn-sm ripple ripple-light"
+                                        uib-tooltip="Visualizar">
                                     <span class="mdi mdi-eye"></span>
                                 </button>
                                 <button type="submit"
                                         ui-sref="filial.edit({id:filial.id})"
-                                        class="btn btn-primary btn-sm ripple ripple-light"
-                                        data-toggle="tooltip" data-placement="top" title="Editar">
+                                        class="btn btn-primary btn-outline btn-sm ripple ripple-light"
+                                        uib-tooltip="Editar">
                                     <span class="mdi mdi-pencil"></span>
                                 </button>
                                 <button type="submit"
                                         ui-sref="filial.delete({id:filial.id})"
-                                        class="btn btn-danger btn-sm ripple ripple-light"
-                                        data-toggle="tooltip" data-placement="top" title="Deletar">
+                                        class="btn btn-danger btn-outline btn-sm ripple ripple-light"
+                                        uib-tooltip="Deletar">
                                     <span class="mdi mdi-delete"></span>
                                 </button>
                             </div>

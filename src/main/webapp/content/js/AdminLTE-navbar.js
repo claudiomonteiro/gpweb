@@ -36,11 +36,11 @@ $.AdminLTE.options = {
     //Add slimscroll to navbar menus
   //This requires you to load the slimscroll plugin
   //in every page before app.js
-  navbarMenuSlimscroll: true,
-  navbarMenuSlimscrollWidth: "3px", //The width of the scroll bar
-  navbarMenuHeight: "50px", //The height of the inner menu
+  //navbarMenuSlimscroll: true,
+  //navbarMenuSlimscrollWidth: "3px", //The width of the scroll bar
+  //navbarMenuHeight: "50px", //The height of the inner menu
   //Activate sidebar slimscroll if the fixed layout is set (requires SlimScroll Plugin)
-  sidebarSlimScroll: true,
+  //sidebarSlimScroll: true,
 
   //Sidebar push menu toggle button selector
   sidebarToggleSelector: "[data-toggle='offcanvas']",
@@ -84,7 +84,7 @@ $(function () {
   /*
    * INITIALIZE BUTTON TOGGLE
    * ------------------------
-   */
+   *
   $('.btn-group[data-toggle="btn-toggle"]').each(function () {
     var group = $(this);
     $(this).find(".btn").on('click', function (e) {
@@ -93,7 +93,7 @@ $(function () {
       e.preventDefault();
     });
 
-  });
+  });*/
 });
 
 /* ----------------------------------

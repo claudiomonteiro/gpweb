@@ -3,6 +3,7 @@ package com.sth.gpweb.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.sth.gpweb.domain.Grupo;
 import com.sth.gpweb.domain.Subgrupo;
 
 /**
@@ -55,5 +56,30 @@ public interface SubgrupoService {
      *  @param description query for the name
      *  @return the list of entities
      */
-     Page<Subgrupo> findByNmSubgrupoStartingWithOrderByNmSubgrupoAsc(String descricao, Pageable pageable); 
+     Page<Subgrupo> findByNmSubgrupoStartingWithOrderByNmSubgrupoAsc(String descricao, Pageable pageable);
+     
+     /**
+      * Search for the Subgrupo corresponding to the query name.
+      * Used on product page
+      * 
+      *  @param description query for the name
+      *  @return the list of entities
+      */
+     Page<Subgrupo> findByIdStartingWithOrderByIdAsc(String id, Pageable pageable);
+     
+     /**
+      *  Get all the Subgrupos ordered by name.
+      *  
+      *  @param pageable the pagination information
+      *  @return the list of entities
+      */
+     Page<Subgrupo> findAllOrderByNmSubgrupo(Pageable pageable);
+     
+     /**
+      *  Get all the Subgrupos ordered by id.
+      *  
+      *  @param pageable the pagination information
+      *  @return the list of entities
+      */
+     Page<Subgrupo> findAllOrderById(Pageable pageable);	
 }

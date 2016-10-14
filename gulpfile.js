@@ -1,7 +1,9 @@
-// Generated on 2016-05-07 using generator-jhipster 3.2.0
+// Generated on 2016-08-23 using generator-jhipster 3.2.0
 'use strict';
 
 var gulp = require('gulp'),
+    expect = require('gulp-expect-file'),
+    sass = require('gulp-sass'),
     rev = require('gulp-rev'),
     templateCache = require('gulp-angular-templatecache'),
     htmlmin = require('gulp-htmlmin'),
@@ -38,23 +40,27 @@ gulp.task('clean', function () {
     return del([config.dist], { dot: true });
 });
 
+gulp.task('cleanStyles', function () {
+    return del([config.cssDir + '*.css'], { dot: true });
+});
+
 gulp.task('copy', function () {
     return es.merge( 
         gulp.src(config.app + 'i18n/**')
         .pipe(plumber({errorHandler: handleErrors}))
         .pipe(changed(config.dist + 'i18n/'))
         .pipe(gulp.dest(config.dist + 'i18n/')),
-        gulp.src(config.bower + 'bootstrap/fonts/*.*')
-        .pipe(plumber({errorHandler: handleErrors}))
-        .pipe(changed(config.dist + 'content/fonts/'))
-        .pipe(rev())
-        .pipe(gulp.dest(config.dist + 'content/fonts/'))
-        .pipe(rev.manifest(config.revManifest, {
-            base: config.dist,
-            merge: true
-        }))
-        .pipe(gulp.dest(config.dist)),
-        gulp.src(config.app + 'content/**/*.{woff,woff2,svg,ttf,eot,otf}')
+//        gulp.src(config.bower + 'bootstrap/fonts/*.*')
+//        .pipe(plumber({errorHandler: handleErrors}))
+//        .pipe(changed(config.dist + 'content/fonts/'))
+//        .pipe(rev())
+//        .pipe(gulp.dest(config.dist + 'content/fonts/'))
+//        .pipe(rev.manifest(config.revManifest, {
+//            base: config.dist,
+//            merge: true
+//        }))
+//        .pipe(gulp.dest(config.dist)),
+        gulp.src(config.app + 'content/fonts/*.{woff,woff2,svg,ttf,eot,otf}')
         .pipe(plumber({errorHandler: handleErrors}))
         .pipe(changed(config.dist + 'content/fonts/'))
         .pipe(flatten())
@@ -65,6 +71,9 @@ gulp.task('copy', function () {
             merge: true
         }))
         .pipe(gulp.dest(config.dist)),
+        gulp.src(config.app + 'content/**/*.js')
+        .pipe(plumber({errorHandler: handleErrors}))
+        .pipe(gulp.dest(config.dist + 'content/')),
         gulp.src([config.app + 'robots.txt', config.app + 'favicon.ico', config.app + '.htaccess'], { dot: true })
         .pipe(plumber({errorHandler: handleErrors}))
         .pipe(changed(config.dist))
@@ -87,6 +96,26 @@ gulp.task('images', function () {
         .pipe(browserSync.reload({stream: true}));
 });
 
+gulp.task('sass', ['cleanStyles'], function () {
+    return es.merge(
+        gulp.src(config.sassSrc)
+        .pipe(plumber({errorHandler: handleErrors}))
+        .pipe(expect(config.sassSrc))
+        .pipe(changed(config.cssDir, {extension: '.css'}))
+        .pipe(sass({includePaths:config.bower}).on('error', sass.logError))
+        .pipe(gulp.dest(config.cssDir)),
+        gulp.src(config.bower + '**/fonts/**/*.{woff,woff2,svg,ttf,eot,otf}')        
+        .pipe(plumber({errorHandler: handleErrors}))
+        .pipe(changed(config.app + 'content/fonts'))
+        .pipe(flatten())
+        .pipe(gulp.dest(config.app + 'content/fonts')),
+        gulp.src(config.template + '**/fonts/**/*.{woff,woff2,svg,ttf,eot,otf}')
+        .pipe(plumber({errorHandler: handleErrors}))
+        .pipe(changed(config.app + 'content/fonts'))
+        .pipe(flatten())
+        .pipe(gulp.dest(config.app + 'content/fonts'))
+    );
+});
 
 gulp.task('languages', function () {
     var locales = yorc.languages.map(function (locale) {
@@ -98,46 +127,52 @@ gulp.task('languages', function () {
         .pipe(gulp.dest(config.app + 'i18n/'));
 });
 
-gulp.task('styles', [], function () {
+gulp.task('styles', ['sass'], function () {
     return gulp.src(config.app + 'content/css')
         .pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('inject', ['inject:dep', 'inject:app']);
-gulp.task('inject:dep', ['inject:test', 'inject:vendor']);
+//gulp.task('inject', ['inject:dep', 'inject:app']);
+//gulp.task('inject:dep', ['inject:test', 'inject:vendor']);
 
-gulp.task('inject:app', function () {
-    return gulp.src(config.app + 'index.html')
-        .pipe(inject(gulp.src(config.app + 'app/**/*.js')
-            .pipe(naturalSort())
-            .pipe(angularFilesort()), {relative: true}))
-        .pipe(gulp.dest(config.app));
-});
+//gulp.task('inject:app', function () {
+//    return gulp.src(config.app + 'index.html')
+//        .pipe(inject(gulp.src(config.app + 'app/**/*.js')
+//            .pipe(naturalSort())
+//            .pipe(angularFilesort()), {relative: true}))
+//        .pipe(gulp.dest(config.app));
+//});
 
-gulp.task('inject:vendor', function () {
-    var stream = gulp.src(config.app + 'index.html')
-        .pipe(plumber({errorHandler: handleErrors}))
-        .pipe(inject(gulp.src(bowerFiles(), {read: false}), {
-            name: 'bower',
-            relative: true
-        }))
-        .pipe(gulp.dest(config.app));
+//gulp.task('inject:vendor', function () {
+//    var stream = gulp.src(config.app + 'index.html')
+//        .pipe(plumber({errorHandler: handleErrors}))
+//        .pipe(inject(gulp.src(bowerFiles(), {read: false}), {
+//            name: 'bower',
+//            relative: true
+//        }))
+//        .pipe(gulp.dest(config.app));
 
-    return stream;
-});
+//    return es.merge(stream, gulp.src(config.sassVendor)
+//        .pipe(plumber({errorHandler: handleErrors}))
+//        .pipe(inject(gulp.src(bowerFiles({filter:['**/*.{scss,sass}']}), {read: false}), {
+//            name: 'bower',
+//           relative: true
+//        }))
+//        .pipe(gulp.dest(config.scss)));
+//});
 
-gulp.task('inject:test', function () {
-    return gulp.src(config.test + 'karma.conf.js')
-        .pipe(plumber({errorHandler: handleErrors}))
-        .pipe(inject(gulp.src(bowerFiles({includeDev: true, filter: ['**/*.js']}), {read: false}), {
-            starttag: '// bower:js',
-            endtag: '// endbower',
-            transform: function (filepath) {
-                return '\'' + filepath.substring(1, filepath.length) + '\',';
-            }
-        }))
-        .pipe(gulp.dest(config.test));
-});
+//gulp.task('inject:test', function () {
+//    return gulp.src(config.test + 'karma.conf.js')
+//        .pipe(plumber({errorHandler: handleErrors}))
+//        .pipe(inject(gulp.src(bowerFiles({includeDev: true, filter: ['**/*.js']}), {read: false}), {
+//            starttag: '// bower:js',
+//            endtag: '// endbower',
+//            transform: function (filepath) {
+//                return '\'' + filepath.substring(1, filepath.length) + '\',';
+//            }
+//        }))
+//        .pipe(gulp.dest(config.test));
+//});
 
 gulp.task('inject:troubleshoot', function () {
     /* this task removes the troubleshooting content from index.html*/
@@ -229,7 +264,7 @@ gulp.task('eslint:fix', function () {
         .pipe(gulpIf(util.isLintFixed, gulp.dest(config.app + 'app')));
 });
 
-gulp.task('test', ['inject:test', 'ngconstant:dev'], function (done) {
+gulp.task('test', [/*'inject:test',*/ 'ngconstant:dev'], function (done) {
     new KarmaServer({
         configFile: __dirname + '/' + config.test + 'karma.conf.js',
         singleRun: true
@@ -258,14 +293,14 @@ gulp.task('itest', ['protractor']);
 gulp.task('watch', function () {
     gulp.watch('bower.json', ['install']);
     gulp.watch(['gulpfile.js', 'pom.xml'], ['ngconstant:dev']);
-    gulp.watch(config.app + 'content/css/**/*.css', ['styles']);
+    gulp.watch(config.sassSrc, ['styles']);
     gulp.watch(config.app + 'content/images/**', ['images']);
-    gulp.watch(config.app + 'app/**/*.js', ['inject:app']);
+//    gulp.watch(config.app + 'app/**/*.js', ['inject:app']);
     gulp.watch([config.app + '*.html', config.app + 'app/**', config.app + 'i18n/**']).on('change', browserSync.reload);
 });
 
 gulp.task('install', function () {
-    runSequence(['inject:dep', 'ngconstant:dev'], 'languages', 'inject:app', 'inject:troubleshoot');
+    runSequence([/*'inject:dep',*/ 'ngconstant:dev'], 'sass', 'languages',/* 'inject:app',*/ 'inject:troubleshoot');
 });
 
 gulp.task('serve', function () {
@@ -273,7 +308,7 @@ gulp.task('serve', function () {
 });
 
 gulp.task('build', ['clean'], function (cb) {
-    runSequence(['copy', 'inject:vendor', 'ngconstant:prod', 'languages'], 'inject:app', 'inject:troubleshoot', 'assets:prod', cb);
+    runSequence(['copy', /*'inject:vendor',*/ 'ngconstant:prod', 'languages'],/* 'inject:app',*/ 'inject:troubleshoot', 'assets:prod', cb);
 });
 
 gulp.task('default', ['serve']);

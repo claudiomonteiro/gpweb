@@ -52,8 +52,8 @@ import com.sth.gpweb.service.PromocaoService;
 @IntegrationTest
 public class PromocaoResourceIntTest {
 
-    private static final String DEFAULT_DS_PROMOCAO = "A";
-    private static final String UPDATED_DS_PROMOCAO = "B";
+    private static final String DEFAULT_NM_PROMOCAO = "A";
+    private static final String UPDATED_NM_PROMOCAO = "B";
 
     private static final LocalDate DEFAULT_DT_VENCIMENTO = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DT_VENCIMENTO = LocalDate.now(ZoneId.systemDefault());
@@ -106,7 +106,7 @@ public class PromocaoResourceIntTest {
     public void initTest() {
         promocaoSearchRepository.deleteAll();
         promocao = new Promocao();
-        promocao.setDsPromocao(DEFAULT_DS_PROMOCAO);
+        promocao.setNmPromocao(DEFAULT_NM_PROMOCAO);
         promocao.setDtVencimento(DEFAULT_DT_VENCIMENTO);
         promocao.setNnDiaData(DEFAULT_NN_DIA_DATA);
         promocao.setNnDiaSemana(DEFAULT_NN_DIA_SEMANA);
@@ -131,7 +131,7 @@ public class PromocaoResourceIntTest {
         List<Promocao> promocaos = promocaoRepository.findAll();
         assertThat(promocaos).hasSize(databaseSizeBeforeCreate + 1);
         Promocao testPromocao = promocaos.get(promocaos.size() - 1);
-        assertThat(testPromocao.getDsPromocao()).isEqualTo(DEFAULT_DS_PROMOCAO);
+        assertThat(testPromocao.getNmPromocao()).isEqualTo(DEFAULT_NM_PROMOCAO);
         assertThat(testPromocao.getDtVencimento()).isEqualTo(DEFAULT_DT_VENCIMENTO);
         assertThat(testPromocao.getNnDiaData()).isEqualTo(DEFAULT_NN_DIA_DATA);
         assertThat(testPromocao.getNnDiaSemana()).isEqualTo(DEFAULT_NN_DIA_SEMANA);
@@ -146,10 +146,10 @@ public class PromocaoResourceIntTest {
 
     @Test
     @Transactional
-    public void checkDsPromocaoIsRequired() throws Exception {
+    public void checkNmPromocaoIsRequired() throws Exception {
         int databaseSizeBeforeTest = promocaoRepository.findAll().size();
         // set the field null
-        promocao.setDsPromocao(null);
+        promocao.setNmPromocao(null);
 
         // Create the Promocao, which fails.
 
@@ -173,7 +173,7 @@ public class PromocaoResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(promocao.getId().intValue())))
-                .andExpect(jsonPath("$.[*].dsPromocao").value(hasItem(DEFAULT_DS_PROMOCAO.toString())))
+                .andExpect(jsonPath("$.[*].nmPromocao").value(hasItem(DEFAULT_NM_PROMOCAO.toString())))
                 .andExpect(jsonPath("$.[*].dtVencimento").value(hasItem(DEFAULT_DT_VENCIMENTO.toString())))
                 .andExpect(jsonPath("$.[*].nnDiaData").value(hasItem(DEFAULT_NN_DIA_DATA)))
                 .andExpect(jsonPath("$.[*].nnDiaSemana").value(hasItem(DEFAULT_NN_DIA_SEMANA)))
@@ -193,7 +193,7 @@ public class PromocaoResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(promocao.getId().intValue()))
-            .andExpect(jsonPath("$.dsPromocao").value(DEFAULT_DS_PROMOCAO.toString()))
+            .andExpect(jsonPath("$.nmPromocao").value(DEFAULT_NM_PROMOCAO.toString()))
             .andExpect(jsonPath("$.dtVencimento").value(DEFAULT_DT_VENCIMENTO.toString()))
             .andExpect(jsonPath("$.nnDiaData").value(DEFAULT_NN_DIA_DATA))
             .andExpect(jsonPath("$.nnDiaSemana").value(DEFAULT_NN_DIA_SEMANA))
@@ -221,7 +221,7 @@ public class PromocaoResourceIntTest {
         // Update the promocao
         Promocao updatedPromocao = new Promocao();
         updatedPromocao.setId(promocao.getId());
-        updatedPromocao.setDsPromocao(UPDATED_DS_PROMOCAO);
+        updatedPromocao.setNmPromocao(UPDATED_NM_PROMOCAO);
         updatedPromocao.setDtVencimento(UPDATED_DT_VENCIMENTO);
         updatedPromocao.setNnDiaData(UPDATED_NN_DIA_DATA);
         updatedPromocao.setNnDiaSemana(UPDATED_NN_DIA_SEMANA);
@@ -238,7 +238,7 @@ public class PromocaoResourceIntTest {
         List<Promocao> promocaos = promocaoRepository.findAll();
         assertThat(promocaos).hasSize(databaseSizeBeforeUpdate);
         Promocao testPromocao = promocaos.get(promocaos.size() - 1);
-        assertThat(testPromocao.getDsPromocao()).isEqualTo(UPDATED_DS_PROMOCAO);
+        assertThat(testPromocao.getNmPromocao()).isEqualTo(UPDATED_NM_PROMOCAO);
         assertThat(testPromocao.getDtVencimento()).isEqualTo(UPDATED_DT_VENCIMENTO);
         assertThat(testPromocao.getNnDiaData()).isEqualTo(UPDATED_NN_DIA_DATA);
         assertThat(testPromocao.getNnDiaSemana()).isEqualTo(UPDATED_NN_DIA_SEMANA);
@@ -284,7 +284,7 @@ public class PromocaoResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.[*].id").value(hasItem(promocao.getId().intValue())))
-            .andExpect(jsonPath("$.[*].dsPromocao").value(hasItem(DEFAULT_DS_PROMOCAO.toString())))
+            .andExpect(jsonPath("$.[*].nmPromocao").value(hasItem(DEFAULT_NM_PROMOCAO.toString())))
             .andExpect(jsonPath("$.[*].dtVencimento").value(hasItem(DEFAULT_DT_VENCIMENTO.toString())))
             .andExpect(jsonPath("$.[*].nnDiaData").value(hasItem(DEFAULT_NN_DIA_DATA)))
             .andExpect(jsonPath("$.[*].nnDiaSemana").value(hasItem(DEFAULT_NN_DIA_SEMANA)))

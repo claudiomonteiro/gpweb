@@ -17,8 +17,9 @@
                 "filial": "Filial",
                 "marca": "Marca",
                 "unidade": "Unidade",
-                "catalogo": "Catálogo",
+                "produto": "Produto",
                 "classProduto": "Classificação",
+                "produtoFilial": "Produto Filial",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -89,6 +90,10 @@
         },
         "ribbon": {
             "dev":"Development"
+        },
+        "condition": {
+            "true": "Sim",
+            "false": "Não"
         }
     },
     "entity": {

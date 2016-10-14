@@ -72,8 +72,42 @@
                 }],
                 entity: ['$stateParams', 'Produto', function($stateParams, Produto) {
                     return Produto.get({id : $stateParams.id}).$promise;
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'produto',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
                 }]
             }
+        })
+        .state('produto-detail.edit', {
+            parent: 'produto-detail',
+            url: '/detail/edit',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/produto/produto-dialog.html',
+                    controller: 'ProdutoDialogController',
+                    controllerAs: 'vm',
+                    animation: false,
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Produto', function(Produto) {
+                            return Produto.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('^', {}, { reload: false });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
         })
         .state('produto.new', {
             parent: 'produto',
@@ -86,6 +120,7 @@
                     templateUrl: 'app/entities/produto/produto-dialog.html',
                     controller: 'ProdutoDialogController',
                     controllerAs: 'vm',
+                    animation: false,
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
@@ -95,17 +130,15 @@
                                 cdBarras: null,
                                 nmProduto: null,
                                 cdNcm: null,
-                                cdEan: null,
+                                cdGtin: null,
                                 cdAnp: null,
                                 dsAnp: null,
                                 cdContaContabil: null,
-                                materiaPrima: null,
                                 flBalanca: null,
                                 flInativo: null,
                                 flSngpc: null,
-                                flMedProlonga: null,
-                                dsClassTerapeutica: null,
-                                vlReal: 0.00,
+                                flUsoProlongado: null,
+                                vlVenda: 0.00,
                                 vlEstoque: 0.00,
                                 dsInformacoes: null,
                                 blImagem: null,
@@ -132,6 +165,7 @@
                     templateUrl: 'app/entities/produto/produto-dialog.html',
                     controller: 'ProdutoDialogController',
                     controllerAs: 'vm',
+                    animation: false,
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
@@ -157,6 +191,7 @@
                     templateUrl: 'app/entities/produto/produto-delete-dialog.html',
                     controller: 'ProdutoDeleteController',
                     controllerAs: 'vm',
+                    animation: false,
                     size: 'md',
                     resolve: {
                         entity: ['Produto', function(Produto) {

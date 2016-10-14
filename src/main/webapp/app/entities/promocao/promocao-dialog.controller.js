@@ -25,7 +25,7 @@
         }
         
         var onBeforeSaveOrUpdate = function(){       	        	
-         	vm.promocao.dsPromocao = angular.uppercase(vm.promocao.dsPromocao); //Setting to uppercase
+         	vm.promocao.nmPromocao = angular.uppercase(vm.promocao.nmPromocao); //Setting to uppercase
         };
 
         function save () {

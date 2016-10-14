@@ -67,7 +67,7 @@ class ProdutoGatlingTest extends Simulation {
             .exec(http("Create new produto")
             .post("/api/produtos")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "cdProduto":null, "cdBarras":"SAMPLE_TEXT", "nmProduto":"SAMPLE_TEXT", "cdNcm":"SAMPLE_TEXT", "cdEan":"SAMPLE_TEXT", "cdAnp":"SAMPLE_TEXT", "dsAnp":"SAMPLE_TEXT", "cdContaContabil":"SAMPLE_TEXT", "materiaPrima":"SAMPLE_TEXT", "flBalanca":null, "flInativo":null, "flSngpc":null, "flMedProlonga":null, "dsClassTerapeutica":"SAMPLE_TEXT", "vlReal":null, "vlEstoque":null, "dsInformacoes":"SAMPLE_TEXT", "blImagem":null}""")).asJSON
+            .body(StringBody("""{"id":null, "cdProduto":null, "cdBarras":"SAMPLE_TEXT", "nmProduto":"SAMPLE_TEXT", "cdNcm":"SAMPLE_TEXT", "cdGtin":"SAMPLE_TEXT", "cdAnp":"SAMPLE_TEXT", "dsAnp":"SAMPLE_TEXT", "cdContaContabil":"SAMPLE_TEXT", "flBalanca":null, "flInativo":null, "flSngpc":null, "flUsoProlongado":null, "vlVenda":null, "vlEstoque":null, "dsInformacoes":"SAMPLE_TEXT", "blImagem":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_produto_url"))).exitHereIfFailed
             .pause(10)

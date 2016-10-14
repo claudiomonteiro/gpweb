@@ -1,22 +1,20 @@
 package com.sth.gpweb.service.impl;
 
-import com.sth.gpweb.service.GrupoService;
-import com.sth.gpweb.domain.Grupo;
-import com.sth.gpweb.repository.GrupoRepository;
-import com.sth.gpweb.repository.search.GrupoSearchRepository;
+import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
+
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import com.sth.gpweb.domain.Grupo;
+import com.sth.gpweb.repository.GrupoRepository;
+import com.sth.gpweb.repository.search.GrupoSearchRepository;
+import com.sth.gpweb.service.GrupoService;
 
 /**
  * Service Implementation for managing Grupo.
@@ -118,5 +116,44 @@ public class GrupoServiceImpl implements GrupoService{
     public Page<Grupo> findByNomeStartingWithOrderByNomeAsc(String descricao, Pageable pageable){
     	log.debug("Request to...", descricao);
         return grupoRepository.findByNmGrupoStartingWithOrderByNmGrupoAsc(descricao, pageable);
+    }
+    
+    /**
+     * Search for the id
+     * Used on product page
+     *
+     *  @param query the nmGrupo
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public Page<Grupo> findByIdStartingWithOrderByIdAsc(String id, Pageable pageable){
+    	log.debug("Request to...", id);
+        return grupoRepository.findByIdStartingWithOrderByIdAsc(id, pageable);
+    }
+    
+    /**
+     *  Get all the grupos ordered by name.
+     *  
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true) 
+    public Page<Grupo> findAllOrderByNmGrupo(Pageable pageable) {
+        log.debug("Request to get all Grupos ordered by name");
+        Page<Grupo> result = grupoRepository.findAllOrderByNmGrupo(pageable); 
+        return result;
+    }
+    
+    /**
+     *  Get all the grupos ordered by id.
+     *  
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true) 
+    public Page<Grupo> findAllOrderById(Pageable pageable) {
+        log.debug("Request to get all Grupos ordered by id");
+        Page<Grupo> result = grupoRepository.findAllOrderById(pageable); 
+        return result;
     }
 }

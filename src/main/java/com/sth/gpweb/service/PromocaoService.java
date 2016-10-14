@@ -51,10 +51,10 @@ public interface PromocaoService {
     Page<Promocao> search(String query, Pageable pageable);
     
     /**
-     * Search for the dsPromocao already exists.
+     * Search for the nmPromocao already exists.
      * 
-     *  @param query the dsPromocao
+     *  @param query the nmPromocao
      *  @return the list of entities
      */
-    String findDsPromocaoExists(String dsPromocao);
+    String findNmPromocaoExists(String nmPromocao);
 }

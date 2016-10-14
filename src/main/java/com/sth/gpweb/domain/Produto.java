@@ -1,12 +1,27 @@
 package com.sth.gpweb.domain;
 
-import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.data.elasticsearch.annotations.Document;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * A Produto.
@@ -39,8 +54,8 @@ public class Produto implements Serializable {
     private String cdNcm;
 
     @Size(max = 20)
-    @Column(name = "cd_ean", length = 20)
-    private String cdEan;
+    @Column(name = "cd_gtin", length = 20)
+    private String cdGtin;
 
     @Size(max = 9)
     @Column(name = "cd_anp", length = 9)
@@ -54,10 +69,6 @@ public class Produto implements Serializable {
     @Column(name = "cd_conta_contabil", length = 25)
     private String cdContaContabil;
 
-    @Size(max = 1)
-    @Column(name = "materia_prima", length = 1)
-    private String materiaPrima;
-
     @Column(name = "fl_balanca")
     private Boolean flBalanca;
 
@@ -67,15 +78,11 @@ public class Produto implements Serializable {
     @Column(name = "fl_sngpc")
     private Boolean flSngpc;
 
-    @Column(name = "fl_med_prolonga")
-    private Boolean flMedProlonga;
+    @Column(name = "fl_uso_prolongado")
+    private Boolean flUsoProlongado;
 
-    @Size(max = 30)
-    @Column(name = "ds_class_terapeutica", length = 30)
-    private String dsClassTerapeutica;
-
-    @Column(name = "vl_real", precision=10, scale=2)
-    private BigDecimal vlReal;
+    @Column(name = "vl_Venda", precision=10, scale=2)
+    private BigDecimal vlVenda;
 
     @Column(name = "vl_estoque", precision=10, scale=2)
     private BigDecimal vlEstoque;
@@ -91,20 +98,30 @@ public class Produto implements Serializable {
     @Column(name = "bl_imagem_content_type")
     private String blImagemContentType;
 
-    @ManyToOne
+    @OneToOne
     private Grupo grupo;
 
-    @ManyToOne
+    @OneToOne
     private Marca marca;
 
-    @ManyToOne
+    @OneToOne
     private Unidade unidade;
 
-    @ManyToOne
+    @OneToOne
     private ClassProduto classProduto;
     
-    @ManyToOne
+    @OneToOne
     private Subgrupo subgrupo;
+    
+    @Transient
+    @JsonSerialize
+    @JsonDeserialize
+    private List<Filial> filials;
+    
+    @Transient
+    @JsonSerialize
+    @JsonDeserialize
+    private List<Filial> filialsNotUsed;
 
     public Long getId() {
         return id;
@@ -112,9 +129,41 @@ public class Produto implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+	}   
+
+    public List<Filial> getFilials() {
+        return filials;
     }
 
-    public Long getCdProduto() {
+    public List<Filial> getFilialsNotUsed() {
+		return filialsNotUsed;
+	}
+
+	public void setFilialsNotUsed(List<Filial> filialsNotUsed) {
+		this.filialsNotUsed = filialsNotUsed;
+	}
+
+	public void setFilials(List<Filial> filials) {
+        this.filials = filials;
+    }
+
+	public Boolean getFlBalanca() {
+		return flBalanca;
+	}
+
+	public Boolean getFlInativo() {
+		return flInativo;
+	}
+
+	public Boolean getFlSngpc() {
+		return flSngpc;
+	}
+
+	public Boolean getFlUsoProlongado() {
+		return flUsoProlongado;
+	}
+
+	public Long getCdProduto() {
         return cdProduto;
     }
 
@@ -146,12 +195,12 @@ public class Produto implements Serializable {
         this.cdNcm = cdNcm;
     }
 
-    public String getCdEan() {
-        return cdEan;
+    public String getCdGtin() {
+        return cdGtin;
     }
 
-    public void setCdEan(String cdEan) {
-        this.cdEan = cdEan;
+    public void setCdGtin(String cdGtin) {
+        this.cdGtin = cdGtin;
     }
 
     public String getCdAnp() {
@@ -178,14 +227,6 @@ public class Produto implements Serializable {
         this.cdContaContabil = cdContaContabil;
     }
 
-    public String getMateriaPrima() {
-        return materiaPrima;
-    }
-
-    public void setMateriaPrima(String materiaPrima) {
-        this.materiaPrima = materiaPrima;
-    }
-
     public Boolean isFlBalanca() {
         return flBalanca;
     }
@@ -210,28 +251,20 @@ public class Produto implements Serializable {
         this.flSngpc = flSngpc;
     }
 
-    public Boolean isFlMedProlonga() {
-        return flMedProlonga;
+    public Boolean isFlUsoProlongado() {
+        return flUsoProlongado;
     }
 
-    public void setFlMedProlonga(Boolean flMedProlonga) {
-        this.flMedProlonga = flMedProlonga;
+    public void setFlUsoProlongado(Boolean flUsoProlongado) {
+        this.flUsoProlongado = flUsoProlongado;
     }
 
-    public String getDsClassTerapeutica() {
-        return dsClassTerapeutica;
+    public BigDecimal getVlVenda() {
+        return vlVenda;
     }
 
-    public void setDsClassTerapeutica(String dsClassTerapeutica) {
-        this.dsClassTerapeutica = dsClassTerapeutica;
-    }
-
-    public BigDecimal getVlReal() {
-        return vlReal;
-    }
-
-    public void setVlReal(BigDecimal vlReal) {
-        this.vlReal = vlReal;
+    public void setVlVenda(BigDecimal vlVenda) {
+        this.vlVenda = vlVenda;
     }
 
     public BigDecimal getVlEstoque() {
@@ -326,29 +359,15 @@ public class Produto implements Serializable {
         return Objects.hashCode(id);
     }
 
-    @Override
-    public String toString() {
-        return "Produto{" +
-            "id=" + id +
-            ", cdProduto='" + cdProduto + "'" +
-            ", cdBarras='" + cdBarras + "'" +
-            ", nmProduto='" + nmProduto + "'" +
-            ", cdNcm='" + cdNcm + "'" +
-            ", cdEan='" + cdEan + "'" +
-            ", cdAnp='" + cdAnp + "'" +
-            ", dsAnp='" + dsAnp + "'" +
-            ", cdContaContabil='" + cdContaContabil + "'" +
-            ", materiaPrima='" + materiaPrima + "'" +
-            ", flBalanca='" + flBalanca + "'" +
-            ", flInativo='" + flInativo + "'" +
-            ", flSngpc='" + flSngpc + "'" +
-            ", flMedProlonga='" + flMedProlonga + "'" +
-            ", dsClassTerapeutica='" + dsClassTerapeutica + "'" +
-            ", vlReal='" + vlReal + "'" +
-            ", vlEstoque='" + vlEstoque + "'" +
-            ", dsInformacoes='" + dsInformacoes + "'" +
-            ", blImagem='" + blImagem + "'" +
-            ", blImagemContentType='" + blImagemContentType + "'" +
-            '}';
-    }
+	@Override
+	public String toString() {
+		return "Produto [id=" + id + ", cdProduto=" + cdProduto + ", cdBarras=" + cdBarras + ", nmProduto=" + nmProduto
+				+ ", cdNcm=" + cdNcm + ", cdGtin=" + cdGtin + ", cdAnp=" + cdAnp + ", dsAnp=" + dsAnp
+				+ ", cdContaContabil=" + cdContaContabil + ", flBalanca=" + flBalanca + ", flInativo=" + flInativo
+				+ ", flSngpc=" + flSngpc + ", flUsoProlongado=" + flUsoProlongado + ", vlVenda=" + vlVenda
+				+ ", vlEstoque=" + vlEstoque + ", dsInformacoes=" + dsInformacoes + ", blImagem="
+				+ Arrays.toString(blImagem) + ", blImagemContentType=" + blImagemContentType + ", grupo=" + grupo
+				+ ", marca=" + marca + ", unidade=" + unidade + ", classProduto=" + classProduto + ", subgrupo="
+				+ subgrupo + ", filials=" + filials + "]";
+	}    
 }

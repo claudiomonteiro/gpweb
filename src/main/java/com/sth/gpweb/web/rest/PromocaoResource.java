@@ -56,7 +56,7 @@ public class PromocaoResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("promocao", "idexists", "A new promocao cannot already have an ID")).body(null);
         }
         
-        if (promocaoService.findDsPromocaoExists(promocao.getDsPromocao()) != null) {
+        if (promocaoService.findNmPromocaoExists(promocao.getNmPromocao()) != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("promocao", "nmexists", "A new promocao cannot already have an ID")).body(null);
         }
         

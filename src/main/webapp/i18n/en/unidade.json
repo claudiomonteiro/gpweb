@@ -16,7 +16,7 @@
             "detail": {
                 "title": "Unit"
             },            
-            "dsUnidade": "Name",
+            "nmUnidade": "Name",
             "sgUnidade": "Initial"
             
         }

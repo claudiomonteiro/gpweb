@@ -1,0 +1,16 @@
+$icon-font-path: "../fonts/";
+
+/* Sass bower components will be injected here */
+/* bower:scss */
+@import "../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+/* endinject */
+/* bower:sass */
+/* endinject */
+
+//FONTS
+//---------------------------
+@import "template/fonts";
+
+//ADMIN-STH TEMPLATE
+//---------------------------
+@import "template/admin-sth";

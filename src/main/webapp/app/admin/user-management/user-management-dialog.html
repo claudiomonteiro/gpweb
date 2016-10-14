@@ -13,10 +13,10 @@
                 <div class="form-group">
                     <label translate="global.field.id">Código</label>
                     <input type="text" class="form-control" name="id"
-                           ng-model="vm.user.id" readonly>
+                           ng-model="vm.user.id" disabled>
                 </div>
             </div>
-            
+
             <div class="col-md-10">
                 <div class="form-group">
                     <label class="control-label" translate="userManagement.login">Login</label>
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -92,11 +92,11 @@
                         <p class="help-block"
                            ng-show="editForm.email.$error.email" translate="global.messages.validate.email.invalid">
                             E-mail inválido.
-                         </p>
+                        </p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label translate="userManagement.langKey">Idioma</label>
@@ -106,7 +106,7 @@
                 </div>                
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -117,12 +117,14 @@
                 </div>                
             </div>
         </div>
-        
+
         <div class="form-group">
-            <label for="activated">
-                <input ng-disabled="vm.user.id === null" type="checkbox" id="activated" ng-model="vm.user.activated">
-                <span translate="userManagement.activated">Ativo</span>
-            </label>
+            <div class="checkbox">
+                <label>
+                    <input ng-disabled="vm.user.id === null" type="checkbox" name="activated" ng-model="vm.user.activated"/>
+                    <span class="checkbox__label" translate="userManagement.activated">Ativo</span>
+                </label>
+            </div>
         </div>
     </div>
     <div class="modal-footer">

@@ -72,8 +72,42 @@
                 }],
                 entity: ['$stateParams', 'Subgrupo', function($stateParams, Subgrupo) {
                     return Subgrupo.get({id : $stateParams.id});
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'subgrupo',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
                 }]
             }
+        })
+        .state('subgrupo-detail.edit', {
+            parent: 'subgrupo-detail',
+            url: '/detail/edit',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/subgrupo/subgrupo-dialog.html',
+                    controller: 'SubgrupoDialogController',
+                    controllerAs: 'vm',
+                    animation: false,
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Subgrupo', function(Subgrupo) {
+                            return Subgrupo.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('^', {}, { reload: false });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
         })
         .state('subgrupo.new', {
             parent: 'subgrupo',
@@ -86,6 +120,7 @@
                     templateUrl: 'app/entities/subgrupo/subgrupo-dialog.html',
                     controller: 'SubgrupoDialogController',
                     controllerAs: 'vm',
+                    animation: false,
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
@@ -119,6 +154,7 @@
                     templateUrl: 'app/entities/subgrupo/subgrupo-dialog.html',
                     controller: 'SubgrupoDialogController',
                     controllerAs: 'vm',
+                    animation: false,
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
@@ -144,6 +180,7 @@
                     templateUrl: 'app/entities/subgrupo/subgrupo-delete-dialog.html',
                     controller: 'SubgrupoDeleteController',
                     controllerAs: 'vm',
+                    animation: false,
                     size: 'md',
                     resolve: {
                         entity: ['Subgrupo', function(Subgrupo) {

@@ -5,12 +5,13 @@
         .module('gpwebApp')
         .controller('ProdutoDetailController', ProdutoDetailController);
 
-    ProdutoDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'DataUtils', 'entity', 'Produto', 'Grupo', 'Marca', 'Unidade', 'ClassProduto', 'Subgrupo'];
+    ProdutoDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'Produto', 'Grupo', 'Marca', 'Unidade', 'ClassProduto', 'Subgrupo'];
 
-    function ProdutoDetailController($scope, $rootScope, $stateParams, DataUtils, entity, Produto, Grupo, Marca, Unidade, ClassProduto, Subgrupo) {
+    function ProdutoDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, Produto, Grupo, Marca, Unidade, ClassProduto, Subgrupo) {
         var vm = this;
 
         vm.produto = entity;
+        vm.previousState = previousState.name;
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
 

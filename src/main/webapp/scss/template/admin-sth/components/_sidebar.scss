@@ -1,0 +1,231 @@
+/*
+* Component: Sidebar
+* -----------------------------------------------------------------------
+*/
+//Main Sidebar
+// ``` .left-side has been deprecated as of 2.0.0 in favor of .main-sidebar ```
+.main-sidebar,
+.left-side {
+    box-shadow: $box-boxshadow;    
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 50px;
+    min-height: 100%;
+    width: $sidebar-width;
+    z-index: 810;
+    //Using disposable variable to join statements with a comma
+    $transition-rule: $transition-speed $transition-fn,
+        width $transition-speed $transition-fn;
+    @include transition-transform($transition-rule);
+    @media (max-width: $screen-xs-max) {
+        @include translate(-$sidebar-width, 0);
+    }
+    .sidebar-collapse & {
+        @media (min-width: $screen-sm) {
+            @include translate(-$sidebar-width, 0);
+        }
+    }
+    .sidebar-open & {
+        @media (max-width: $screen-xs-max) {
+            @include translate(0, 0);
+        }
+    }
+}
+
+.sidebar {
+    padding-bottom: 10px;
+}
+
+//scroll
+.sidebar-scroll {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50px;
+    bottom: 7px;
+    overflow-y: auto;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+}
+
+@media (max-width: 767px) {
+    .sidebar-scroll {
+        top: 52px;
+        bottom: 0px;
+    }
+}
+
+// remove border from form
+.sidebar-form {
+    input:focus {
+        border-color: transparent!important;
+    }
+}
+
+//Sidebar user panel
+.user-panel {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+    @include clearfix;
+    > .image > img {
+        width: 100%;
+        max-width: 45px;
+        height: auto;
+    }
+    > .info {
+        padding: 5px 5px 5px 15px;
+        line-height: 1;
+        position: absolute;
+        left: 55px;
+        > p {
+            font-weight: 600;
+            margin-bottom: 9px;
+        }
+        > a {
+            text-decoration: none;
+            padding-right: 5px;
+            margin-top: 3px;
+            font-size: 11px;
+            > .fa,
+            > .ion,
+            > .glyphicon,
+            > .mdi {
+                margin-right: 3px;
+            }
+        }
+    }
+}
+
+//close-panel
+.close-panel {
+    position: relative;
+    width: 100%;
+    padding: 4px 0px 0px 0px;
+    overflow: hidden;
+    @include clearfix;
+}
+
+//logo-panel
+.logo-panel {
+    position: relative;
+    width: 100%;
+    padding: 0px 14px 3px;
+    overflow: hidden;
+    @include clearfix;
+}
+
+.logo-sidebar {
+    width: 250px;
+    height: 95px;
+    background: url("../../content/images/logo.svg") no-repeat;
+    background-size: contain;
+}
+
+.sidebar-mini.sidebar-collapse .logo-sidebar{
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .sidebar-mini.sidebar-collapse .logo-sidebar{
+        display: inline-block;
+    }
+}
+
+.divider{
+    width: 100px;
+    border-top: 1px solid #d2d6de;
+    padding: 0px 0px 15px 0px;
+    margin: 0 auto;
+}
+
+// Sidebar menu
+.sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 15px 0;
+    //First Level
+    > li {
+        position: relative;
+        margin: 0;
+        padding: 0;  
+        > a,   
+        > span > a {
+            padding: 14px 5px 14px 14px;
+            display: block;
+            > .fa,
+            > .glyphicon,
+            > .ion,
+            > .mdi{
+                width: 20px;
+            }
+        }
+
+        .label,
+        .badge {
+            margin-top: 3px;
+            margin-right: 5px;
+        }
+    }
+    li.header {
+        padding: 10px 25px 10px 15px;
+        font-size: 12px;
+    }
+    li > a > .fa-angle-left, 
+    li > a > .mdi-chevron-left,
+    li > span > a > .fa-angle-left, 
+    li > span > a > .mdi-chevron-left {
+        width: auto;
+        height: auto;
+        padding: 0;
+        margin-right: 0px;
+        margin-top: -10px !important;
+    }
+    li.active {
+        > a > .fa-angle-left,
+        > span > a > .fa-angle-left,
+        > a > .mdi-chevron-left,
+        > span > a > .mdi-chevron-left {
+            @include rotate(-90deg);
+        }
+        > .treeview-menu {
+            display: block;
+        }
+    }
+
+    // Tree view menu
+    .treeview-menu {
+        display: none;
+        list-style: none;
+        padding:0;
+        margin:0;
+        padding-left: 5px;
+        .treeview-menu {
+            padding-left: 20px;
+        }
+        > li {
+            margin: 0;
+            > a,
+            > span > a {
+                padding: 15px 15px 15px 25px;
+                display: block;
+                font-size: 13px;
+                > .fa,
+                > .glyphicon,
+                > .ion,
+                > .mdi  {
+                    width: 20px;
+                }
+                > .fa-angle-left,
+                > .mdi-chevron-left,  
+                > .fa-angle-down,
+                > .mdi-chevron-down {
+                    width: auto;
+                }
+            }
+        }
+    }
+}
+

@@ -13,26 +13,26 @@
                 <div class="form-group">
                     <label for="id" translate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id"
-                            ng-model="vm.marca.id" readonly />
+                            ng-model="vm.marca.id" disabled />
                 </div>
             </div>
             <div class="col-xs-12 col-sm-10">
                 <div class="form-group">
-                    <label class="control-label" translate="gpwebApp.marca.nmFabricante" for="field_nmFabricante">Razão Social</label>
-                    <input type="text" class="form-control text-uppercase" name="nmFabricante" id="field_nmFabricante"
-                            ng-model="vm.marca.nmFabricante"
+                    <label class="control-label" translate="gpwebApp.marca.nmMarca" for="field_nmMarca">Razão Social</label>
+                    <input type="text" class="form-control text-uppercase" name="nmMarca" id="field_nmMarca"
+                            ng-model="vm.marca.nmMarca"
                             required ng-minlength="1" ng-maxlength="35" maxlength="35" />
-                    <div ng-show="editForm.nmFabricante.$invalid">
+                    <div ng-show="editForm.nmMarca.$invalid">
                         <p class="help-block"
-                            ng-show="editForm.nmFabricante.$error.required" translate="entity.validation.required">
+                            ng-show="editForm.nmMarca.$error.required" translate="entity.validation.required">
                             O campo é obrigatório.
                         </p>
                         <p class="help-block"
-                            ng-show="editForm.nmFabricante.$error.minlength" translate="entity.validation.minlength" translate-value-min="1">
+                            ng-show="editForm.nmMarca.$error.minlength" translate="entity.validation.minlength" translate-value-min="1">
                             Este campo não pode ter menos que 1 caractere.
                         </p>
                         <p class="help-block"
-                            ng-show="editForm.nmFabricante.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="35">
+                            ng-show="editForm.nmMarca.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="35">
                             Este campo não pode ter mais que 35 caracteres.
                         </p>
                     </div>
@@ -59,15 +59,15 @@
         <div class="row">
 			<div class="col-xs-12 col-sm-4">  
                 <div class="form-group">
-                    <label class="control-label" translate="gpwebApp.marca.cdCgc" for="field_cdCgc">CNPJ</label>
-                    <input type="text" class="form-control" name="cdCgc" id="field_cdCgc"
-                            ng-model="vm.marca.cdCgc"
+                    <label class="control-label" translate="gpwebApp.marca.cdCnpj" for="field_cdCnpj">CNPJ</label>
+                    <input type="text" class="form-control" name="cdCnpj" id="field_cdCnpj"
+                            ng-model="vm.marca.cdCnpj"
                             ng-maxlength="18" 
                             ui-br-cnpj-mask
                             placeholder="00.000.000/0000-00" />
-                    <div ng-show="editForm.cdCgc.$invalid">
+                    <div ng-show="editForm.cdCnpj.$invalid">
                         <p class="help-block"
-                            ng-show="editForm.cdCgc.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="18">
+                            ng-show="editForm.cdCnpj.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="18">
                             Este campo não pode ter mais que 18 caracteres.
                         </p>
                     </div>
@@ -75,13 +75,13 @@
             </div>
 			<div class="col-xs-12 col-sm-4">
                 <div class="form-group">
-                    <label class="control-label" translate="gpwebApp.marca.cdCgf" for="field_cdCgf">Inscrição Estadual</label>
-                    <input type="text" class="form-control text-uppercase" name="cdCgf" id="field_cdCgf"
-                            ng-model="vm.marca.cdCgf"
+                    <label class="control-label" translate="gpwebApp.marca.cdIe" for="field_cdIe">Inscrição Estadual</label>
+                    <input type="text" class="form-control text-uppercase" name="cdIe" id="field_cdIe"
+                            ng-model="vm.marca.cdIe"
                             ng-maxlength="18" />
-                    <div ng-show="editForm.cdCgf.$invalid">
+                    <div ng-show="editForm.cdIe.$invalid">
                         <p class="help-block"
-                            ng-show="editForm.cdCgf.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="18">
+                            ng-show="editForm.cdIe.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="18">
                             Este campo não pode ter mais que 18 caracteres.
                         </p>
                     </div>

@@ -25,16 +25,16 @@ public class Marca implements Serializable {
 
     @NotNull
     @Size(min = 1, max = 35)
-    @Column(name = "nm_fabricante", length = 35, nullable = false, unique = true)
-    private String nmFabricante;
+    @Column(name = "nm_marca", length = 35, nullable = false, unique = true)
+    private String nmMarca;
 
     @Size(max = 18)
-    @Column(name = "cd_cgc", length = 18)
-    private String cdCgc;
+    @Column(name = "cd_cnpj", length = 18)
+    private String cdCnpj;
 
     @Size(max = 18)
-    @Column(name = "cd_cgf", length = 18)
-    private String cdCgf;
+    @Column(name = "cd_ie", length = 18)
+    private String cdIe;
 
     @Column(name = "nn_numero")
     private Integer nnNumero;
@@ -72,28 +72,28 @@ public class Marca implements Serializable {
         this.id = id;
     }
 
-    public String getNmFabricante() {
-        return nmFabricante;
+    public String getNmMarca() {
+        return nmMarca;
     }
 
-    public void setNmFabricante(String nmFabricante) {
-        this.nmFabricante = nmFabricante;
+    public void setNmMarca(String nmMarca) {
+        this.nmMarca = nmMarca;
     }
 
-    public String getCdCgc() {
-        return cdCgc;
+    public String getCdCnpj() {
+        return cdCnpj;
     }
 
-    public void setCdCgc(String cdCgc) {
-        this.cdCgc = cdCgc;
+    public void setCdCnpj(String cdCnpj) {
+        this.cdCnpj = cdCnpj;
     }
 
-    public String getCdCgf() {
-        return cdCgf;
+    public String getCdIe() {
+        return cdIe;
     }
 
-    public void setCdCgf(String cdCgf) {
-        this.cdCgf = cdCgf;
+    public void setCdIe(String cdIe) {
+        this.cdIe = cdIe;
     }
 
     public Integer getNnNumero() {
@@ -184,9 +184,9 @@ public class Marca implements Serializable {
     public String toString() {
         return "Marca{" +
             "id=" + id +
-            ", nmFabricante='" + nmFabricante + "'" +
-            ", cdCgc='" + cdCgc + "'" +
-            ", cdCgf='" + cdCgf + "'" +
+            ", nmMarca='" + nmMarca + "'" +
+            ", cdCnpj='" + cdCnpj + "'" +
+            ", cdIe='" + cdIe + "'" +
             ", nnNumero='" + nnNumero + "'" +
             ", dsComplemento='" + dsComplemento + "'" +
             ", cdTel='" + cdTel + "'" +

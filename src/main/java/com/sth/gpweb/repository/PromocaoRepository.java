@@ -13,8 +13,8 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface PromocaoRepository extends JpaRepository<Promocao,Long> {
     
-    //Verify if dsPromocao already exits on database before insert	
-  	@Query("SELECT p.dsPromocao FROM Promocao p where p.dsPromocao = :dsPromocao") 
- 	String findDsPromocaoExists(@Param("dsPromocao") String dsPromocao);
+    //Verify if nmPromocao already exits on database before insert	
+  	@Query("SELECT p.nmPromocao FROM Promocao p where p.nmPromocao = :nmPromocao") 
+ 	String findNmPromocaoExists(@Param("nmPromocao") String nmPromocao);
 
 }

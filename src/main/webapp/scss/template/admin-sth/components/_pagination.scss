@@ -1,0 +1,22 @@
+/*
+ * Component: Pagination
+ * -----------------------------------------------------------------------
+ */
+.pagination > li > a {
+    background: #fafafa;
+    color: #666;
+}
+.pagination > .active > a, .pagination > .active > a:hover, 
+.pagination > .active > a:focus, 
+.pagination > .active > span, .pagination > .active > span:hover,
+.pagination > .active > span:focus {
+    background-color: $aqua;
+    border-color: $aqua;
+}
+.pagination > li > a,
+.pagination > li > span {
+    padding: 7px 11px;
+}
+.pagination.pagination-flat > li > a {
+    border-radius: 0 !important;
+}

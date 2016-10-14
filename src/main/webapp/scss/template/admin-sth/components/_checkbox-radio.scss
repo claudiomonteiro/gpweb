@@ -1,0 +1,92 @@
+/*
+* Component: Checkbox and Radio
+* Author: Aaron Olson
+* http://codepen.io/acolson/pen/Kwgxvy
+* -----------------------------------------------------------------------
+*/
+.checkbox label,
+.checkbox-inline label, .radio label,
+.radio-inline label {
+    position: relative;
+    display: block;
+    padding-left: 30px;
+}
+.checkbox .checkbox__label,
+.checkbox-inline .checkbox__label, .radio .radio__label,
+.radio-inline .radio__label {
+    font-weight: normal;
+    line-height: 22px;
+}
+.checkbox .checkbox__label:before,
+.checkbox-inline .checkbox__label:before, .radio .radio__label:before,
+.radio-inline .radio__label:before {
+    position: absolute;
+    left: 0;
+    float: left;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    line-height: 16px;
+    text-align: center;
+    color: #fff;
+    border: 2px solid lighten($black, 40%);
+    content: '';
+    -webkit-transition: all 250ms;
+    transition: all 250ms;
+}
+.checkbox .checkbox__label:hover::before,
+.checkbox-inline .checkbox__label:hover::before, .radio .radio__label:hover::before,
+.radio-inline .radio__label:hover::before {
+    border-color: $aqua;
+}
+.checkbox input[type='checkbox'],
+.checkbox-inline input[type='checkbox'], .radio input[type='radio'],
+.radio-inline input[type='radio'] {
+    opacity: 0;
+}
+.checkbox input[type='checkbox']:focus + span::before,
+.checkbox-inline input[type='checkbox']:focus + span::before, 
+.radio input[type='radio']:focus + span::before,
+.radio-inline input[type='radio']:focus + span::before {
+    border-color: $aqua;
+}
+.checkbox input[type='checkbox']:checked + span::before,
+.checkbox-inline input[type='checkbox']:checked + span::before {
+    font-family: 'Material Design Icons';
+    font-size: 16px;
+    font-weight: bold;
+    content: '\f12c';
+    background-color: $aqua;
+    border-color: $aqua;
+}
+.radio input[type='radio']:checked + span::before,
+.radio-inline input[type='radio']:checked + span::before {
+    font-family: 'Material Design Icons';
+    font-size: 10px;
+    content: '\f12f';
+    background-color: $aqua;
+    border-color: $aqua;
+}
+.checkbox input[type='checkbox']:disabled + span::before,
+.checkbox-inline input[type='checkbox']:disabled + span::before, .radio input[type='radio']:disabled + span::before,
+.radio-inline input[type='radio']:disabled + span::before {
+    border-color: $gray;
+}
+.checkbox input[type='checkbox']:disabled:hover + span,
+.checkbox-inline input[type='checkbox']:disabled:hover + span, .radio input[type='radio']:disabled:hover + span,
+.radio-inline input[type='radio']:disabled:hover + span {
+    cursor: not-allowed;
+}
+.checkbox input[type='checkbox']:disabled:checked + span::before,
+.checkbox-inline input[type='checkbox']:disabled:checked + span::before, .radio input[type='radio']:disabled:checked + span::before,
+.radio-inline input[type='radio']:disabled:checked + span::before {
+    background-color: $gray;
+}
+.checkboxes-inline .checkbox-inline:first-child, .radios-inline .radio-inline:first-child {
+    padding-left: 0;
+}
+.radio .radio__label:before,
+.radio-inline .radio__label:before {
+    border-radius: 50%;
+}

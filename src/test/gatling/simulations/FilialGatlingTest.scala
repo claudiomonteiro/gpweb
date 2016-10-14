@@ -67,7 +67,7 @@ class FilialGatlingTest extends Simulation {
             .exec(http("Create new filial")
             .post("/api/filials")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "nmFilial":"SAMPLE_TEXT", "nnNumero":"0", "dsComplemento":"SAMPLE_TEXT", "cdCnpj":"SAMPLE_TEXT", "cdCgf":"SAMPLE_TEXT", "dsSite":"SAMPLE_TEXT", "flAtiva":null, "nmRazao":"SAMPLE_TEXT", "cdTel":"SAMPLE_TEXT", "cdTel1":"SAMPLE_TEXT", "cdTel2":"SAMPLE_TEXT", "cdFax":"SAMPLE_TEXT", "dtOperacao":"2020-01-01T00:00:00.000Z", "nnVersao":"0", "flTprec":null, "dsPisCofins":"SAMPLE_TEXT", "nnMdfVersao":"0", "flEnviaEmail":null, "dsObs":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "nmFilial":"SAMPLE_TEXT", "nnNumero":"0", "dsComplemento":"SAMPLE_TEXT", "cdCnpj":"SAMPLE_TEXT", "cdIe":"SAMPLE_TEXT", "dsSite":"SAMPLE_TEXT", "flInativo":null, "nmRazao":"SAMPLE_TEXT", "cdTel":"SAMPLE_TEXT", "cdTel1":"SAMPLE_TEXT", "cdTel2":"SAMPLE_TEXT", "cdFax":"SAMPLE_TEXT", "dtOperacao":"2020-01-01T00:00:00.000Z", "flTprec":null, "dsPisCofins":"SAMPLE_TEXT", "dsEmail":"SAMPLE_TEXT", "flEnviaEmail":null, "flMatriz":null, "dsObs":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_filial_url"))).exitHereIfFailed
             .pause(10)

@@ -1,0 +1,97 @@
+/*
+ * Component: Material Design Icons
+ * -----------------------------------------------------------------------
+ */
+//Default config icons
+i.mdi::before,
+span.mdi::before,
+button.mdi::before {
+    font-size: 20px;
+    line-height: 13px;
+}
+.btn.mdi::before,
+.btn .mdi::before {
+    position: relative;
+    top: 3px;
+}
+.btn-xs.mdi::before,
+.btn-xs .mdi::before {
+    font-size: 18px;
+    top: 3px;
+}
+.btn-sm.mdi::before,
+.btn-sm .mdi::before {
+    font-size: 18px;
+    top: 3px;
+}
+.dropdown-menu .mdi {
+    width: 18px;
+}
+.dropdown-menu .mdi::before {
+    position: relative;
+    font-size: 18px;
+    top: 3px;
+    left: 5px;
+}
+.nav .mdi::before {
+    position: relative;
+    top: 3px;
+    right: 3px;
+}
+.nav .mdi.mdi-menu::before {
+    position: relative;
+    top: 3px;
+    right: 1px;
+}
+.navbar .navbar-toggle .mdi::before {
+    position: relative;
+    top: 4px;
+    color: #FFF;
+}
+.sidebar-menu li a .mdi::before,
+.sidebar-menu li span a .mdi::before {
+    position: relative;
+    font-size: 19px;
+    top: 2px;
+    right: 4px;    
+}
+.sidebar-menu li a .mdi.mdi-window-close::before,
+.sidebar-menu li span a .mdi.mdi-window-close::before {
+    right: 0px;    
+}
+.sidebar-menu li a .mdi.mdi-chevron-left::before,
+.sidebar-menu li span a .mdi.mdi-chevron-left::before {
+    position: relative;
+    font-size: 19px;
+    top: 4px;
+    left: 0px;    
+}
+.breadcrumb .mdi::before {
+    position: relative;
+    top: 4px;
+}
+.breadcrumb a:hover {
+    text-decoration: none;
+}
+.breadcrumb a:hover span {
+    text-decoration: underline;
+}
+.alert .mdi::before {
+    position: relative;
+    top: 4px;
+    margin-right: 2px;
+}
+.input-group-addon .mdi::before {
+    position: relative;
+    top: 3px;
+}
+.navbar-brand .mdi::before {
+    position: relative;
+    top: 2px;
+    margin-right: 2px;
+}
+.list-group-item .mdi::before {
+    position: relative;
+    top: 3px;
+    left: -3px
+}

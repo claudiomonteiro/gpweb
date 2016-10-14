@@ -50,12 +50,12 @@ public interface UnidadeService {
     Page<Unidade> search(String query, Pageable pageable);
     
     /**
-     * Search for the dsUnidade already exists.
+     * Search for the nmUnidade already exists.
      * 
-     *  @param query the dsUnidade
+     *  @param query the nmUnidade
      *  @return the list of entities
      */
-    String findDsUnidadeExists(String dsUnidade);
+    String findNmUnidadeExists(String nmUnidade);
     
     /**
      * Search for the sgUnidade already exists.
@@ -71,6 +71,31 @@ public interface UnidadeService {
      *  @param description query for the name
      *  @return the list of entities
      */
-     Page<Unidade> findByDsUnidadeStartingWithOrderByDsUnidadeAsc(String descricao, Pageable pageable);   
+     Page<Unidade> findByNmUnidadeStartingWithOrderByNmUnidadeAsc(String descricao, Pageable pageable);   
+     
+     /**
+      * Search for the Unidade corresponding to the query name.
+      * Used on product page
+      * 
+      *  @param description query for the name
+      *  @return the list of entities
+      */
+     Page<Unidade> findByIdStartingWithOrderByIdAsc(String id, Pageable pageable);
+     
+     /**
+      *  Get all the Unidades ordered by name.
+      *  
+      *  @param pageable the pagination information
+      *  @return the list of entities
+      */
+     Page<Unidade> findAllOrderByNmUnidade(Pageable pageable);
+     
+     /**
+      *  Get all the Unidades ordered by id.
+      *  
+      *  @param pageable the pagination information
+      *  @return the list of entities
+      */
+     Page<Unidade> findAllOrderById(Pageable pageable);	
      
 }

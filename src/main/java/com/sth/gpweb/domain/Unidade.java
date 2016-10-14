@@ -23,8 +23,8 @@ public class Unidade implements Serializable {
 
     @NotNull
     @Size(min = 1, max = 25)
-    @Column(name = "ds_unidade", length = 25, nullable = false, unique = true)
-    private String dsUnidade;
+    @Column(name = "nm_unidade", length = 25, nullable = false, unique = true)
+    private String nmUnidade;
 
     @Size(max = 2)
     @Column(name = "sg_unidade", length = 2, nullable = false, unique = true)
@@ -38,12 +38,12 @@ public class Unidade implements Serializable {
         this.id = id;
     }
 
-    public String getDsUnidade() {
-        return dsUnidade;
+    public String getNmUnidade() {
+        return nmUnidade;
     }
 
-    public void setDsUnidade(String dsUnidade) {
-        this.dsUnidade = dsUnidade;
+    public void setNmUnidade(String nmUnidade) {
+        this.nmUnidade = nmUnidade;
     }
 
     public String getSgUnidade() {
@@ -78,7 +78,7 @@ public class Unidade implements Serializable {
     public String toString() {
         return "Unidade{" +
             "id=" + id +
-            ", dsUnidade='" + dsUnidade + "'" +
+            ", nmUnidade='" + nmUnidade + "'" +
             ", sgUnidade='" + sgUnidade + "'" +
             '}';
     }

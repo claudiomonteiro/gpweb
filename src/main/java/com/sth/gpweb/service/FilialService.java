@@ -1,10 +1,12 @@
 package com.sth.gpweb.service;
 
-import com.sth.gpweb.domain.Filial;
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
+import com.sth.gpweb.domain.Filial;
 
 /**
  * Service Interface for managing Filial.
@@ -57,4 +59,20 @@ public interface FilialService {
      *  @return the list of entities
      */
     String findNmFilialExists(String nmFilial);
+    
+	/**
+	 * Get all the entities not in produto_id.
+	 * 
+	 * @param produto_id
+	 * @return the list of entities
+	 */
+	ArrayList<Filial> findFiliaisByIdProdutoWhereNotUsed(Collection<Long> ids);
+	
+	/**
+	 * Get all the Filials as list
+	 *
+	 * @return the list of entities
+	 */
+	ArrayList<Filial> findAllFilials();	
+	
 }

@@ -23,7 +23,7 @@
         }
         
         var onBeforeSaveOrUpdate = function(){       	        	
-         	vm.classProduto.dsClassProduto = angular.uppercase(vm.classProduto.dsClassProduto); //Setting to uppercase
+         	vm.classProduto.nmClassProduto = angular.uppercase(vm.classProduto.nmClassProduto); //Setting to uppercase
         };
 
         function save () {

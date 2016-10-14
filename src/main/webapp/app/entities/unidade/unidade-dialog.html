@@ -13,7 +13,7 @@
                 <div class="form-group">
                     <label for="id" translate="global.field.id">Código</label>
                     <input type="text" class="form-control" id="id" name="id"
-                            ng-model="vm.unidade.id" readonly />
+                            ng-model="vm.unidade.id" disabled />
                 </div>
             </div>
             <div class="col-sm-3">
@@ -35,21 +35,21 @@
             </div>
             <div class="col-sm-7">
                 <div class="form-group">
-                    <label class="control-label" translate="gpwebApp.unidade.dsUnidade" for="field_dsUnidade">Ds Unidade</label>
-                    <input type="text" class="form-control text-uppercase" name="dsUnidade" id="field_dsUnidade"
-                            ng-model="vm.unidade.dsUnidade"
+                    <label class="control-label" translate="gpwebApp.unidade.nmUnidade" for="field_nmUnidade">Ds Unidade</label>
+                    <input type="text" class="form-control text-uppercase" name="nmUnidade" id="field_nmUnidade"
+                            ng-model="vm.unidade.nmUnidade"
                             required ng-minlength="1" ng-maxlength="25" maxlength="25" />
-                    <div ng-show="editForm.dsUnidade.$invalid">
+                    <div ng-show="editForm.nmUnidade.$invalid">
                         <p class="help-block"
-                            ng-show="editForm.dsUnidade.$error.required" translate="entity.validation.required">
+                            ng-show="editForm.nmUnidade.$error.required" translate="entity.validation.required">
                             Campo obrigatório
                         </p>
                         <p class="help-block"
-                            ng-show="editForm.dsUnidade.$error.minlength" translate="entity.validation.minlength" translate-value-min="1">
+                            ng-show="editForm.nmUnidade.$error.minlength" translate="entity.validation.minlength" translate-value-min="1">
                             Preencha pelo menos 1 caractere.
                         </p>
                         <p class="help-block"
-                            ng-show="editForm.dsUnidade.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="25">
+                            ng-show="editForm.nmUnidade.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="25">
                             Este campo não pode ser maior que 25 caracteres.
                         </p>
                     </div>

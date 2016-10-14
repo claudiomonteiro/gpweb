@@ -45,8 +45,8 @@ public class ClassProdutoResourceIntTest {
 
     private static final String DEFAULT_CD_CLASS_PRODUTO = "AA";
     private static final String UPDATED_CD_CLASS_PRODUTO = "BB";
-    private static final String DEFAULT_DS_CLASS_PRODUTO = "A";
-    private static final String UPDATED_DS_CLASS_PRODUTO = "B";
+    private static final String DEFAULT_NM_CLASS_PRODUTO = "A";
+    private static final String UPDATED_NM_CLASS_PRODUTO = "B";
 
     @Inject
     private ClassProdutoRepository classProdutoRepository;
@@ -82,7 +82,7 @@ public class ClassProdutoResourceIntTest {
         classProdutoSearchRepository.deleteAll();
         classProduto = new ClassProduto();
         classProduto.setCdClassProduto(DEFAULT_CD_CLASS_PRODUTO);
-        classProduto.setDsClassProduto(DEFAULT_DS_CLASS_PRODUTO);
+        classProduto.setnmClassProduto(DEFAULT_NM_CLASS_PRODUTO);
     }
 
     @Test
@@ -102,7 +102,7 @@ public class ClassProdutoResourceIntTest {
         assertThat(classProdutos).hasSize(databaseSizeBeforeCreate + 1);
         ClassProduto testClassProduto = classProdutos.get(classProdutos.size() - 1);
         assertThat(testClassProduto.getCdClassProduto()).isEqualTo(DEFAULT_CD_CLASS_PRODUTO);
-        assertThat(testClassProduto.getDsClassProduto()).isEqualTo(DEFAULT_DS_CLASS_PRODUTO);
+        assertThat(testClassProduto.getnmClassProduto()).isEqualTo(DEFAULT_NM_CLASS_PRODUTO);
 
         // Validate the ClassProduto in ElasticSearch
         ClassProduto classProdutoEs = classProdutoSearchRepository.findOne(testClassProduto.getId());
@@ -129,10 +129,10 @@ public class ClassProdutoResourceIntTest {
 
     @Test
     @Transactional
-    public void checkDsClassProdutoIsRequired() throws Exception {
+    public void checknmClassProdutoIsRequired() throws Exception {
         int databaseSizeBeforeTest = classProdutoRepository.findAll().size();
         // set the field null
-        classProduto.setDsClassProduto(null);
+        classProduto.setnmClassProduto(null);
 
         // Create the ClassProduto, which fails.
 
@@ -157,7 +157,7 @@ public class ClassProdutoResourceIntTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(classProduto.getId().intValue())))
                 .andExpect(jsonPath("$.[*].cdClassProduto").value(hasItem(DEFAULT_CD_CLASS_PRODUTO.toString())))
-                .andExpect(jsonPath("$.[*].dsClassProduto").value(hasItem(DEFAULT_DS_CLASS_PRODUTO.toString())));
+                .andExpect(jsonPath("$.[*].nmClassProduto").value(hasItem(DEFAULT_NM_CLASS_PRODUTO.toString())));
     }
 
     @Test
@@ -172,7 +172,7 @@ public class ClassProdutoResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(classProduto.getId().intValue()))
             .andExpect(jsonPath("$.cdClassProduto").value(DEFAULT_CD_CLASS_PRODUTO.toString()))
-            .andExpect(jsonPath("$.dsClassProduto").value(DEFAULT_DS_CLASS_PRODUTO.toString()));
+            .andExpect(jsonPath("$.nmClassProduto").value(DEFAULT_NM_CLASS_PRODUTO.toString()));
     }
 
     @Test
@@ -195,7 +195,7 @@ public class ClassProdutoResourceIntTest {
         ClassProduto updatedClassProduto = new ClassProduto();
         updatedClassProduto.setId(classProduto.getId());
         updatedClassProduto.setCdClassProduto(UPDATED_CD_CLASS_PRODUTO);
-        updatedClassProduto.setDsClassProduto(UPDATED_DS_CLASS_PRODUTO);
+        updatedClassProduto.setnmClassProduto(UPDATED_NM_CLASS_PRODUTO);
 
         restClassProdutoMockMvc.perform(put("/api/class-produtos")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -207,7 +207,7 @@ public class ClassProdutoResourceIntTest {
         assertThat(classProdutos).hasSize(databaseSizeBeforeUpdate);
         ClassProduto testClassProduto = classProdutos.get(classProdutos.size() - 1);
         assertThat(testClassProduto.getCdClassProduto()).isEqualTo(UPDATED_CD_CLASS_PRODUTO);
-        assertThat(testClassProduto.getDsClassProduto()).isEqualTo(UPDATED_DS_CLASS_PRODUTO);
+        assertThat(testClassProduto.getnmClassProduto()).isEqualTo(UPDATED_NM_CLASS_PRODUTO);
 
         // Validate the ClassProduto in ElasticSearch
         ClassProduto classProdutoEs = classProdutoSearchRepository.findOne(testClassProduto.getId());
@@ -248,6 +248,6 @@ public class ClassProdutoResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.[*].id").value(hasItem(classProduto.getId().intValue())))
             .andExpect(jsonPath("$.[*].cdClassProduto").value(hasItem(DEFAULT_CD_CLASS_PRODUTO.toString())))
-            .andExpect(jsonPath("$.[*].dsClassProduto").value(hasItem(DEFAULT_DS_CLASS_PRODUTO.toString())));
+            .andExpect(jsonPath("$.[*].nmClassProduto").value(hasItem(DEFAULT_NM_CLASS_PRODUTO.toString())));
     }
 }

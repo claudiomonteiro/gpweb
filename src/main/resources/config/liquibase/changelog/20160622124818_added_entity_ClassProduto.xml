@@ -25,7 +25,7 @@
                 <constraints unique="true" nullable="false" />
             </column>
             
-            <column name="ds_class_produto" type="varchar(80)">
+            <column name="nm_class_produto" type="varchar(80)">
                 <constraints unique="true" nullable="false" />
             </column>
             

@@ -2,7 +2,7 @@
     "relationships": [],
     "fields": [
         {
-            "fieldName": "nmFabricante",
+            "fieldName": "nmMarca",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required",
@@ -13,7 +13,7 @@
             "fieldValidateRulesMaxlength": "35"
         },
         {
-            "fieldName": "cdCgc",
+            "fieldName": "cdCnpj",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -21,7 +21,7 @@
             "fieldValidateRulesMaxlength": "18"
         },
         {
-            "fieldName": "cdCgf",
+            "fieldName": "cdIe",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"

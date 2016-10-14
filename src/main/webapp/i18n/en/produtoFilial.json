@@ -1,0 +1,74 @@
+{
+    "gpwebApp": {
+        "produtoFilial" : {
+            "home": {
+                "title": "Produto Filials",
+                "createLabel": "Create a new Produto Filial",
+                "createOrEditLabel": "Create or edit a Produto Filial",
+                "search": "Search for Produto Filial"
+            },
+            "created": "A new Produto Filial is created with identifier {{ param }}",
+            "updated": "A Produto Filial is updated with identifier {{ param }}",
+            "deleted": "A Produto Filial is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Produto Filial {{ id }}?"
+            },
+            "detail": {
+                "title": "Produto Filial"
+            },
+            "conf":{
+            	"showcatalog": "Mostrar Detalhes"
+            },            
+            "produtoDetail":{
+            	"blImagem": "Image",
+            	"nmProduto": "Name",
+            	"cdProduto": "Product Code",
+            	"cdNcm": "NCM Code",
+            	"cdBarras": "Bar Code",
+            	"cdEan": "EAN Code",
+            	"cdAnp": "ANP Code",
+            	"dsAnp": "ANP Description",
+            	"cdContaContabil": "Accounting Account",
+            	"materiaPrima": "Feedstock",
+            	"vlReal": "Real Value",
+            	"vlEstoque": "Stock Value",
+            	"dsInformacoes": "Information",
+            	"grupo": "Group",
+            	"subgrupo": "Subgroup",
+	            "marca": "Brand",
+            	"unidade": "Unit",
+            	"classProduto": "Classification",
+            	"flBalanca": "Balance",
+            	"flSngpc": "SNGPC",
+            	"flMedProlonga": "Prolonged Use",
+            	"dsClassTerapeutica": "Therapeutic Class",
+            	"flInativo": "Inactive"
+            },
+            "qtEmbalagem": "Qt Embalagem",
+            "qtMin": "Qt Min",
+            "qtMax": "Qt Max",
+            "qtSaldo": "Qt Saldo",
+            "dtVencimento": "Dt Vencimento",
+            "vlCompra": "Vl Compra",
+            "vlCusto": "Vl Custo",
+            "vlCustoMedio": "Vl Custo Medio",
+            "vlMarkpVenda": "Vl Markp Venda",
+            "vlMarkpAtacado": "Vl Markp Atacado",
+            "vlAtaVista": "Vl Ata Vista",
+            "vlMarkpAprazo": "Vl Markp Aprazo",
+            "vlAprazo": "Vl Aprazo",
+            "vlMarkpAtaPrazo": "Vl Markp Ata Prazo",
+            "vlAtaAPrazo": "Vl Ata A Prazo",
+            "qtAtacado": "Qt Atacado",
+            "qtBonificacao": "Qt Bonificacao",
+            "flInativo": "Fl Inativo",
+            "flMateriaPrima": "Fl Materia Prima",
+            "flComposto": "Fl Composto",
+            "nnPontos": "Nn Pontos",
+            "produto": "Produto",
+            "filial": "Filial",
+            "promocao": "Promocao",
+            "showcatalog": "Show Details" 
+        }
+    }
+}

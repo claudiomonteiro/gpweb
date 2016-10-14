@@ -64,7 +64,7 @@
             "fieldValidateRulesMaxlength": "8"
         },
         {
-            "fieldName": "cdEan",
+            "fieldName": "cdGtin",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -96,14 +96,6 @@
             "fieldValidateRulesMaxlength": "25"
         },
         {
-            "fieldName": "materiaPrima",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "1"
-        },
-        {
             "fieldName": "flBalanca",
             "fieldType": "Boolean"
         },
@@ -116,19 +108,11 @@
             "fieldType": "Boolean"
         },
         {
-            "fieldName": "flMedProlonga",
+            "fieldName": "flUsoProlongado",
             "fieldType": "Boolean"
         },
         {
-            "fieldName": "dsClassTerapeutica",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "30"
-        },
-        {
-            "fieldName": "vlReal",
+            "fieldName": "vlVenda",
             "fieldType": "BigDecimal"
         },
         {

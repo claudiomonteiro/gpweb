@@ -1,13 +1,19 @@
 <div class="box">    
-    <div class="box-header no-margin">
+    <div class="box-header">
         <h2 class="box-title" translate="health.title">Health Checks</h2>
-        <p>
-            <button type="button" class="btn btn-primary ripple ripple-light" ng-click="vm.refresh()">
-                <span translate="health.refresh.button">Refresh</span>
-            </button>
-        </p>
-    </div>
+    </div><!-- /.box-header -->
+    
     <div class="box-body">
+        <div class="row">
+            <div class="col-xs-4 col-sm-5">
+                <button type="button" class="btn btn-primary ripple ripple-light" ng-click="vm.refresh()">
+                    <span translate="health.refresh.button">Refresh</span>
+                </button>
+            </div>
+        </div>
+
+        <br>
+
         <div class="table-responsive">
             <table id="healthCheck" class="table table-striped">
                 <thead>
@@ -35,5 +41,5 @@
                 </tbody>
             </table>
         </div>
-    </div>
-</div>
+    </div><!-- /.box-body -->
+</div><!-- /.box -->

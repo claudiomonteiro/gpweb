@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity ProdutoFilial.
+    -->
+    <changeSet id="20160803113315-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="produto_id"
+                                 baseTableName="produto_filial"
+                                 constraintName="fk_produtofilial_produto_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="produto"/>
+
+        <addForeignKeyConstraint baseColumnNames="promocao_id"
+                                 baseTableName="produto_filial"
+                                 constraintName="fk_produtofilial_promocao_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="promocao"/>
+                                 
+        <addForeignKeyConstraint baseColumnNames="filial_id"
+                                 baseTableName="produto_filial"
+                                 constraintName="fk_produto_filial_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="filial"/>
+    </changeSet>
+</databaseChangeLog>

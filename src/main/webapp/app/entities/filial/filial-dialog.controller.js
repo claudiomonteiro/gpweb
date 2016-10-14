@@ -29,11 +29,12 @@
             //Setting to uppercase
         	vm.filial.nmFilial = angular.uppercase(vm.filial.nmFilial);
             vm.filial.nmRazao = angular.uppercase(vm.filial.nmRazao);
-            vm.filial.cdCgf = angular.uppercase(vm.filial.cdCgf);
+            vm.filial.cdIe = angular.uppercase(vm.filial.cdIe);
             vm.filial.dsComplemento = angular.uppercase(vm.filial.dsComplemento);
             vm.filial.dsPisCofins = angular.uppercase(vm.filial.dsPisCofins);
             vm.filial.dsObs = angular.uppercase(vm.filial.dsObs);
-            vm.filial.dsSite = angular.uppercase(vm.filial.dsSite);          
+            vm.filial.dsSite = angular.uppercase(vm.filial.dsSite);
+            vm.filial.dsEmail = angular.uppercase(vm.filial.dsEmail);
         };
 
         vm.save = function () {

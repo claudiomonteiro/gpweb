@@ -14,13 +14,15 @@
             'ui.bootstrap',
             'ui.bootstrap.datetimepicker',
             'ui.router',
-            'infinite-scroll',
-            // jhipster-needle-angularjs-add-module JHipster will add new module here
+            'infinite-scroll',            
             'angular-loading-bar',
             'oc.lazyLoad',
             'whimsicalRipple',
             'ui.utils.masks',
-            'idf.br-filters'
+            'idf.br-filters',
+            'sc.select',
+            'dualmultiselect'
+            // jhipster-needle-angularjs-add-module JHipster will add new module here
         ])
         .run(run);
 

@@ -67,7 +67,7 @@ class UnidadeGatlingTest extends Simulation {
             .exec(http("Create new unidade")
             .post("/api/unidades")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "dsUnidade":"SAMPLE_TEXT", "sgUnidade":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "nmUnidade":"SAMPLE_TEXT", "sgUnidade":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_unidade_url"))).exitHereIfFailed
             .pause(10)

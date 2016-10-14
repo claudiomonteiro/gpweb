@@ -1,0 +1,83 @@
+//-------------------------------------
+//ENTIDADE PRODUTO - TABELA
+//-------------------------------------
+.col-catalogo-codigo{
+  min-width: 99px;
+  max-width: 99px;
+}
+.col-catalogo-codigo-produto{
+  min-width: 165px;
+  max-width: 165px;
+}
+.col-catalogo-codigoBarras{
+  min-width: 168px;
+  max-width: 168px;
+}
+.col-catalogo-imagem{
+  min-width: 100px;
+  max-width: 100px;
+}
+.col-catalogo-nome{
+  min-width: 736px;
+  max-width: 736px;
+}
+.col-catalogo-marca{
+  min-width: 90px;
+  max-width: 90px;
+}
+.col-catalogo-vlVenda{
+  min-width: 116px;
+  max-width: 116px;
+}
+.col-catalogo-inativo{
+  min-width: 98px;
+  max-width: 98px;
+}
+.col-catalogo-acoes{
+  min-width: 126px;
+  max-width: 126px;
+}
+
+//-------------------------------------
+//ENTIDADE PRODUTO CARD
+//-------------------------------------
+.box-produto {
+  width: 100%;
+  background: #fafafa;    
+  border: 1px solid #d7d7d7;
+  padding: 13px;
+  margin-bottom: 20px;
+  min-height: 275px; 
+  max-height: 275px;
+}
+.box-header-produto{
+  font-size: 0.929em; /*13px*/
+  padding: 5px 15px;    
+  word-wrap: break-word;    
+}
+.box-img-produto{
+  width: 90px;
+  height: 130px;
+  padding-right: 5px;
+  border: 0px solid #d7d7d7;
+}
+.box-body-produto{
+  font-size: 0.929em; /*13px*/
+  word-wrap: break-word;
+  margin-top: 5px;
+  min-height: 192px;
+}
+.box-footer-produto{
+  padding: 0;
+  padding-top: 15px;
+}
+.thumbnail-produto-catalogo{
+  min-width: 100%;
+  min-height: 116px;
+  background: #f2f2f2;
+}
+.thumbnail-produto-detalhe{
+  min-width: 100%;
+  min-height: 147px;
+  background: #f2f2f2;
+}

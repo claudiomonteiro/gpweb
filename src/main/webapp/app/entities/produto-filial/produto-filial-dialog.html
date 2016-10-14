@@ -1,0 +1,452 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myProdutoFilialLabel" translate="gpwebApp.produtoFilial.home.createOrEditLabel">Create or edit a Produto Filial</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        
+        <!-- Diretiva Product Catalog-->
+        <div class="row select2-padding-bottom">
+            <div class="col-md-6">
+                <!-- Diretiva Produto-->
+                <div class="form-group">
+                    <label class="control-label" translate="gpwebApp.produtoFilial.produto">
+                        Produto
+                    </label>                      
+		            <div class="row">  
+						<div class="col-md-4">               
+					     <sc-select
+					       ng-model="vm.produtoFilial.produto"
+					       sc-options="produto as produto.id for produto in vm.obj.searchAsync(searchText, page, 'api/_search/produtos/select', 'id')"
+					       page-limit="vm.obj.asyncPageLimit"
+					       total-items="vm.obj.totalResults"
+					       placeholder="Código"
+					       loading-delay="200">
+					     </sc-select>
+					    </div> 
+						<div class="col-md-6">
+			             <sc-select
+						       ng-model="vm.produtoFilial.produto"
+						       sc-options="produto as produto.nmProduto for produto in vm.obj.searchAsync(searchText, page, 'api/_search/produtos/select', 'nmProduto')"
+						       page-limit="vm.obj.asyncPageLimit"
+						       total-items="vm.obj.totalResults"
+						       placeholder="Descrição"
+						       loading-delay="200">
+						 </sc-select>			     
+					    </div>
+					    
+					    <div class="col-md-1">			     
+					     <div class="col-md-1">
+					     	<button type="button" class="btn btn-default" ng-click="vm.produtoFilial.produto = null">
+					            <span class="glyphicon glyphicon-ban-circle"></span>
+					        </button>
+					     </div>
+			            </div>
+				     </div>                                   
+                </div>
+            </div>
+        </div>  
+        
+        <!-- Global data from catalog -->	
+        <hr/>
+        <div class="row">               
+            <dl class="col-xs-12 col-sm-2">
+                <!-- <dt><span translate="gpwebApp.produtoFilial.produtoDetail.blImagem">Imagem</span></dt> -->
+                <dd>
+                    <div class="thumbnail no-margin-bottom" ng-if="vm.produtoFilial.produto.blImagem">
+                        <a ng-click="vm.openFile(vm.produtoFilial.produto.blImagemContentType, vm.produtoFilial.produto.blImagem)">
+                            <img class="img-responsive image-thumbnail" data-ng-src="{{'data:' + vm.produtoFilial.produto.blImagemContentType + ';base64,' + vm.produtoFilial.produto.blImagem}}" style="max-width: 100%; max-height: 137px;"/>
+                        </a>
+                    </div>
+                    
+                    <div class="thumbnail no-margin-bottom" ng-hide="vm.produtoFilial.produto.blImagem != null">
+                        <img class="thumbnail-produto-detalhe">
+                    </div>
+                </dd>
+            </dl>
+            
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.nmProduto">Nome</span></dt>
+                <dd>
+                    <span class="text-uppercase">{{vm.produtoFilial.produto.nmProduto}}</span>
+                    <span ng-hide="vm.produtoFilial.produto.nmProduto != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            
+            <dl class="col-xs-12 col-sm-3">
+                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.cdProduto">Código</span></dt>
+                <dd>
+                    <span>{{vm.produtoFilial.produto.cdProduto}}</span>
+                    <span ng-hide="vm.produtoFilial.produto.cdProduto != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            
+            <dl class="col-xs-12 col-sm-3">
+                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.cdNcm">Código NCM</span></dt>
+                <dd>
+                    <span>{{vm.produtoFilial.produto.cdNcm}}</span>
+                    <span ng-hide="vm.produtoFilial.produto.cdNcm != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            
+            <dl class="col-xs-12 col-sm-4">
+                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.cdBarras">Código de Barras</span></dt>
+                <dd>
+                    <span>{{vm.produtoFilial.produto.cdBarras}}</span>
+                    <span ng-hide="vm.produtoFilial.produto.cdBarras != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            
+            <dl class="col-xs-12 col-sm-3">
+                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.cdEan">Código EAN</span></dt>
+                <dd>
+                    <span>{{vm.produtoFilial.produto.cdEan}}</span>
+                    <span ng-hide="vm.produtoFilial.produto.cdEan != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>
+            
+            <div class="row">      
+	        	<button type="button" ng-init="vm.showCatalog = false" ng-click="vm.showCatalog = !vm.showCatalog"
+		            	class="btn btn-info">
+		        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="gpwebApp.produtoFilial.conf.showcatalog">Exibir</span>
+		    </button>
+	    </div>
+	    <hr/>
+            
+           
+        </div>
+        
+	   <div ng-show="vm.showCatalog && vm.produtoFilial.produto != null" style="background-color: #F2F2F2">
+	        <div >
+	        	 <dl class="col-xs-12 col-sm-3">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.cdAnp">Código ANP</span></dt>
+	                <dd>
+	                    <span>{{vm.produtoFilial.produto.cdAnp}}</span>
+	                    <span ng-hide="vm.produtoFilial.produto.cdAnp != null"> - </span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl>
+	        
+	            <dl class="col-xs-12 col-sm-3">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.dsAnp">Descrição ANP</span></dt>
+	                <dd>
+	                    <span class="text-uppercase">{{vm.produtoFilial.produto.dsAnp}}</span>
+	                    <span ng-hide="vm.produtoFilial.produto.dsAnp != null"> - </span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl>
+	             
+	            <dl class="col-xs-12 col-sm-3">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.cdContaContabil">Código Conta Contábil</span></dt>
+	                <dd>
+	                    <span>{{vm.produtoFilial.produto.cdContaContabil}}</span>
+	                    <span ng-hide="vm.produtoFilial.produto.cdContaContabil != null"> - </span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl> 
+	            
+	            <dl class="col-xs-12 col-sm-3">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.materiaPrima">Matéria Prima</span></dt>
+	                <dd>
+	                    <span class="text-uppercase">{{vm.produtoFilial.produto.materiaPrima}}</span>
+	                    <span ng-hide="vm.produtoFilial.produto.materiaPrima != null"> - </span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl>
+	           
+	        </div>
+	        
+	        <div class="row"> 
+	        	 <dl class="col-xs-12 col-sm-3">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.flBalanca">Balança</span></dt>
+	                <dd>
+	                    <span class="text-uppercase">{{vm.produtoFilial.produto.flBalanca ? 'Sim' : 'Não'}}</span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl>   
+	                   
+	            <dl class="col-xs-12 col-sm-3">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.grupo">Grupo</span></dt>
+	                <dd>
+	                    <a class="text-uppercase" ui-sref="grupo-detail({id:vm.produtoFilial.produto.grupo.id})">{{vm.produtoFilial.produto.grupo.nmGrupo}}</a>
+	                    <span ng-hide="vm.produtoFilial.produto.grupo != null"> - </span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl>
+	            
+	            <dl class="col-xs-12 col-sm-3">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.subgrupo">Subgrupo</span></dt>
+	                <dd>
+	                    <a class="text-uppercase" ui-sref="subgrupo-detail({id:vm.produtoFilial.produto.subgrupo.id})">{{vm.produtoFilial.produto.subgrupo.nmSubgrupo}}</a>
+	                    <span ng-hide="vm.produtoFilial.produto.subgrupo != null"> - </span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl>
+	            
+	            <dl class="col-xs-12 col-sm-3">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.marca">Marca</span></dt>
+	                <dd>
+	                    <a class="text-uppercase" ui-sref="marca-detail({id:vm.produtoFilial.produto.marca.id})">{{vm.produtoFilial.produto.marca.nmFabricante}}</a>
+	                    <span ng-hide="vm.produtoFilial.produto.marca != null"> - </span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl>
+	             
+	        </div>
+	        
+	        <div class="row">
+	        	 <dl class="col-xs-12 col-sm-3">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.unidade">Unidade</span></dt>
+	                <dd>
+	                    <a class="text-uppercase" ui-sref="unidade-detail({id:vm.produtoFilial.produto.unidade.id})">{{vm.produtoFilial.produto.unidade.dsUnidade}}</a>
+	                    <span ng-hide="vm.produtoFilial.produto.unidade != null"> - </span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl>   
+	        
+	            <dl class="col-xs-12 col-sm-6">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.classProduto">Classificação</span></dt>
+                <dd>
+                    <a class="text-uppercase" ui-sref="class-produto-detail({id:vm.produtoFilial.produto.classProduto.id})">{{vm.produtoFilial.produto.classProduto.nmClassProduto}}</a>
+                    <span ng-hide="vm.produtoFilial.produto.classProduto != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+	            </dl>
+	            
+	            <dl class="col-xs-12 col-sm-3">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.vlEstoque">Valor Estoque</span></dt>
+	                <dd>
+	                    <span>{{vm.produtoFilial.produto.vlEstoque | currency:'':2}}</span>
+	                    <span ng-hide="vm.produtoFilial.produto.vlEstoque != null"> - </span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl>	            
+	            
+	        </div>
+	        
+	        <div class="row">
+	        	 <dl class="col-xs-12 col-sm-3">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.vlReal">Valor Real</span></dt>
+	                <dd>
+	                    <span>{{vm.produtoFilial.produto.vlReal | currency:'':2}}</span>
+	                    <span ng-hide="vm.produtoFilial.produto.vlReal != null"> - </span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl>  
+	        
+	            <dl class="col-xs-12 col-sm-3">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.flSngpc">SNGPC</span></dt>
+	                <dd>
+	                    <span class="text-uppercase">{{vm.produtoFilial.produto.flSngpc ? 'Sim' : 'Não'}}</span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl>
+	            
+	            <dl class="col-xs-12 col-sm-3">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.flMedProlonga">Uso Prolongado</span></dt>
+	                <dd>
+	                    <span class="text-uppercase">{{vm.produtoFilial.produto.flMedProlonga ? 'Sim' : 'Não'}}</span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl>
+	            
+	            <dl class="col-xs-12 col-sm-3">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.flInativo">Inativo</span></dt>
+	                <dd>
+	                    <span class="text-uppercase">{{vm.produtoFilial.produto.flInativo ? 'Sim' : 'Não'}}</span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl>
+	             
+	        </div>
+	        
+	        <div class="row">
+	        	<dl class="col-xs-12 col-sm-6">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.dsClassTerapeutica">Classe Terapêutica</span></dt>
+	                <dd>
+	                    <span class="text-uppercase">{{vm.produtoFilial.produto.dsClassTerapeutica}}</span>
+	                    <span ng-hide="vm.produtoFilial.produto.dsClassTerapeutica != null"> - </span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl>  
+	        
+	            <dl class="col-xs-12 col-sm-12">
+	                <dt><span translate="gpwebApp.produtoFilial.produtoDetail.dsInformacoes">Informações</span></dt>
+	                <dd>
+	                    <span class="text-uppercase">{{vm.produtoFilial.produto.dsInformacoes}}</span>
+	                    <span ng-hide="vm.produtoFilial.produto.dsInformacoes != null"> - </span>
+	                </dd>
+	                <div class="box-detail-divider"></div>
+	            </dl>   
+	        </div>       
+	        
+        </div>
+        <!-- end Global data from catalog -->
+        
+        <div class="form-group" ng-show="vm.produtoFilial.id">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.produtoFilial.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.qtEmbalagem" for="field_qtEmbalagem">Qt Embalagem</label>
+            <input type="number" class="form-control" name="qtEmbalagem" id="field_qtEmbalagem"
+                    ng-model="vm.produtoFilial.qtEmbalagem"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.qtMin" for="field_qtMin">Qt Min</label>
+            <input type="number" class="form-control" name="qtMin" id="field_qtMin"
+                    ng-model="vm.produtoFilial.qtMin"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.qtMax" for="field_qtMax">Qt Max</label>
+            <input type="number" class="form-control" name="qtMax" id="field_qtMax"
+                    ng-model="vm.produtoFilial.qtMax"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.qtSaldo" for="field_qtSaldo">Qt Saldo</label>
+            <input type="number" class="form-control" name="qtSaldo" id="field_qtSaldo"
+                    ng-model="vm.produtoFilial.qtSaldo"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.dtVencimento" for="field_dtVencimento">Dt Vencimento</label>
+                <div class="input-group">
+                    <input id="field_dtVencimento" type="text" class="form-control" name="dtVencimento" uib-datepicker-popup="{{dateformat}}" ng-model="vm.produtoFilial.dtVencimento" is-open="vm.datePickerOpenStatus.dtVencimento"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dtVencimento')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.vlCompra" for="field_vlCompra">Vl Compra</label>
+            <input type="number" class="form-control" name="vlCompra" id="field_vlCompra"
+                    ng-model="vm.produtoFilial.vlCompra"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.vlCusto" for="field_vlCusto">Vl Custo</label>
+            <input type="number" class="form-control" name="vlCusto" id="field_vlCusto"
+                    ng-model="vm.produtoFilial.vlCusto"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.vlCustoMedio" for="field_vlCustoMedio">Vl Custo Medio</label>
+            <input type="number" class="form-control" name="vlCustoMedio" id="field_vlCustoMedio"
+                    ng-model="vm.produtoFilial.vlCustoMedio"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.vlMarkpVenda" for="field_vlMarkpVenda">Vl Markp Venda</label>
+            <input type="number" class="form-control" name="vlMarkpVenda" id="field_vlMarkpVenda"
+                    ng-model="vm.produtoFilial.vlMarkpVenda"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.vlMarkpAtacado" for="field_vlMarkpAtacado">Vl Markp Atacado</label>
+            <input type="number" class="form-control" name="vlMarkpAtacado" id="field_vlMarkpAtacado"
+                    ng-model="vm.produtoFilial.vlMarkpAtacado"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.vlAtaVista" for="field_vlAtaVista">Vl Ata Vista</label>
+            <input type="number" class="form-control" name="vlAtaVista" id="field_vlAtaVista"
+                    ng-model="vm.produtoFilial.vlAtaVista"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.vlMarkpAprazo" for="field_vlMarkpAprazo">Vl Markp Aprazo</label>
+            <input type="number" class="form-control" name="vlMarkpAprazo" id="field_vlMarkpAprazo"
+                    ng-model="vm.produtoFilial.vlMarkpAprazo"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.vlAprazo" for="field_vlAprazo">Vl Aprazo</label>
+            <input type="number" class="form-control" name="vlAprazo" id="field_vlAprazo"
+                    ng-model="vm.produtoFilial.vlAprazo"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.vlMarkpAtaPrazo" for="field_vlMarkpAtaPrazo">Vl Markp Ata Prazo</label>
+            <input type="number" class="form-control" name="vlMarkpAtaPrazo" id="field_vlMarkpAtaPrazo"
+                    ng-model="vm.produtoFilial.vlMarkpAtaPrazo"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.vlAtaAPrazo" for="field_vlAtaAPrazo">Vl Ata A Prazo</label>
+            <input type="number" class="form-control" name="vlAtaAPrazo" id="field_vlAtaAPrazo"
+                    ng-model="vm.produtoFilial.vlAtaAPrazo"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.qtAtacado" for="field_qtAtacado">Qt Atacado</label>
+            <input type="number" class="form-control" name="qtAtacado" id="field_qtAtacado"
+                    ng-model="vm.produtoFilial.qtAtacado"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.qtBonificacao" for="field_qtBonificacao">Qt Bonificacao</label>
+            <input type="number" class="form-control" name="qtBonificacao" id="field_qtBonificacao"
+                    ng-model="vm.produtoFilial.qtBonificacao"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.flInativo" for="field_flInativo">Fl Inativo</label>
+            <input type="checkbox" class="form-control" name="flInativo" id="field_flInativo"
+                    ng-model="vm.produtoFilial.flInativo"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.flMateriaPrima" for="field_flMateriaPrima">Fl Materia Prima</label>
+            <input type="checkbox" class="form-control" name="flMateriaPrima" id="field_flMateriaPrima"
+                    ng-model="vm.produtoFilial.flMateriaPrima"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.flComposto" for="field_flComposto">Fl Composto</label>
+            <input type="checkbox" class="form-control" name="flComposto" id="field_flComposto"
+                    ng-model="vm.produtoFilial.flComposto"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="gpwebApp.produtoFilial.nnPontos" for="field_nnPontos">Nn Pontos</label>
+            <input type="number" class="form-control" name="nnPontos" id="field_nnPontos"
+                    ng-model="vm.produtoFilial.nnPontos"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="gpwebApp.produtoFilial.produto" for="field_produto">Produto</label>
+            <select class="form-control" id="field_produto" name="produto" ng-model="vm.produtoFilial.produto" ng-options="produto as produto.id for produto in vm.produtos | orderBy:'id' track by produto.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="gpwebApp.produtoFilial.promocao" for="field_promocao">Promocao</label>
+            <select class="form-control" id="field_promocao" name="promocao" ng-model="vm.produtoFilial.promocao" ng-options="promocao as promocao.id for promocao in vm.promocaos | orderBy:'id' track by promocao.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

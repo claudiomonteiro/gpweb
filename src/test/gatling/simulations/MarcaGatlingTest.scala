@@ -67,7 +67,7 @@ class MarcaGatlingTest extends Simulation {
             .exec(http("Create new marca")
             .post("/api/marcas")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "nmFabricante":"SAMPLE_TEXT", "cdCgc":"SAMPLE_TEXT", "cdCgf":"SAMPLE_TEXT", "nnNumero":"0", "dsComplemento":"SAMPLE_TEXT", "cdTel":"SAMPLE_TEXT", "cdFax":"SAMPLE_TEXT", "flInativo":null, "nmFantasia":"SAMPLE_TEXT", "vlComissao":null, "dtOperacao":"2020-01-01T00:00:00.000Z"}""")).asJSON
+            .body(StringBody("""{"id":null, "nmMarca":"SAMPLE_TEXT", "cdCnpj":"SAMPLE_TEXT", "cdIe":"SAMPLE_TEXT", "nnNumero":"0", "dsComplemento":"SAMPLE_TEXT", "cdTel":"SAMPLE_TEXT", "cdFax":"SAMPLE_TEXT", "flInativo":null, "nmFantasia":"SAMPLE_TEXT", "vlComissao":null, "dtOperacao":"2020-01-01T00:00:00.000Z"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_marca_url"))).exitHereIfFailed
             .pause(10)

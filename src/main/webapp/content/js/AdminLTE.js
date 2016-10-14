@@ -36,16 +36,19 @@ $.AdminLTE.options = {
   //General animation speed for JS animated elements such as box collapse/expand and
   //sidebar treeview slide up/down. This options accepts an integer as milliseconds,
   //'fast', 'normal', or 'slow'
-  animationSpeed: 50,
+  animationSpeed: 0,
   //Enable sidebar expand on hover effect for sidebar mini
   //This option is forced to true if both the fixed layout and sidebar mini
   //are used together
-  sidebarExpandOnHover: false,
+  //sidebarExpandOnHover: false,
   //BoxRefresh Plugin
-  enableBoxRefresh: true,
-  //Bootstrap.js tooltip
-  enableBSToppltip: true,
+  //enableBoxRefresh: true,
+    
+  //Bootstrap.js tooltip    
+  /*enableBSToppltip: true,
   BSTooltipSelector: "[data-toggle='tooltip']",
+  */
+  /*    
   //Enable Fast Click. Fastclick.js creates a more
   //native touch experience with touch devices. If you
   //choose to enable the plugin, make sure you load the script
@@ -80,16 +83,16 @@ $.AdminLTE.options = {
       //Collapse button selector
       collapse: '[data-widget="collapse"]'
     }
-  },
+  },*/
   //Direct Chat plugin options
-  directChat: {
+ /* directChat: {
     //Enable direct chat by default
     enable: true,
     //The button to open and close the chat contacts pane
     contactToggleSelector: '[data-widget="chat-pane-toggle"]'
-  },
+  },*/
   //Define the set of colors to use globally around the website
-  colors: {
+  /*colors: {
     lightBlue: "#3c8dbc",
     red: "#f56954",
     green: "#00a65a",
@@ -106,7 +109,7 @@ $.AdminLTE.options = {
     maroon: "#D81B60",
     black: "#222222",
     gray: "#d2d6de"
-  },
+  },*/
   //The standard screen sizes that bootstrap uses.
   //If you change these in the variables.less file, change
   //them here too.
@@ -153,38 +156,39 @@ $(function () {
   }
 
   //Add slimscroll to navbar dropdown
-  if (o.navbarMenuSlimscroll && typeof $.fn.slimscroll != 'undefined') {
+  /*if (o.navbarMenuSlimscroll && typeof $.fn.slimscroll != 'undefined') {
     $(".navbar .menu").slimscroll({
       height: o.navbarMenuHeight,
       alwaysVisible: false,
       size: o.navbarMenuSlimscrollWidth
     }).css("width", "100%");
-  }
+  }*/
 
   //Activate Bootstrap tooltip
-  if (o.enableBSToppltip) {
+  
+  /*if (o.enableBSToppltip) {
     $('body').tooltip({
       selector: o.BSTooltipSelector
     });
-  }
+  }*/
 
   //Activate box widget
-  if (o.enableBoxWidget) {
-    $.AdminLTE.boxWidget.activate();
-  }
+  //if (o.enableBoxWidget) {
+  //  $.AdminLTE.boxWidget.activate();
+  //}
 
   //Activate fast click
-  if (o.enableFastclick && typeof FastClick != 'undefined') {
-    FastClick.attach(document.body);
-  }
+  //if (o.enableFastclick && typeof FastClick != 'undefined') {
+  //  FastClick.attach(document.body);
+  //}
 
   //Activate direct chat widget
-  if (o.directChat.enable) {
+  /*if (o.directChat.enable) {
     $(document).on('click', o.directChat.contactToggleSelector, function () {
       var box = $(this).parents('.direct-chat').first();
       box.toggleClass('direct-chat-contacts-open');
     });
-  }
+  }*/
 
 /* ----------------------------------
  * - Initialize the AdminLTE Object -
@@ -207,10 +211,10 @@ function _init() {
     activate: function () {
       var _this = this;
       _this.fix();
-      _this.fixSidebar();
+      //_this.fixSidebar();
       $(window, ".wrapper").resize(function () {
         _this.fix();
-        _this.fixSidebar();
+        //_this.fixSidebar();
       });
     },
     fix: function () {
@@ -240,7 +244,7 @@ function _init() {
         }
 
       }
-    },
+    }/*,
     fixSidebar: function () {
       //Make sure the body tag has the .fixed class
       if (!$("body").hasClass("fixed")) {
@@ -264,7 +268,7 @@ function _init() {
           });
         }
       }
-    }
+    }*/
   };
   
   /* Tree()
@@ -422,7 +426,7 @@ function _init() {
    * @type Object
    * @usage $.AdminLTE.boxWidget.activate()
    *        Set all your options in the main $.AdminLTE.options object
-   */
+   *
   $.AdminLTE.boxWidget = {
     selectors: $.AdminLTE.options.boxWidgetOptions.boxWidgetSelectors,
     icons: $.AdminLTE.options.boxWidgetOptions.boxWidgetIcons,
@@ -475,7 +479,7 @@ function _init() {
       var box = element.parents(".box").first();
       box.slideUp(this.animationSpeed);
     }
-  };
+  };*/
 }
 
 /* ------------------
@@ -492,7 +496,7 @@ function _init() {
  *
  * @type plugin
  * @usage $("#box-widget").boxRefresh( options );
- */
+ *
 (function ($) {
 
   "use strict";
@@ -560,7 +564,7 @@ function _init() {
 
   };
 
-})(jQuery);
+})(jQuery);*/
 
 /*
  * EXPLICIT BOX ACTIVATION
@@ -570,7 +574,7 @@ function _init() {
  *
  * @type plugin
  * @usage $("#box-widget").activateBox();
- */
+ *
 (function ($) {
 
   'use strict';
@@ -579,7 +583,7 @@ function _init() {
     $.AdminLTE.boxWidget.activate(this);
   };
 
-})(jQuery);
+})(jQuery);*/
 
 /*
  * TODO LIST CUSTOM PLUGIN
@@ -588,7 +592,7 @@ function _init() {
  *
  * @type plugin
  * @usage $("#todo-widget").todolist( options );
- */
+ *
 (function ($) {
 
   'use strict';
@@ -633,5 +637,5 @@ function _init() {
       }
     });
   };
-}(jQuery));
+}(jQuery));*/
 })

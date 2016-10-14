@@ -1,22 +1,20 @@
 package com.sth.gpweb.service.impl;
 
-import com.sth.gpweb.service.MarcaService;
-import com.sth.gpweb.domain.Marca;
-import com.sth.gpweb.repository.MarcaRepository;
-import com.sth.gpweb.repository.search.MarcaSearchRepository;
+import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
+
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import com.sth.gpweb.domain.Marca;
+import com.sth.gpweb.repository.MarcaRepository;
+import com.sth.gpweb.repository.search.MarcaSearchRepository;
+import com.sth.gpweb.service.MarcaService;
 
 /**
  * Service Implementation for managing Marca.
@@ -96,26 +94,65 @@ public class MarcaServiceImpl implements MarcaService{
     }
     
     /**
-     * Search for the nmFabricante already exists.
+     * Search for the nmMarca already exists.
      *
-     *  @param query the nmFabricante
+     *  @param query the nmMarca
      *  @return the list of entities
      */
     @Transactional(readOnly = true)    
-    public String findNmFabricanteExists(String nmFabricante){
-    	log.debug("Request to search if the nmFabricante: {} already exists", nmFabricante);
-        return marcaRepository.findNmFabricanteExists(nmFabricante);
+    public String findNmMarcaExists(String nmMarca){
+    	log.debug("Request to search if the nmMarca: {} already exists", nmMarca);
+        return marcaRepository.findNmMarcaExists(nmMarca);
     }
     
     /**
-     * Search for the nmFabricante
+     * Search for the nmMarca
      *
-     *  @param query the nmFabricante
+     *  @param query the nmMarca
      *  @return the list of entities
      */
      @Transactional(readOnly = true)
-     public Page<Marca> findByNmFabricanteStartingWithOrderByNmFabricanteAsc(String descricao, Pageable pageable){
+     public Page<Marca> findByNmMarcaStartingWithOrderByNmMarcaAsc(String descricao, Pageable pageable){
     	log.debug("Request to...", descricao);
-        return marcaRepository.findByNmFabricanteStartingWithOrderByNmFabricanteAsc(descricao, pageable);
+        return marcaRepository.findByNmMarcaStartingWithOrderByNmMarcaAsc(descricao, pageable);
      }
+     
+     /**
+      * Search for the id
+      * Used on marca page
+      *
+      *  @param query the nmMarca
+      *  @return the list of entities
+      */
+     @Transactional(readOnly = true)
+     public Page<Marca> findByIdStartingWithOrderByIdAsc(String id, Pageable pageable){
+     	log.debug("Request to...", id);
+         return marcaRepository.findByIdStartingWithOrderByIdAsc(id, pageable);
+     }
+     
+     /**
+      *  Get all the Marcas ordered by name.
+      *  
+      *  @param pageable the pagination information
+      *  @return the list of entities
+      */
+     @Transactional(readOnly = true) 
+     public Page<Marca> findAllOrderByNmMarca(Pageable pageable) {
+         log.debug("Request to get all Marcas ordered by name");
+         Page<Marca> result = marcaRepository.findAllOrderByNmMarca(pageable); 
+         return result;
+     }
+     
+     /**
+      *  Get all the Marcas ordered by id.
+      *  
+      *  @param pageable the pagination information
+      *  @return the list of entities
+      */
+     @Transactional(readOnly = true) 
+     public Page<Marca> findAllOrderById(Pageable pageable) {
+         log.debug("Request to get all Marcas ordered by id");
+         Page<Marca> result = marcaRepository.findAllOrderById(pageable); 
+         return result;
+     }     
 }

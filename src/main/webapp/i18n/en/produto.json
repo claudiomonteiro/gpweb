@@ -2,9 +2,9 @@
     "gpwebApp": {
         "produto" : {
             "home": {
-                "title": "Catalogs",
+                "title": "Products",
                 "createLabel": "New",
-                "createOrEditLabel": "Create or edit a Catalog",
+                "createOrEditLabel": "Create or edit a Product",
                 "search": "Search"
             },
             "created": "A new Product is created with identifier {{ param }}",
@@ -14,19 +14,18 @@
                 "question": "Are you sure you want to delete Product {{ id }}?"
             },
             "detail": {
-                "title": "Catalog"
+                "title": "Product"
             },
             "blImagem": "Image",
             "nmProduto": "Name",
             "cdProduto": "Product Code",
             "cdNcm": "NCM Code",
             "cdBarras": "Bar Code",
-            "cdEan": "EAN Code",
+            "cdGtin": "GTIN Code",
             "cdAnp": "ANP Code",
             "dsAnp": "ANP Description",
             "cdContaContabil": "Accounting Account",
-            "materiaPrima": "Feedstock",
-            "vlReal": "Real Value",
+            "vlVenda": "Sale Value",
             "vlEstoque": "Stock Value",
             "dsInformacoes": "Information",
             "grupo": "Group",
@@ -36,8 +35,7 @@
             "classProduto": "Classification",
             "flBalanca": "Balance",
             "flSngpc": "SNGPC",
-            "flMedProlonga": "Prolonged Use",
-            "dsClassTerapeutica": "Therapeutic Class",
+            "flUsoProlongado": "Prolonged Use",
             "flInativo": "Inactive"
         }
     }

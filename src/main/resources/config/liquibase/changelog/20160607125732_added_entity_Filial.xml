@@ -37,7 +37,7 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="cd_cgf" type="varchar(18)">
+            <column name="cd_ie" type="varchar(18)">
                 <constraints nullable="true" />
             </column>
             
@@ -45,7 +45,7 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="fl_ativa" type="bit">
+            <column name="fl_inativo" type="bit">
                 <constraints nullable="true" />
             </column>
             
@@ -73,10 +73,6 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="nn_versao" type="integer">
-                <constraints nullable="true" />
-            </column>
-            
             <column name="fl_tprec" type="bit">
                 <constraints nullable="true" />
             </column>
@@ -85,11 +81,15 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="nn_mdf_versao" type="integer">
+            <column name="ds_email" type="varchar(100)">
                 <constraints nullable="true" />
             </column>
             
             <column name="fl_envia_email" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="fl_matriz" type="bit">
                 <constraints nullable="true" />
             </column>
             

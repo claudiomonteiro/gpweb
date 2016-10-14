@@ -1,684 +1,39 @@
-/* ==========================================================================
-Angular Loading Bar
-========================================================================== */
-#loading-bar .bar {
-  background: #87ceff !important;
-}
-#loading-bar-spinner {
-  display: none !important;
-}
+@charset "UTF-8";
+.ca-menu {
+  padding: 1px 20px 20px 20px; }
 
-/* ==========================================================================
-Hide ng-cloak on page load, https://docs.angularjs.org/api/ng/directive/ngCloak
-========================================================================== */
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-    display: none !important;
-}
-
-/* ==========================================================================
-Developement Ribbon
-========================================================================== */
-.ribbon {
-    background-color: #a00;
-    box-shadow: 0 0 10px #888;
-    left: -3.5em;
-    moz-box-shadow: 0 0 10px #888;
-    moz-transform: rotate(-45deg);
-    ms-transform: rotate(-45deg);
-    o-transform: rotate(-45deg);
-    overflow: hidden;
-    position: absolute;
-    top: 40px;
-    transform: rotate(-45deg);
-    webkit-box-shadow: 0 0 10px #888;
-    webkit-transform: rotate(-45deg);
-    white-space: nowrap;
-    width: 15em;
-    z-index: 9999;
-    pointer-events: none;
-}
-
-.ribbon a {
-    border: 1px solid #faa;
-    color: #fff;
-    display: block;
-    font: bold 81.25% 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    margin: 1px 0;
-    padding: 10px 50px;
-    text-align: center;
-    text-decoration: none;
-    text-shadow: 0 0 5px #444;
-    pointer-events: none;
-}
-
-/* ==========================================================================
-Version number in navbar
-========================================================================== */
-.navbar-version {
-    font-size: 10px;
-    color: #ccc
-}
-
-/* ==========================================================================
-Browser Upgrade Prompt
-========================================================================== */
-.browserupgrade {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
-
-/* ==========================================================================
-Main page styles
-========================================================================== */
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
-}
-
-.hero-unit h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
-}
-
-.hipster {
-    display: inline-block;
-    width: 347px;
-    height: 497px;
-    background: url("../images/hipster.png") no-repeat center top;
-    background-size: contain;
-}
-
-/* wait autoprefixer update to allow simple generation of high pixel density media query */
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (   min--moz-device-pixel-ratio: 2),
-only screen and (     -o-min-device-pixel-ratio: 2/1),
-only screen and (        min-device-pixel-ratio: 2),
-only screen and (                min-resolution: 192dpi),
-only screen and (                min-resolution: 2dppx) {
-    .hipster {
-        background: url("../images/hipster2x.png") no-repeat center top;
-        background-size: contain;
-    }
-}
-
-/* ==========================================================================
-Generic styles
-========================================================================== */
-.error {
-    color: white;
-    background-color: red;
-}
-
-.pad {
-    padding: 10px;
-}
-
-.break {
-    white-space: normal;
-    word-break:break-all;
-}
-
-.voffset  { margin-top: 2px; }
-.voffset1 { margin-top: 5px; }
-.voffset2 { margin-top: 10px; }
-.voffset3 { margin-top: 15px; }
-.voffset4 { margin-top: 30px; }
-.voffset5 { margin-top: 40px; }
-.voffset6 { margin-top: 60px; }
-.voffset7 { margin-top: 80px; }
-.voffset8 { margin-top: 100px; }
-.voffset9 { margin-top: 150px; }
-
-.readonly {
-    background-color: #eee;
-    opacity: 1;
-}
-
-/* ==========================================================================
-make sure browsers use the pointer cursor for anchors, even with no href
-========================================================================== */
-a:hover {
-  cursor: pointer;
-}
-
-.hand {
-    cursor: pointer;
-}
-
-/* ==========================================================================
-Metrics and Health styles
-========================================================================== */
-#threadDump .popover, #healthCheck .popover {
-    top: inherit;
-    display: block;
-    font-size: 10px;
-    max-width: 1024px;
-}
-
-#healthCheck .popover {
-    margin-left: -50px;
-}
-
-.health-details {
-    min-width: 400px;
-}
-
-/* ==========================================================================
-start Password strength bar style
-========================================================================== */
-ul#strengthBar {
-    display:inline;
-    list-style:none;
-    margin:0;
-    margin-left:15px;
-    padding:0;
-    vertical-align:2px;
-}
-
-.point:last {
-    margin:0 !important;
-}
-.point {
-    background:#DDD;
-    border-radius:2px;
-    display:inline-block;
-    height:5px;
-    margin-right:1px;
-    width:20px;
-}
-
-/* ==========================================================================
-Custom alerts for notification
-========================================================================== */
-.alerts .alert{
-    text-overflow: ellipsis;
-}
-.alert pre{
-    background: none;
-    border: none;
-    font: inherit;
-    font-family: "Roboto";
-    font-size: 15px;
-    font-weight: 400;
-    color: inherit;
-    padding: 0px 0px 20px 0px;
-    margin: 0; 
-}
-.alert .popover pre {
-    font-size: 10px;
-}
-.alerts .toast {
-    position: fixed;
-    width: 100%;
-    z-index: 998;
-}
-.alerts .toast.left {
-    left: 5px;
-}
-.alerts .toast.right {
-    right: 5px;
-}
-.alerts .toast.top {
-    top: 55px;
-}
-.alerts .toast.bottom {
-    bottom: 55px;
-}
-@media screen and (min-width: 480px) {
-    .alerts .toast {
-        width: 50%;       
-    }
-}
-.alerts .toast .alert {
-    font-family: "Material Design Icons";
-    color: #fff;
-    padding: 25px 25px 5px 25px;
-    margin-left: 10px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
-}
-.alerts .toast .alert-dismissable .close, .alerts .toast .alert-dismissible .close {
-    position: relative;
-    top: -6px;
-    right: -7px;
-    color: inherit;
-}
-.alerts .toast .alert-success {
-    background-color: rgba(0,121,107,0.9);
-}
-.alerts .toast .alert-success:hover {
-    background-color: rgba(0,121,107,1);
-}
-.alerts .toast .alert-success:before {
-    content: "\f12c";
-    float: left;
-    font-size: 27px;
-    line-height: 1;
-    position: relative;
-    top: -4px;
-    left: -9px;
-}
-.alerts .toast .alert-info {
-    background-color: rgba(25,118,210,0.9);
-}
-.alerts .toast .alert-info:hover {
-    background-color: rgba(25,118,210,1);
-}
-.alerts .toast .alert-info:before {
-    content: "\f2fc";
-    float: left;
-    font-size: 27px;
-    line-height: 1;
-    position: relative;
-    top: -4px;
-    left: -9px;
-}
-.alerts .toast .alert-warning {
-    background-color: rgba(255,160,0,0.9);
-}
-.alerts .toast .alert-warning:hover {
-    background-color: rgba(255,160,0,1);
-}
-.alerts .toast .alert-warning:before {
-    content: "\f028";
-    float: left;
-    font-size: 27px;
-    line-height: 1;
-    position: relative;
-    top: -4px;
-    left: -9px;
-}
-.alerts .toast .alert-danger {
-    background-color: rgba(211,47,47,0.9);
-}
-.alerts .toast .alert-danger:hover {
-    background-color: rgba(211,47,47,1);
-}
-.alerts .toast .alert-danger:before {
-    content: "\f026";
-    float: left;
-    font-size: 27px;
-    line-height: 1;
-    position: relative;
-    top: -4px;
-    left: -9px;
-}
-
-/* ==========================================================================
-entity tables helpers
-========================================================================== */
-/* Remove Bootstrap padding from the element
-   http://stackoverflow.com/questions/19562903/remove-padding-from-columns-in-bootstrap-3 */
-.no-padding-left { padding-left: 0 !important; }
-.no-padding-right { padding-right: 0 !important; }
-.no-padding-top { padding-top: 0 !important; }
-.no-padding-bottom { padding-bottom: 0 !important; }
-.no-padding { padding: 0 !important; }
-/* Add Bootstrap padding from the element */
-/* 5px */
-.padding-left-5 { padding-left: 5px !important; }
-.padding-right-5 { padding-right: 5px !important; }
-.padding-top-5 { padding-top: 5px !important; }
-.padding-bottom-5 { padding-bottom: 5px !important; }
-.padding-5 { padding: 5px !important; }
-/* 10px */
-.padding-left-10 { padding-left: 10px !important; }
-.padding-right-10 { padding-right: 10px !important; }
-.padding-top-10 { padding-top: 10px !important; }
-.padding-bottom-10 { padding-bottom: 10px !important; }
-.padding-10 { padding: 10px !important; }
-/* 15px */
-.padding-left-15 { padding-left: 15px !important; }
-.padding-right-15 { padding-right: 15px !important; }
-.padding-top-15 { padding-top: 15px !important; }
-.padding-bottom-15 { padding-bottom: 15px !important; }
-.padding-15 { padding: 15px !important; }
-/* 20px */
-.padding-left-20 { padding-left: 20px !important; }
-.padding-right-20 { padding-right: 20px !important; }
-.padding-top-20 { padding-top: 20px !important; }
-.padding-bottom-20 { padding-bottom: 20px !important; }
-.padding-20 { padding: 20px !important; }
-
-/* Remove Bootstrap margin from the element */
-.no-margin-left { margin-left: 0 !important; }
-.no-margin-right { margin-right: 0 !important; }
-.no-margin-top { margin-top: 0 !important; }
-.no-margin-bottom { margin-bottom: 0 !important; }
-.no-margin { margin: 0 !important; }
-/* Add Bootstrap padding from the element */
-/* 5px */
-.margin-left-5 { margin-left: 5px !important; }
-.margin-right-5 { margin-right: 5px !important; }
-.margin-top-5 { margin-top: 5px !important; }
-.margin-bottom-5 { margin-bottom: 5px !important; }
-.margin-5 { margin: 5px !important; }
-/* 10px */
-.margin-left-10 { margin-left: 10px !important; }
-.margin-right-10 { margin-right: 10px !important; }
-.margin-top-10 { margin-top: 10px !important; }
-.margin-bottom-10 { margin-bottom: 10px !important; }
-.margin-10 { margin: 10px !important; }
-/* 15px */
-.margin-left-15 { margin-left: 15px !important; }
-.margin-right-15 { margin-right: 15px !important; }
-.margin-top-15 { margin-top: 15px !important; }
-.margin-bottom-15 { margin-bottom: 15px !important; }
-.margin-15 { margin: 15px !important; }
-/* 20px */
-.margin-left-20 { margin-left: 20px !important; }
-.margin-right-20 { margin-right: 20px !important; }
-.margin-top-20 { margin-top: 20px !important; }
-.margin-bottom-20 { margin-bottom: 20px !important; }
-.margin-20 { margin: 20px !important; }
-
-/* bootstrap 3 input-group 100% width
-   http://stackoverflow.com/questions/23436430/bootstrap-3-input-group-100-width */
-.width-min { width: 1% !important; }
-
-/* Makes toolbar not wrap on smaller screens
- http://www.sketchingwithcss.com/samplechapter/cheatsheet.html#right */
-.flex-btn-group-container {
-   display: -webkit-flex;
-   display: flex;
-   -webkit-flex-direction: row;
-   flex-direction: row;
-   -webkit-justify-content: flex-end;
-   justify-content: flex-end;
-}
-
-.jh-table > tbody > tr > td {
-    /* Align text in td verifically (top aligned by Bootstrap) */
-    vertical-align: middle;
-}
-
-.jh-table > thead > tr > th > .glyphicon-sort, .jh-table > thead > tr > th > .glyphicon-sort-by-attributes, .jh-table > thead > tr > th > .glyphicon-sort-by-attributes-alt {
-    /* less visible sorting icons */
-    opacity: 0.5;
-}
-
-.jh-table > thead > tr > th > .glyphicon-sort:hover, .jh-table > thead > tr > th > .glyphicon-sort-by-attributes:hover, .jh-table > thead > tr > th > .glyphicon-sort-by-attributes-alt:hover {
-    /* full visible sorting icons and pointer when mouse is over them */
-    opacity: 1;
-    cursor: pointer;
-}
-
-/* ==========================================================================
-entity detail page css
-========================================================================== */
-.dl-horizontal.jh-entity-details > dd {
-    margin-bottom: 15px;
-}
-
-@media screen and (min-width: 768px) {
-    .dl-horizontal.jh-entity-details > dt {
-        margin-bottom: 15px;
-    }
-
-    .dl-horizontal.jh-entity-details > dd {
-        border-bottom: 1px solid #eee;
-        padding-left: 180px;
-        margin-left: 0;
-    }
-}
-
-/* ==========================================================================
-ui bootstrap tweaks
-========================================================================== */
-.nav, .pagination, .carousel, .panel-title a {
-    cursor: pointer;
-}
-
-.datetime-picker-dropdown > li.date-picker-menu div > table .btn-default,
-.uib-datepicker-popup  > li > div.uib-datepicker > table .btn-default {
-    border: 0;
-}
-
-.datetime-picker-dropdown > li.date-picker-menu div > table:focus,
-.uib-datepicker-popup  > li > div.uib-datepicker > table:focus {
-    outline: none;
-}
-
-
-/* jhipster-needle-css-add-main JHipster will add new css style */
-
-
-/*
- * Configurações da Sistech
- * --------------------------------------------------------------------------
- */
-
- /* ==========================================================================
-Paleta de Cores
-========================================================================== */
-.bg-primary{
-  background: #3949ab !important;
- }
-.bg-success{
-  background: #00796b !important;
- }
-.bg-info{
-  background: #1976d2 !important;
- }
-.bg-warning{
-  background: #ffa000 !important;
- }
-.bg-danger{
-  background: #d32f2f !important;
- }
-
-/* ==========================================================================
-Logomarca da sistech
-========================================================================== */
-.sistech-logo {
-    width: 347px;
-    height: 230px;
-    background: url("../images/logo.svg") no-repeat center;
-    background-size: contain;
-}
-
-/* ==========================================================================
-Icones Material Design
-========================================================================== */
-/* Configuração padrão dos icones */
-.mdi::before {
-  font-size: 20px;
-  line-height: 14px;
-}
-.btn .mdi::before {
-  position: relative;
-  top: 3px;
-}
-.btn-xs .mdi::before {
-  font-size: 18px;
-  top: 3px;
-}
-.btn-sm .mdi::before {
-  font-size: 18px;
-  top: 3px;
-}
-.dropdown-menu .mdi {
-  width: 18px;
-}
-.dropdown-menu .mdi::before {
-  position: relative;
-  top: 4px;
-  left: 0px;
-}
-.sidebar-menu .mdi {
-  width: 18px;
-}
-.sidebar-menu .mdi::before {
-  position: relative;
-  top: 2px;
-  left: -3px;
-}
-.nav .mdi::before {
-  position: relative;
-  top: 2px;
-}
-.navbar .navbar-toggle .mdi::before {
-  position: relative;
-  top: 2px;
-  color: #FFF;
-}
-.breadcrumb .mdi::before {
-  position: relative;
-  top: 4px;
-}
-.breadcrumb a:hover {
-  text-decoration: none;
-}
-.breadcrumb a:hover span {
-  text-decoration: underline;
-}
-.alert .mdi::before {
-  position: relative;
-  top: 4px;
-  margin-right: 2px;
-}
-.input-group-addon .mdi::before {
-  position: relative;
-  top: 3px;
-}
-.navbar-brand .mdi::before {
-  position: relative;
-  top: 2px;
-  margin-right: 2px;
-}
-.list-group-item .mdi::before {
-  position: relative;
-  top: 3px;
-  left: -3px;
-}
-.modal-header .mdi::before{
-  font-size: 24px;
-  position: relative;
-  top: 6px;
-  left: -3px;
-}
-.mdi-2x::before {
-    position: relative;
-    top: 2px;
-    font-size: 26px;
-}
-.mdi-3x::before {
-    position: relative;
-    top: 4px;
-    font-size: 30px;
-}
-
-/* ==========================================================================
-Fieldset
-========================================================================== */
-fieldset {
-  min-width: 0;
-  padding: .35em .625em .75em;
-  margin: 0;
-  border: 1px solid #c7c7c7;
-}
-legend {
-  display: block;
-  width: 100%;
-  padding: 0;
-  margin-bottom: 0px;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: inherit;
-  color: #333;
-  border: 0;
-  border-bottom: 0px solid #e5e5e5;
-}
-
-/*
- * Configurações de Cada Página do Sistema
- * ---------------------------------------------------------------------------
- */
- /* ==========================================================================
-Navbar
-=========================================================================== */
-.offcanvas-margin-left{
- margin-left: 50px;
-}
-@media (max-width: 767px) {
-    .offcanvas-margin-left{
-     margin-left: 0px;
-    }
-}
- /* ==========================================================================
-Sidebar
-=========================================================================== */
-.sistech-logo-sidebar {
-    width: 216px;
-    height: 97px;
-    background: url("../images/logo.svg") no-repeat;
-    background-size: contain;
-    margin: 5px 0px 0px 12px;
-}
-.sidebar-mini.sidebar-collapse .sistech-logo-sidebar{
-  display: none;
-}
-@media (max-width: 768px) {
-    .sidebar-mini.sidebar-collapse .sistech-logo-sidebar{
-      display: inline-block;
-    }
-}
- /* ==========================================================================
-Login Dashboard
-=========================================================================== */
-.img-login{
-  width: 95%;
-  padding-right: 10px;
-}
-/* ===========================================================================
-Menu Dashboard
-=========================================================================== */
-.ca-menu{
-  padding: 1px 20px 20px 20px;
-}
-.ca-menu li{
+.ca-menu li {
   height: 130px;
   overflow: hidden;
   position: relative;
   display: block;
   background: #fff;
-  -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-  -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 6px;
   -webkit-transition: all 200ms ease-in-out;
   -moz-transition: all 200ms ease-in-out;
   -o-transition: all 200ms ease-in-out;
   -ms-transition: all 200ms ease-in-out;
-  transition: all 200ms ease-in-out;
-}
-.ca-menu li:last-child{
-  margin-bottom: 0px;
-}
-.ca-menu li a{
+  transition: all 200ms ease-in-out; }
+
+.ca-menu li:last-child {
+  margin-bottom: 0px; }
+
+.ca-menu li a {
   text-align: left;
   width: 100%;
   height: 100%;
   display: block;
   color: #333;
   position: relative;
-}
-.ca-icon{
-  color: #fff;
-}
-.ca-menu .mdi::before{
+  top: 10px; }
+
+.ca-icon {
+  color: #fff; }
+
+.ca-menu .mdi::before {
   font-size: 75px;
   line-height: 100px;
   position: absolute;
@@ -689,530 +44,337 @@ Menu Dashboard
   -moz-transition: all 200ms linear;
   -o-transition: all 200ms linear;
   -ms-transition: all 200ms linear;
-  transition: all 200ms linear;
-}
-.ca-content{
+  transition: all 200ms linear; }
+
+.ca-content {
   position: absolute;
   left: 100px;
   height: 60px;
-  top: 0px;
-}
-.ca-main{
+  top: 0px; }
+
+.ca-main {
   font-size: 30px;
   color: #fff;
   -webkit-transition: all 200ms linear;
   -moz-transition: all 200ms linear;
   -o-transition: all 200ms linear;
   -ms-transition: all 200ms linear;
-  transition: all 200ms linear;
-}
-.ca-sub{
+  transition: all 200ms linear; }
+
+.ca-sub {
   font-size: 14px;
   color: #fff;
   margin-top: 0px;
-  font-weight: 400;
-}
-.ca-menu li:hover{
-  background-color: #212121;
-}
-.ca-menu li:hover .ca-icon .mdi::before{
+  font-weight: 400; }
+
+.ca-menu li:hover {
+  background-color: #212121; }
+
+.ca-menu li:hover .ca-icon .mdi::before {
   font-size: 130px;
   opacity: 0.2;
   left: -20px;
   -webkit-transform: rotate(20deg);
   -moz-transform: rotate(20deg);
   -ms-transform: rotate(20deg);
-  transform: rotate(20deg);
-}
-.ca-menu li:hover .ca-main{
+  transform: rotate(20deg); }
+
+.ca-menu li:hover .ca-main {
   font-weight: 600;
-  opacity: 0.8;
-}
-.ca-menu li:hover .ca-sub{
+  opacity: 0.8; }
+
+.ca-menu li:hover .ca-sub {
   color: #fff;
-  opacity: 0.8;
-}
+  opacity: 0.8; }
+
 /* Adicionando espaço entre os blocos */
-.mg-left{
+.mg-left {
   margin-left: 6px;
-  margin-right: -6px;
-}
-.mg-right{
+  margin-right: -6px; }
+
+.mg-right {
   margin-left: -6px;
-  margin-right: 6px;
-}
+  margin-right: 6px; }
+
 /* Removendo padding em resoluções pequenas */
 @media (max-width: 767px) {
-  .ca-menu{
-    padding:0;
-  }
-  .mg-left, .mg-right{
-    margin: 0;
-  }
-}
+  .ca-menu {
+    padding: 0; }
+  .mg-left, .mg-right {
+    margin: 0; } }
+
 /* Cor de fundo no menu */
-.bgm-red{
-  background: #b71c1c !important;
-}
-.bgm-blue{
-  background: #283593 !important;
-}
-.bgm-amber{
-  background: #ff8f00 !important;
-}
-.bgm-teal{
-  background: #00695c !important;
-}
-.bgm-green{
-  background: #2E7D32 !important;
-}
-.bgm-pink{
-  background: #880e4f !important;
-}
+.bgm-red {
+  background: #b71c1c !important; }
+
+.bgm-blue {
+  background: #283593 !important; }
+
+.bgm-amber {
+  background: #ff8f00 !important; }
+
+.bgm-teal {
+  background: #00695c !important; }
+
+.bgm-green {
+  background: #2E7D32 !important; }
+
+.bgm-pink {
+  background: #880e4f !important; }
+
 /* Cor do texto no menu */
-.ca-menu li:hover .txt-red{
-   color: #b71c1c !important;
-}
-.ca-menu li:hover .txt-blue{
-   color: #283593 !important;
-}
-.ca-menu li:hover .txt-amber{
-   color: #ff8f00 !important;
-}
-.ca-menu li:hover .txt-teal{
-   color: #00695c !important;
-}
-.ca-menu li:hover .txt-green{
-   color: #2E7D32 !important;
-}
-.ca-menu li:hover .txt-pink{
-   color: #880e4f !important;
-}
+.ca-menu li:hover .txt-red {
+  color: #b71c1c !important; }
+
+.ca-menu li:hover .txt-blue {
+  color: #283593 !important; }
+
+.ca-menu li:hover .txt-amber {
+  color: #ff8f00 !important; }
+
+.ca-menu li:hover .txt-teal {
+  color: #00695c !important; }
+
+.ca-menu li:hover .txt-green {
+  color: #2E7D32 !important; }
+
+.ca-menu li:hover .txt-pink {
+  color: #880e4f !important; }
+
 /* Efeito hover */
-.bgm-red:hover, .bgm-blue:hover, .bgm-amber:hover, .bgm-teal:hover, .bgm-green:hover, .bgm-pink:hover{
-  background: #212121 !important;
-}
+.bgm-red:hover, .bgm-blue:hover, .bgm-amber:hover, .bgm-teal:hover, .bgm-green:hover, .bgm-pink:hover {
+  background: #212121 !important; }
 
-/* ==========================================================================
-Componente Busca
-========================================================================== */
-.search-pad-col{
-    padding-top: 0px;
-}
-.search-pad-col-left{
-    padding: 0px 7px 0px 0px !important;
-}
-.search-pad-col-right{
-    padding: 0 !important;
-}
-@media (max-width: 768px) {
-  .search-pad{
-    padding: 20px 0px 0px 0px;
-  }
-  .search-pad-col-left{
-    padding: 0px 7px 0px 0px;
-  }
-  .search-pad-col-right{
-    padding: 0;
-  }
-}
-
-/* ==========================================================================
-Componente Thumbnail Imagem
-========================================================================== */
-.container-thumbnail{
-    min-height:248px; 
-    max-height:248px;
-}
-.image-thumbnail{
-    max-width: 180px; 
-    max-height:200px;
-}
-.btn-thumbnail{
-    border-radius: 0 !important;
-}
-
-/* ==========================================================================
-Componente Select2
-========================================================================== */
-.select2-padding-bottom{
-    padding-bottom: 10px;
-}
-.select2-label    {
-    max-width: 87%;
-    background: transparent;
-    position: relative;
-    margin-top: -29px;
-    margin-left: 9px;
-}
-
-.select2-btn{
-    color: #888;
-    line-height: 26px;
-}
-.select2-btn:hover{
-    color: #888; 
-}
-
-/*
-===========================================================================
-Página de Visualização de Itens Cadastrados
-=========================================================================== */
-.no-pad-left{
-    padding-left: 0;
-}
-.no-pad-right{
-    padding-right: 0;
-}
-@media (max-width: 767px) {
-    .no-pad-left{
-        padding-left: 15px;
-    }
-    .no-pad-right{
-        padding-right: 15px;
-    }
-}
-.btn-print{
-    margin-top: 16px;
-}
-.box-detail{
-    padding: 0 20px;
-}
-.box-detail-divider{
-    margin-top: 20px;
-    border-bottom: 1px solid #eee;
-}
-
-/*
-===========================================================================
-Página Unidades
-=========================================================================== */
-.col-unidade-codigo{
+.col-grupo-codigo {
   min-width: 110px;
-  max-width: 110px;
-}
-.col-unidade-nome{
-  min-width: 352px;
-  max-width: 352px;
-}
-.col-unidade-unidade{
-  min-width: 101px;
-  max-width: 101px;
-}
-.col-unidade-acoes{
-  min-width: 155px;
-  max-width: 155px;
-}
-/*
-===========================================================================
-Página Clientes
-=========================================================================== */
-.col-cli-codigo{
-  min-width: 110px;
-  max-width: 110px;
-}
-.col-cli-nome{
-  min-width: 352px;
-  max-width: 352px;
-}
-.col-cli-cpf{
-  min-width: 130px;
-  max-width: 130px;
-}
-.col-cli-cnpj{
-  min-width: 160px;
-  max-width: 160px;
-}
-.col-cli-celular{
-  min-width: 137px;
-  max-width: 137px;
-}
-.col-cli-acoes{
-  min-width: 155px;
-  max-width: 155px;
-}
+  max-width: 110px; }
 
-/* ===========================================================================
-Página Tipo de Clientes
-=========================================================================== */
-.col-tpcli-codigo{
-  min-width: 110px;
-  max-width: 110px;
-}
-.col-tpcli-nome{
-  min-width: 500px;
-  max-width: 500px;
-}
-.col-tpcli-acoes{
-  min-width: 155px;
-  max-width: 155px;
-}
-
-/* ===========================================================================
-Página Filiais
-=========================================================================== */
-.col-filial-codigo{
-  min-width: 110px;
-  max-width: 110px;
-}
-.col-filial-nome{
-  min-width: 500px;
-  max-width: 500px;
-}
-.col-filial-cnpj{
-  min-width: 160px;
-  max-width: 160px;
-}
-.col-filial-telefone{
-  min-width: 137px;
-  max-width: 137px;
-}
-.col-filial-fax{
-  min-width: 137px;
-  max-width: 137px;
-}
-.col-filial-ativo{
-  min-width: 125px;
-  max-width: 125px;
-}
-.col-filial-acoes{
-  min-width: 155px;
-  max-width: 155px;
-}
-
-/* ===========================================================================
-Página Grupos
-=========================================================================== */
-.col-grupo-codigo{
-  min-width: 110px;
-  max-width: 110px;
-}
-.col-grupo-nome{
+.col-grupo-nome {
   min-width: 495px;
-  max-width: 495px;
-}
-.col-grupo-comissao{
-  min-width: 160px;
-  max-width: 160px;
-}
-.col-grupo-promocao{
-  min-width: 120px;
-  max-width: 120px;
-}
-.col-grupo-semdesconto{
-  min-width: 150px;
-  max-width: 150px;
-}
-.col-grupo-acoes{
-  min-width: 155px;
-  max-width: 155px;
-}
+  max-width: 495px; }
 
-/* ===========================================================================
-Página SubGrupos
-=========================================================================== */
-.col-subgrupo-codigo{
-  min-width: 110px;
-  max-width: 110px;
-}
-.col-subgrupo-nome{
-  min-width: 625px;
-  max-width: 625px;
-}
-.col-subgrupo-custo{
-  min-width: 125px;
-  max-width: 125px;
-}
-.col-subgrupo-acoes{
-  min-width: 155px;
-  max-width: 155px;
-}
+.col-grupo-comissao {
+  min-width: 135px;
+  max-width: 135px; }
 
-/* ===========================================================================
-Página Promoções
-=========================================================================== */
-.col-promocao-codigo{
-  min-width: 99px;
-  max-width: 99px;
-}
-.col-promocao-nome{
-  min-width: 336px;
-  max-width: 336px;
-}
-.col-promocao-ate{
-  min-width: 138px;
-  max-width: 138px;
-}
-.col-promocao-dia{
-  min-width: 82px;
-  max-width: 82px;
-}
-.col-promocao-em{
-  min-width: 110px;
-  max-width: 110px;
-}
-.col-promocao-desconto{
-  min-width: 132px;
-  max-width: 132px;
-}
-.col-promocao-inativo{
-  min-width: 98px;
-  max-width: 98px;
-}
-.col-promocao-acoes{
-  min-width: 152px;
-  max-width: 152px;
-}
-
-/* ===========================================================================
-Página Marca
-=========================================================================== */
-.col-marca-codigo{
-  min-width: 110px;
-  max-width: 110px;
-}
-.col-marca-nome{
-  min-width: 350px;
-  max-width: 350px;
-}
-.col-marca-cidade{
-  min-width: 325px;
-  max-width: 325px;
-}
-.col-marca-telefone{
-  min-width: 137px;
-  max-width: 137px;
-}
-.col-marca-inativo{
-  min-width: 125px;
-  max-width: 125px;
-}
-.col-marca-acoes{
-  min-width: 155px;
-  max-width: 155px;
-}
-
-/* ===========================================================================
-Página Prazos
-=========================================================================== */
-.col-prazo-codigo{
-  min-width: 110px;
-  max-width: 110px;
-}
-.col-prazo-nome{
-  min-width: 500px;
-  max-width: 500px;
-}
-.col-prazo-parcelas{
-  min-width: 125px;
-  max-width: 125px;
-}
-.col-prazo-acoes{
-  min-width: 155px;
-  max-width: 155px;
-}
-
-/* ===========================================================================
-Página Classificação do Produto
-=========================================================================== */
-.col-classificacao-codigo{
-  min-width: 110px;
-  max-width: 110px;
-}
-.col-classificacao-codigoClassificacao{
-  min-width: 200px;
-  max-width: 200px;
-}
-.col-classificacao-nome{
-  min-width: 736px;
-  max-width: 736px;
-}
-.col-classificacao-acoes{
-  min-width: 152px;
-  max-width: 152px;
-}
-
-/* ===========================================================================
-Página Catalogo de Produto - Tabela
-=========================================================================== */
-.col-catalogo-codigo{
-  min-width: 99px;
-  max-width: 99px;
-}
-.col-catalogo-codigo-produto{
-  min-width: 165px;
-  max-width: 165px;
-}
-.col-catalogo-codigoBarras{
-  min-width: 168px;
-  max-width: 168px;
-}
-.col-catalogo-imagem{
+.col-grupo-promocao {
   min-width: 100px;
-  max-width: 100px;
-}
-.col-catalogo-nome{
-  min-width: 736px;
-  max-width: 736px;
-}
-.col-catalogo-marca{
-  min-width: 90px;
-  max-width: 90px;
-}
-.col-catalogo-valorEstoque{
-  min-width: 142px;
-  max-width: 142px;
-}
-.col-catalogo-inativo{
-  min-width: 98px;
-  max-width: 98px;
-}
-.col-catalogo-acoes{
-  min-width: 152px;
-  max-width: 152px;
-}
+  max-width: 100px; }
 
-/* ===========================================================================
-Página Catalogo de Produtos - Blocos
-=========================================================================== */
+.col-grupo-semdesconto {
+  min-width: 120px;
+  max-width: 120px; }
+
+.col-grupo-acoes {
+  min-width: 126px;
+  max-width: 126px; }
+
+.col-subgrupo-codigo {
+  min-width: 110px;
+  max-width: 110px; }
+
+.col-subgrupo-nome {
+  min-width: 625px;
+  max-width: 625px; }
+
+.col-subgrupo-custo {
+  min-width: 125px;
+  max-width: 125px; }
+
+.col-subgrupo-acoes {
+  min-width: 126px;
+  max-width: 126px; }
+
+.col-marca-codigo {
+  min-width: 110px;
+  max-width: 110px; }
+
+.col-marca-nome {
+  min-width: 350px;
+  max-width: 350px; }
+
+.col-marca-cidade {
+  min-width: 325px;
+  max-width: 325px; }
+
+.col-marca-telefone {
+  min-width: 115px;
+  max-width: 115px; }
+
+.col-marca-inativo {
+  min-width: 100px;
+  max-width: 100px; }
+
+.col-marca-acoes {
+  min-width: 126px;
+  max-width: 126px; }
+
+.col-catalogo-codigo {
+  min-width: 99px;
+  max-width: 99px; }
+
+.col-catalogo-codigo-produto {
+  min-width: 165px;
+  max-width: 165px; }
+
+.col-catalogo-codigoBarras {
+  min-width: 168px;
+  max-width: 168px; }
+
+.col-catalogo-imagem {
+  min-width: 100px;
+  max-width: 100px; }
+
+.col-catalogo-nome {
+  min-width: 736px;
+  max-width: 736px; }
+
+.col-catalogo-marca {
+  min-width: 90px;
+  max-width: 90px; }
+
+.col-catalogo-vlVenda {
+  min-width: 116px;
+  max-width: 116px; }
+
+.col-catalogo-inativo {
+  min-width: 98px;
+  max-width: 98px; }
+
+.col-catalogo-acoes {
+  min-width: 126px;
+  max-width: 126px; }
+
 .box-produto {
   width: 100%;
-  background: #fafafa;    
+  background: #fafafa;
   border: 1px solid #d7d7d7;
   padding: 13px;
   margin-bottom: 20px;
-  min-height: 235px; 
-  max-height: 235px;
-}
-.box-header-produto{
-  font-size: 0.929em; /*13px*/
-  padding: 5px 15px;    
-  word-wrap: break-word;    
-}
-.box-img-produto{
+  min-height: 275px;
+  max-height: 275px; }
+
+.box-header-produto {
+  font-size: 0.929em;
+  /*13px*/
+  padding: 5px 15px;
+  word-wrap: break-word; }
+
+.box-img-produto {
   width: 90px;
   height: 130px;
   padding-right: 5px;
-  border: 0px solid #d7d7d7;
-}
-.box-body-produto{
-  font-size: 0.929em; /*13px*/
+  border: 0px solid #d7d7d7; }
+
+.box-body-produto {
+  font-size: 0.929em;
+  /*13px*/
   word-wrap: break-word;
   margin-top: 5px;
-  min-height: 142px;
-}
-.box-footer-produto{
+  min-height: 192px; }
+
+.box-footer-produto {
   padding: 0;
-  padding-top: 15px;
-}
-.thumbnail-produto-catalogo{
+  padding-top: 15px; }
+
+.thumbnail-produto-catalogo {
   min-width: 100%;
   min-height: 116px;
-  background: #f2f2f2;
-}
-.thumbnail-produto-detalhe{
+  background: #f2f2f2; }
+
+.thumbnail-produto-detalhe {
   min-width: 100%;
   min-height: 147px;
-  background: #f2f2f2;
-}
+  background: #f2f2f2; }
 
+.col-unidade-codigo {
+  min-width: 110px;
+  max-width: 110px; }
+
+.col-unidade-nome {
+  min-width: 352px;
+  max-width: 352px; }
+
+.col-unidade-unidade {
+  min-width: 100px;
+  max-width: 100px; }
+
+.col-unidade-acoes {
+  min-width: 126px;
+  max-width: 126px; }
+
+.col-classificacao-codigo {
+  min-width: 110px;
+  max-width: 110px; }
+
+.col-classificacao-codigo-classificacao {
+  min-width: 160px;
+  max-width: 160px; }
+
+.col-classificacao-nome {
+  min-width: 736px;
+  max-width: 736px; }
+
+.col-classificacao-acoes {
+  min-width: 126px;
+  max-width: 126px; }
+
+.col-promocao-codigo {
+  min-width: 110px;
+  max-width: 110px; }
+
+.col-promocao-nome {
+  min-width: 336px;
+  max-width: 336px; }
+
+.col-promocao-ate {
+  min-width: 100px;
+  max-width: 100px; }
+
+.col-promocao-dia {
+  min-width: 100px;
+  max-width: 100px; }
+
+.col-promocao-em {
+  min-width: 100px;
+  max-width: 100px; }
+
+.col-promocao-desconto {
+  min-width: 122px;
+  max-width: 122px; }
+
+.col-promocao-inativo {
+  min-width: 100px;
+  max-width: 100px; }
+
+.col-promocao-acoes {
+  min-width: 126px;
+  max-width: 126px; }
+
+.col-filial-codigo {
+  min-width: 110px;
+  max-width: 110px; }
+
+.col-filial-nome {
+  min-width: 500px;
+  max-width: 500px; }
+
+.col-filial-cnpj {
+  min-width: 100px;
+  max-width: 100px; }
+
+.col-filial-telefone {
+  min-width: 120px;
+  max-width: 120px; }
+
+.col-filial-fax {
+  min-width: 120px;
+  max-width: 120px; }
+
+.col-filial-ativo {
+  min-width: 100px;
+  max-width: 100px; }
+
+.col-filial-acoes {
+  min-width: 126px;
+  max-width: 126px; }

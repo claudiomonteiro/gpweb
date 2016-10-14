@@ -1,11 +1,11 @@
 <div class="box">
-    <div class="box-header with-border">
+    <div class="box-header">
         <h1 class="box-title" translate="gpwebApp.unidade.home.title">Unidades</h1>
     </div><!-- /.box-header -->
 
     <jhi-alert></jhi-alert>
     
-    <div class="box-header">
+    <div class="box-body">
         <div class="row">
             <div class="col-xs-4 col-sm-5">
                 <button class="btn btn-success ripple ripple-light" ui-sref="unidade.new" >
@@ -15,7 +15,7 @@
                 </button>
             </div>
             
-            <div class="col-xs-8 col-sm-7 search-pad-col">
+            <div class="col-xs-8 col-sm-7">
                 <form name="searchForm" class="form-inline">
                     <div class="input-group pull-right" >
                         <input type="text" class="form-control text-uppercase" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'gpwebApp.unidade.home.search' | translate }}">
@@ -33,16 +33,16 @@
                 </form>
             </div>
         </div>
-    </div><!-- /.box-header -->
-    
-    <div class="box-body">
-        <div class="table-responsive">
-            <table class="jh-table table table-bordered table-hover">
+
+        <br>
+
+        <div class="table-responsive no-border-table-responsive">
+            <table class="jh-table table table-hover">
                 <thead>
                     <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                        <th class="col-sm-1 col-unidade-codigo" jh-sort-by="id"><span translate="global.field.id">Código</span><span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th class="col-sm-9" jh-sort-by="dsUnidade"><span translate="gpwebApp.unidade.dsUnidade">Nome</span><span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th class="col-sm-1 col-unidade-unidade" jh-sort-by="sgUnidade"><span translate="gpwebApp.unidade.sgUnidade">Unidade</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
+                        <th class="col-sm-1 col-unidade-codigo" jh-sort-by="id"><span translate="global.field.id">Código</span><span class="glyphicon glyphicon-sort"></span></th>
+                        <th class="col-sm-9" jh-sort-by="nmUnidade"><span translate="gpwebApp.unidade.nmUnidade">Nome</span><span class="glyphicon glyphicon-sort"></span></th>
+                        <th class="col-sm-1 col-unidade-unidade text-center" jh-sort-by="sgUnidade"><span translate="gpwebApp.unidade.sgUnidade">Unidade</span> <span class="glyphicon glyphicon-sort"></span></th>
                         <th class="col-sm-1 col-unidade-acoes text-center"><span translate="global.field.actions">Ações</span></th>
                     </tr>
                 </thead>
@@ -50,25 +50,25 @@
                 <tbody>
                     <tr ng-repeat="unidade in vm.unidades track by unidade.id">
                         <td><a ui-sref="unidade-detail({id:unidade.id})">{{unidade.id}}</a></td>
-                        <td class="text-uppercase">{{unidade.dsUnidade}}</td>
-                        <td class="text-uppercase">{{unidade.sgUnidade}}</td>
-                        <td class="text-center">
+                        <td class="text-uppercase">{{unidade.nmUnidade}}</td>
+                        <td class="text-uppercase text-center">{{unidade.sgUnidade}}</td>
+                        <td>
                             <button type="submit"
                                     ui-sref="unidade-detail({id:unidade.id})"
-                                    class="btn btn-success btn-sm ripple ripple-light"
-                                    data-toggle="tooltip" data-placement="top" title="Visualizar">
+                                    class="btn btn-success btn-outline btn-sm ripple ripple-light"
+                                    uib-tooltip="Visualizar">
                                 <span class="mdi mdi-eye"></span>
                             </button>
                             <button type="submit"
                                     ui-sref="unidade.edit({id:unidade.id})"
-                                    class="btn btn-primary btn-sm ripple ripple-light"
-                                    data-toggle="tooltip" data-placement="top" title="Editar">
+                                    class="btn btn-primary btn-outline btn-sm ripple ripple-light"
+                                    uib-tooltip="Editar">
                                 <span class="mdi mdi-pencil"></span>
                             </button>
                             <button type="submit"
                                     ui-sref="unidade.delete({id:unidade.id})"
-                                    class="btn btn-danger btn-sm ripple ripple-light"
-                                    data-toggle="tooltip" data-placement="top" title="Deletar">
+                                    class="btn btn-danger btn-outline btn-sm ripple ripple-light"
+                                    uib-tooltip="Deletar">
                                 <span class="mdi mdi-delete"></span>
                             </button>
                         </td>

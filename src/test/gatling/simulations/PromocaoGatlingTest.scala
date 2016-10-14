@@ -67,7 +67,7 @@ class PromocaoGatlingTest extends Simulation {
             .exec(http("Create new promocao")
             .post("/api/promocaos")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "dsPromocao":"SAMPLE_TEXT", "dtVencimento":"2020-01-01T00:00:00.000Z", "nnDiaData":"0", "nnDiaSemana":"0", "flInativo":null, "vlPromocao":null, "nnTipo":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "nmPromocao":"SAMPLE_TEXT", "dtVencimento":"2020-01-01T00:00:00.000Z", "nnDiaData":"0", "nnDiaSemana":"0", "flInativo":null, "vlPromocao":null, "nnTipo":"0"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_promocao_url"))).exitHereIfFailed
             .pause(10)

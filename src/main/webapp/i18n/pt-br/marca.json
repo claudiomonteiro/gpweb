@@ -16,10 +16,10 @@
             "detail": {
                 "title": "Marca"
             },
-            "nmFabricante": "Razão Social",
-            "nmFabricante2": "Nome",
-            "cdCgc": "CNPJ",
-            "cdCgf": "Inscrição Estadual",
+            "nmMarca": "Razão Social",
+            "nmMarca2": "Nome",
+            "cdCnpj": "CNPJ",
+            "cdIe": "Inscrição Estadual",
             "cdTel": "Telefone",
             "cdFax": "Fax",
             "flInativo": "Inativo",

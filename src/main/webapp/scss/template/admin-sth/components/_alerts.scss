@@ -1,0 +1,45 @@
+/*
+ * Component: alert
+ * -----------------------------------------------------------------------
+ */
+.alert {
+  @include border-radius-same(3px);
+  h4 {
+    font-weight: 600;
+  }
+  .icon {
+    margin-right: 10px;
+  }
+  .close {
+    color: #000;
+    font-size: 32px;  
+    @include opacity(.2);
+    &:hover {
+      @include opacity(.5);
+    }
+  }
+  a {
+    color: #fff;
+    text-decoration: underline;
+  }
+}
+
+//Alert Variants
+
+.alert-success {
+  color: darken($green, 5%);
+  border-color: $green;
+}
+.alert-danger,
+.alert-error {
+  color: darken($red, 5%);
+  border-color: $red;
+}
+.alert-warning {
+  color: darken($yellow, 15%);    
+  border-color: $yellow;
+}
+.alert-info {
+  color: darken($aqua, 5%);
+  border-color: $aqua;
+}

@@ -4,14 +4,14 @@
         <a class="btn btn-default btn-print pull-right hidden-xs" href="javascript:window.print();"><i class="mdi mdi-printer mdi-3x"></i></a>
     </div><!-- /.box-header -->
        
-    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
         
     <div class="box-body">
         <div class="row">            
             <dl class="col-xs-12 col-sm-4">
-                <dt><span translate="gpwebApp.promocao.dsPromocao">Nome</span></dt>
+                <dt><span translate="gpwebApp.promocao.nmPromocao">Nome</span></dt>
                 <dd>
-                    <span class="text-uppercase">{{vm.promocao.dsPromocao}}</span>
+                    <span class="text-uppercase">{{vm.promocao.nmPromocao}}</span>
                 </dd>
                 <div class="box-detail-divider"></div>
             </dl>
@@ -55,10 +55,14 @@
     </div><!-- /.box-body -->
 
     <div class="box-footer no-border">
-        <button type="submit"
-                onclick="window.history.back()"
+        <button type="button"
+                ui-sref="{{ vm.previousState }}"
                 class="btn btn-info ripple ripple-light">
             <span translate="entity.action.back"> Voltar</span>
+        </button>
+        
+        <button type="button" ui-sref="promocao-detail.edit({id:vm.promocao.id})" class="btn btn-primary ripple ripple-light">
+            <span translate="entity.action.edit"> Editar</span>
         </button>
     </div><!-- /.box-footer -->
 </div><!-- /.box -->

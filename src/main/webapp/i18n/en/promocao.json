@@ -16,7 +16,7 @@
             "detail": {
                 "title": "Promotion"
             },
-            "dsPromocao": "Name",
+            "nmPromocao": "Name",
             "dtVencimento": "To",
             "nnDiaData": "Day",
             "nnDiaSemana": "In",

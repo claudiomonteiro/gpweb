@@ -96,14 +96,14 @@ public class PromocaoServiceImpl implements PromocaoService{
     }
     
     /**
-     * Search for the dsPromocao already exists.
+     * Search for the nmPromocao already exists.
      *
-     *  @param query the dsPromocao
+     *  @param query the nmPromocao
      *  @return the list of entities
      */
     @Transactional(readOnly = true)    
-    public String findDsPromocaoExists(String dsPromocao){
-    	log.debug("Request to search if the dsPromocao: {} already exists", dsPromocao);
-        return promocaoRepository.findDsPromocaoExists(dsPromocao);
+    public String findNmPromocaoExists(String nmPromocao){
+    	log.debug("Request to search if the nmPromocao: {} already exists", nmPromocao);
+        return promocaoRepository.findNmPromocaoExists(nmPromocao);
     }
 }

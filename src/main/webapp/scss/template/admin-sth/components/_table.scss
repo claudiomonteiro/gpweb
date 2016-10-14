@@ -1,0 +1,99 @@
+/*
+* Component: Table
+* -----------------------------------------------------------------------
+*/
+.table {
+    //Cells
+    > thead,
+    > tbody,
+    > tfoot {
+        > tr {
+            > th,
+            > td {
+                border-top: 1px solid $box-border-color;
+                vertical-align: middle;
+                padding: 6px;
+            }
+        }
+    }
+    //thead cells
+    > thead > tr > th {
+        border-bottom: 2px solid $box-border-color;
+    }
+    //progress bars in tables
+    tr td .progress {
+        margin-top: 5px;
+    }
+}
+
+//Bordered Table
+.table-bordered {
+    border: 1px solid $box-border-color;
+    > thead,
+    > tbody,
+    > tfoot {
+        > tr {
+            > th,
+            > td {
+                border: 1px solid $box-border-color;
+            }
+        }
+    }
+    > thead > tr {
+        > th,
+        > td {
+            border-bottom-width: 2px;
+        }
+    }
+}
+
+.table.no-border {
+    &,
+    td,
+    th {
+        border: 0;
+    }
+}
+
+/* .text-center in tables */
+table.text-center {
+    &, td, th {
+        text-align: center;
+    }
+}
+
+.table.align {
+    th {
+        text-align: left;
+    }
+    td {
+        text-align: right;
+    }
+}
+
+//Striped Table
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f7f7f7;
+}
+
+//Hover Table
+.table-hover > tbody > tr {
+  transition-duration: .28s;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-property: background-color;
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: #eee;
+}
+
+//Table Responsive
+@media screen and (max-width: 767px) {
+    .table-responsive {
+        border: 1px solid #ddd;
+    }
+    
+    .no-border-table-responsive {
+        border: 0px solid #ddd;
+    }
+}

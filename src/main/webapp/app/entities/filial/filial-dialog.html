@@ -13,7 +13,7 @@
                 <div class="form-group" >
                     <label for="id" translate="global.field.id">Código</label>
                     <input type="text" class="form-control" id="id" name="id"
-                            ng-model="vm.filial.id" readonly />
+                            ng-model="vm.filial.id" disabled />
                 </div>
             </div>
             <div class="col-xs-12 col-sm-10">
@@ -101,13 +101,13 @@
             </div>
             <div class="col-xs-12 col-sm-4">
                 <div class="form-group">
-                    <label class="control-label" translate="gpwebApp.filial.cdCgf" for="field_cdCgf">Inscrição Estadual</label>
-                    <input type="text" class="form-control text-uppercase" name="cdCgf" id="field_cdCgf"
-                            ng-model="vm.filial.cdCgf"
+                    <label class="control-label" translate="gpwebApp.filial.cdIe" for="field_cdIe">Inscrição Estadual</label>
+                    <input type="text" class="form-control text-uppercase" name="cdIe" id="field_cdIe"
+                            ng-model="vm.filial.cdIe"
                             ng-maxlength="18" />
-                    <div ng-show="editForm.cdCgf.$invalid">
+                    <div ng-show="editForm.cdIe.$invalid">
                         <p class="help-block"
-                            ng-show="editForm.cdCgf.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="18">
+                            ng-show="editForm.cdIe.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="18">
                             Este campo não pode ter mais que 18 caracteres.
                         </p>
                     </div>
@@ -130,20 +130,6 @@
         </div>
         
         <div class="row">
-            <div class="col-xs-12 col-sm-4">
-                <div class="form-group">
-                    <label class="control-label" translate="gpwebApp.filial.dsSite" for="field_dsSite">Site</label>
-                    <input type="text" class="form-control text-uppercase" name="dsSite" id="field_dsSite"
-                            ng-model="vm.filial.dsSite"
-                            ng-maxlength="30" />
-                    <div ng-show="editForm.dsSite.$invalid">
-                        <p class="help-block"
-                            ng-show="editForm.dsSite.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="30">
-                            Este campo não pode ter mais que 30 caracteres.
-                        </p>
-                    </div>
-                </div>
-            </div>
             <div class="col-xs-12 col-sm-4">
                 <div class="form-group">
                     <label class="control-label" translate="gpwebApp.filial.cdTel" for="field_cdTel">Telefone</label>
@@ -176,9 +162,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="row">
             <div class="col-xs-12 col-sm-4">
                 <div class="form-group">
                     <label class="control-label" translate="gpwebApp.filial.cdTel2" for="field_cdTel2">Telefone 3</label>
@@ -195,6 +178,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        
+        <div class="row">
             <div class="col-xs-12 col-sm-4">
                 <div class="form-group">
                     <label class="control-label" translate="gpwebApp.filial.cdFax" for="field_cdFax">Fax</label>
@@ -211,20 +197,32 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-2">
+            <div class="col-xs-12 col-sm-4">
                 <div class="form-group">
-                    <label class="control-label" translate="gpwebApp.filial.nnVersao" for="field_nnVersao">Versao</label>
-                    <input type="number" class="form-control" name="nnVersao" id="field_nnVersao"
-                            ng-model="vm.filial.nnVersao"
-                             />
+                    <label class="control-label" translate="gpwebApp.filial.dsEmail" for="field_dsEmail">Email</label>
+                    <input type="email" class="form-control text-uppercase" name="dsEmail" id="field_dsEmail"
+                            ng-model="vm.filial.dsEmail"
+                            ng-maxlength="100" />
+                    <div ng-show="editForm.dsEmail.$invalid">
+                        <p class="help-block"
+                            ng-show="editForm.dsEmail.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="100">
+                            Este campo não pode ter mais que 100 caracteres.
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-2">        
+            <div class="col-xs-12 col-sm-4">
                 <div class="form-group">
-                    <label class="control-label" translate="gpwebApp.filial.nnMdfVersao" for="field_nnMdfVersao">Versão MDF</label>
-                    <input type="number" class="form-control" name="nnMdfVersao" id="field_nnMdfVersao"
-                            ng-model="vm.filial.nnMdfVersao"
-                             />
+                    <label class="control-label" translate="gpwebApp.filial.dsSite" for="field_dsSite">Site</label>
+                    <input type="text" class="form-control text-uppercase" name="dsSite" id="field_dsSite"
+                            ng-model="vm.filial.dsSite"
+                            ng-maxlength="30" />
+                    <div ng-show="editForm.dsSite.$invalid">
+                        <p class="help-block"
+                            ng-show="editForm.dsSite.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="30">
+                            Este campo não pode ter mais que 30 caracteres.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>    
@@ -249,12 +247,20 @@
                     <span class="checkbox__label" translate="gpwebApp.filial.flEnviaEmail">Envio de Email</span>
                 </label>
             </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">                   
+                <label>
+                    <input type="checkbox" name="flMatriz" ng-model="vm.filial.flMatriz" />
+                    <span class="checkbox__label" translate="gpwebApp.filial.flMatriz">Matriz</span>
+                </label>
+            </div>
         </div>        
         <div class="form-group">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="flAtiva" ng-model="vm.filial.flAtiva"/>
-                    <span class="checkbox__label" translate="gpwebApp.filial.flAtiva">Ativo</span>
+                    <input type="checkbox" name="flInativo" ng-model="vm.filial.flInativo"/>
+                    <span class="checkbox__label" translate="gpwebApp.filial.flInativo">Inativo</span>
                 </label>
             </div>
         </div>

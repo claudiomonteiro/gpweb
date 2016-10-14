@@ -1,22 +1,20 @@
 package com.sth.gpweb.service.impl;
 
-import com.sth.gpweb.service.ClassProdutoService;
-import com.sth.gpweb.domain.ClassProduto;
-import com.sth.gpweb.repository.ClassProdutoRepository;
-import com.sth.gpweb.repository.search.ClassProdutoSearchRepository;
+import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
+
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import com.sth.gpweb.domain.ClassProduto;
+import com.sth.gpweb.repository.ClassProdutoRepository;
+import com.sth.gpweb.repository.search.ClassProdutoSearchRepository;
+import com.sth.gpweb.service.ClassProdutoService;
 
 /**
  * Service Implementation for managing ClassProduto.
@@ -108,26 +106,65 @@ public class ClassProdutoServiceImpl implements ClassProdutoService{
     }
     
     /**
-     * Search for the dsClassProduto already exists.
+     * Search for the nmClassProduto already exists.
      *
-     *  @param query the dsClassProduto
+     *  @param query the nmClassProduto
      *  @return the list of entities
      */
     @Transactional(readOnly = true)    
-    public String findDsClassProdutoExists(String dsClassProduto){
-    	log.debug("Request to search if the dsClassProduto: {} already exists", dsClassProduto);
-        return classProdutoRepository.findDsClassProdutoExists(dsClassProduto);
+    public String findnmClassProdutoExists(String nmClassProduto){
+    	log.debug("Request to search if the nmClassProduto: {} already exists", nmClassProduto);
+        return classProdutoRepository.findnmClassProdutoExists(nmClassProduto);
     }    
     
     /**
-     * Search for the dsUnidade
+     * Search for the nmClassProduto
      *
-     *  @param query the nmFabricante
+     *  @param query the nmMarca
      *  @return the list of entities
      */
     @Transactional(readOnly = true)
-    public Page<ClassProduto> findByDsClassProdutoStartingWithOrderByDsClassProdutoAsc(String descricao, Pageable pageable){
+    public Page<ClassProduto> findBynmClassProdutoStartingWithOrderBynmClassProdutoAsc(String descricao, Pageable pageable){
 	    log.debug("Request to...", descricao);
-	    return classProdutoRepository.findByDsClassProdutoStartingWithOrderByDsClassProdutoAsc(descricao, pageable);
+	    return classProdutoRepository.findByNmClassProdutoStartingWithOrderByNmClassProdutoAsc(descricao, pageable);
+    }
+    
+    /**
+     * Search for the id
+     * Used on product page
+     *
+     *  @param query the nmClassProduto
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public Page<ClassProduto> findByIdStartingWithOrderByIdAsc(String id, Pageable pageable){
+    	log.debug("Request to...", id);
+        return classProdutoRepository.findByIdStartingWithOrderByIdAsc(id, pageable);
+    }
+    
+    /**
+     *  Get all the ClassProduto ordered by name.
+     *  
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true) 
+    public Page<ClassProduto> findAllOrderByNmClassProduto(Pageable pageable) {
+        log.debug("Request to get all ClassProdutos ordered by name");
+        Page<ClassProduto> result = classProdutoRepository.findAllOrderByNmClassProduto(pageable); 
+        return result;
+    }
+    
+    /**
+     *  Get all the ClassProduto ordered by id.
+     *  
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true) 
+    public Page<ClassProduto> findAllOrderById(Pageable pageable) {
+        log.debug("Request to get all ClassProdutos ordered by id");
+        Page<ClassProduto> result = classProdutoRepository.findAllOrderById(pageable); 
+        return result;
     }
 }

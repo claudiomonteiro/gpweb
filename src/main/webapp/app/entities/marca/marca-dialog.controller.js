@@ -27,9 +27,9 @@
         
         var onBeforeSaveOrUpdate = function(){            
             //Setting to uppercase
-          	vm.marca.nmFabricante = angular.uppercase(vm.marca.nmFabricante);
+          	vm.marca.nmMarca = angular.uppercase(vm.marca.nmMarca);
             vm.marca.nmFantasia = angular.uppercase(vm.marca.nmFantasia);
-            vm.marca.cdCgf = angular.uppercase(vm.marca.cdCgf);
+            vm.marca.cdIe = angular.uppercase(vm.marca.cdIe);
         }; 
 
         vm.save = function () {

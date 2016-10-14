@@ -4,7 +4,7 @@
         "filter": {
             "title": "Filter per date",
             "from": "from",
-            "to": "to",
+            "to": "to&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
             "button": {
                 "weeks": "Weeks",
                 "today": "today",

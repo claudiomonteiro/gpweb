@@ -1,0 +1,106 @@
+
+<div>
+    <h2><span translate="gpwebApp.produtoFilial.detail.title">Produto Filial</span> {{vm.produtoFilial.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="gpwebApp.produtoFilial.qtEmbalagem">Qt Embalagem</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.qtEmbalagem}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.qtMin">Qt Min</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.qtMin}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.qtMax">Qt Max</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.qtMax}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.qtSaldo">Qt Saldo</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.qtSaldo}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.dtVencimento">Dt Vencimento</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.dtVencimento | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.vlCompra">Vl Compra</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.vlCompra}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.vlCusto">Vl Custo</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.vlCusto}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.vlCustoMedio">Vl Custo Medio</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.vlCustoMedio}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.vlMarkpVenda">Vl Markp Venda</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.vlMarkpVenda}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.vlMarkpAtacado">Vl Markp Atacado</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.vlMarkpAtacado}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.vlAtaVista">Vl Ata Vista</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.vlAtaVista}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.vlMarkpAprazo">Vl Markp Aprazo</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.vlMarkpAprazo}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.vlAprazo">Vl Aprazo</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.vlAprazo}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.vlMarkpAtaPrazo">Vl Markp Ata Prazo</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.vlMarkpAtaPrazo}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.vlAtaAPrazo">Vl Ata A Prazo</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.vlAtaAPrazo}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.qtAtacado">Qt Atacado</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.qtAtacado}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.qtBonificacao">Qt Bonificacao</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.qtBonificacao}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.flInativo">Fl Inativo</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.flInativo}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.flMateriaPrima">Fl Materia Prima</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.flMateriaPrima}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.flComposto">Fl Composto</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.flComposto}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.nnPontos">Nn Pontos</span></dt>
+        <dd>
+            <span>{{vm.produtoFilial.nnPontos}}</span>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.produto">Produto</span></dt>
+        <dd>
+            <a ui-sref="produto-detail({id:vm.produtoFilial.produto.id})">{{vm.produtoFilial.produto.id}}</a>
+        </dd>
+        <dt><span translate="gpwebApp.produtoFilial.promocao">Promocao</span></dt>
+        <dd>
+            <a ui-sref="promocao-detail({id:vm.produtoFilial.promocao.id})">{{vm.produtoFilial.promocao.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

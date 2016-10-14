@@ -72,8 +72,42 @@
                 }],
                 entity: ['$stateParams', 'ClassProduto', function($stateParams, ClassProduto) {
                     return ClassProduto.get({id : $stateParams.id}).$promise;
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'class-produto',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
                 }]
             }
+        })
+        .state('class-produto-detail.edit', {
+            parent: 'class-produto-detail',
+            url: '/detail/edit',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/class-produto/class-produto-dialog.html',
+                    controller: 'ClassProdutoDialogController',
+                    controllerAs: 'vm',
+                    animation: false,
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['ClassProduto', function(ClassProduto) {
+                            return ClassProduto.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('^', {}, { reload: false });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
         })
         .state('class-produto.new', {
             parent: 'class-produto',
@@ -86,13 +120,14 @@
                     templateUrl: 'app/entities/class-produto/class-produto-dialog.html',
                     controller: 'ClassProdutoDialogController',
                     controllerAs: 'vm',
+                    animation: false,
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: function () {
                             return {
                                 cdClassProduto: null,
-                                dsClassProduto: null,
+                                nmClassProduto: null,
                                 id: null
                             };
                         }
@@ -115,6 +150,7 @@
                     templateUrl: 'app/entities/class-produto/class-produto-dialog.html',
                     controller: 'ClassProdutoDialogController',
                     controllerAs: 'vm',
+                    animation: false,
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
@@ -140,6 +176,7 @@
                     templateUrl: 'app/entities/class-produto/class-produto-delete-dialog.html',
                     controller: 'ClassProdutoDeleteController',
                     controllerAs: 'vm',
+                    animation: false,
                     size: 'md',
                     resolve: {
                         entity: ['ClassProduto', function(ClassProduto) {

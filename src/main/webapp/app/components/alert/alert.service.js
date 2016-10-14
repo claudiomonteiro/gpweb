@@ -99,7 +99,7 @@
                     id: alertOptions.alertId,
                     timeout: alertOptions.timeout,
                     toast: alertOptions.toast,
-                    position: alertOptions.position ? alertOptions.position : 'top right',
+                    position: alertOptions.position ? alertOptions.position : 'bottom right',
                     scoped: alertOptions.scoped,
                     close: function (alerts) {
                         return closeAlert(this.id, alerts);

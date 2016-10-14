@@ -28,8 +28,8 @@ public class ClassProduto implements Serializable {
 
     @NotNull
     @Size(min = 1, max = 80)
-    @Column(name = "ds_class_produto", length = 80, nullable = false, unique = true)
-    private String dsClassProduto;
+    @Column(name = "nm_class_produto", length = 80, nullable = false, unique = true)
+    private String nmClassProduto;
 
     public Long getId() {
         return id;
@@ -47,12 +47,12 @@ public class ClassProduto implements Serializable {
         this.cdClassProduto = cdClassProduto;
     }
 
-    public String getDsClassProduto() {
-        return dsClassProduto;
+    public String getnmClassProduto() {
+        return nmClassProduto;
     }
 
-    public void setDsClassProduto(String dsClassProduto) {
-        this.dsClassProduto = dsClassProduto;
+    public void setnmClassProduto(String nmClassProduto) {
+        this.nmClassProduto = nmClassProduto;
     }
 
     @Override
@@ -80,7 +80,7 @@ public class ClassProduto implements Serializable {
         return "ClassProduto{" +
             "id=" + id +
             ", cdClassProduto='" + cdClassProduto + "'" +
-            ", dsClassProduto='" + dsClassProduto + "'" +
+            ", nmClassProduto='" + nmClassProduto + "'" +
             '}';
     }
 }

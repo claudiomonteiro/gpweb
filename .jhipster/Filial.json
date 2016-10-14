@@ -33,7 +33,7 @@
             "fieldValidateRulesMaxlength": "14"
         },
         {
-            "fieldName": "cdCgf",
+            "fieldName": "cdIe",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -49,7 +49,7 @@
             "fieldValidateRulesMaxlength": "30"
         },
         {
-            "fieldName": "flAtiva",
+            "fieldName": "flInativo",
             "fieldType": "Boolean"
         },
         {
@@ -97,10 +97,6 @@
             "fieldType": "LocalDate"
         },
         {
-            "fieldName": "nnVersao",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "flTprec",
             "fieldType": "Boolean"
         },
@@ -113,8 +109,12 @@
             "fieldValidateRulesMaxlength": "2"
         },
         {
-            "fieldName": "nnMdfVersao",
-            "fieldType": "Integer"
+            "fieldName": "dsEmail",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
         },
         {
             "fieldName": "flEnviaEmail",

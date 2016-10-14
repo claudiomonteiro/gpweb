@@ -5,14 +5,14 @@
         <a class="btn btn-default btn-print pull-right hidden-xs" href="javascript:window.print();"><i class="mdi mdi-printer mdi-3x"></i></a>
     </div><!-- /.box-header -->
     
-    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
 
     <div class="box-body">   
         <div class="row">                
             <dl class="col-xs-12 col-sm-4">
-                <dt><span translate="gpwebApp.marca.nmFabricante">Razão Social</span></dt>
+                <dt><span translate="gpwebApp.marca.nmMarca">Razão Social</span></dt>
                 <dd>
-                    <span class="text-uppercase">{{vm.marca.nmFabricante}}</span>
+                    <span class="text-uppercase">{{vm.marca.nmMarca}}</span>
                 </dd>
                 <div class="box-detail-divider"></div>    
             </dl>
@@ -27,10 +27,10 @@
             </dl>
             
             <dl class="col-xs-12 col-sm-4">
-                <dt><span translate="gpwebApp.marca.cdCgc">CNPJ</span></dt>
+                <dt><span translate="gpwebApp.marca.cdCnpj">CNPJ</span></dt>
                 <dd>
-                    <span>{{vm.marca.cdCgc | brCnpj}}</span>
-                    <span ng-hide="vm.marca.cdCgc != null"> - </span>
+                    <span>{{vm.marca.cdCnpj | brCnpj}}</span>
+                    <span ng-hide="vm.marca.cdCnpj != null"> - </span>
                 </dd>
                 <div class="box-detail-divider"></div>    
             </dl>
@@ -38,10 +38,10 @@
         
         <div class="row">                
             <dl class="col-xs-12 col-sm-4">
-                <dt><span translate="gpwebApp.marca.cdCgf">Inscrição Estadual</span></dt>
+                <dt><span translate="gpwebApp.marca.cdIe">Inscrição Estadual</span></dt>
                 <dd>
-                    <span class="text-uppercase">{{vm.marca.cdCgf}}</span>
-                    <span ng-hide="vm.marca.cdCgf != null"> - </span>
+                    <span class="text-uppercase">{{vm.marca.cdIe}}</span>
+                    <span ng-hide="vm.marca.cdIe != null"> - </span>
                 </dd>
                 <div class="box-detail-divider"></div>    
             </dl>
@@ -75,7 +75,7 @@
                 <div class="box-detail-divider"></div>    
             </dl>
             
-            <dl class="col-xs-12 col-sm-4">
+            <dl class="col-xs-12 col-sm-8">
                 <dt><span translate="gpwebApp.marca.flInativo">Inativo</span></dt>
                 <dd>
                     <span class="text-uppercase">{{vm.marca.flInativo ? 'Sim' : 'Não'}}</span>
@@ -86,10 +86,14 @@
     </div><!-- /.box-body -->
 
     <div class="box-footer no-border">
-        <button type="submit"
-                onclick="window.history.back()"
+        <button type="button"
+                ui-sref="{{ vm.previousState }}"
                 class="btn btn-info ripple ripple-light">
-            <span translate="entity.action.back"> Back</span>
+            <span translate="entity.action.back"> Voltar</span>
+        </button>
+        
+        <button type="button" ui-sref="marca-detail.edit({id:vm.marca.id})" class="btn btn-primary ripple ripple-light">
+            <span translate="entity.action.edit"> Editar</span>
         </button>
     </div><!-- /.box-footer -->
 </div><!-- /.box -->

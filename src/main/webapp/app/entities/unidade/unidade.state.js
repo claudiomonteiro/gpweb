@@ -72,8 +72,42 @@
                 }],
                 entity: ['$stateParams', 'Unidade', function($stateParams, Unidade) {
                     return Unidade.get({id : $stateParams.id});
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'unidade',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
                 }]
             }
+        })
+        .state('unidade-detail.edit', {
+            parent: 'unidade-detail',
+            url: '/detail/edit',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/unidade/unidade-dialog.html',
+                    controller: 'UnidadeDialogController',
+                    controllerAs: 'vm',
+                    animation: false,
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Unidade', function(Unidade) {
+                            return Unidade.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('^', {}, { reload: false });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
         })
         .state('unidade.new', {
             parent: 'unidade',
@@ -86,12 +120,13 @@
                     templateUrl: 'app/entities/unidade/unidade-dialog.html',
                     controller: 'UnidadeDialogController',
                     controllerAs: 'vm',
+                    animation: false,
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: function () {
                             return {
-                                dsUnidade: null,
+                                nmUnidade: null,
                                 sgUnidade: null,
                                 id: null
                             };
@@ -115,6 +150,7 @@
                     templateUrl: 'app/entities/unidade/unidade-dialog.html',
                     controller: 'UnidadeDialogController',
                     controllerAs: 'vm',
+                    animation: false,
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
@@ -140,6 +176,7 @@
                     templateUrl: 'app/entities/unidade/unidade-delete-dialog.html',
                     controller: 'UnidadeDeleteController',
                     controllerAs: 'vm',
+                    animation: false,
                     size: 'md',
                     resolve: {
                         entity: ['Unidade', function(Unidade) {

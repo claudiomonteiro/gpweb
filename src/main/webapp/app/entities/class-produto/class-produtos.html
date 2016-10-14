@@ -1,14 +1,14 @@
 <div class="box">
-    <div class="box-header with-border">
+    <div class="box-header">
         <h1 class="box-title" translate="gpwebApp.classProduto.home.title">Classificação do Produto</h1>
     </div><!-- /.box-header -->
     
     <jhi-alert></jhi-alert>
-    
-    <div class="box-header">
+
+    <div class="box-body">
         <div class="row">
             <div class="col-xs-4 col-sm-5">
-                <button class="btn btn-success ripple ripple-light" ui-sref="class-produto.new" >                    
+                <button class="btn btn-success ripple ripple-light" ui-sref="class-produto.new" >
                     <span translate="gpwebApp.classProduto.home.createLabel">
                         Adicionar
                     </span>
@@ -32,16 +32,16 @@
                 </form>
             </div>
         </div>
-    </div><!-- /.box-header -->
 
-    <div class="box-body">
-        <div class="table-responsive">
-            <table class="jh-table table table-bordered table-hover">
+        <br>
+
+        <div class="table-responsive no-border-table-responsive">
+            <table class="jh-table table table-hover">
                 <thead>
                     <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                        <th jh-sort-by="id" class="col-md-1 col-classificacao-codigo"><span translate="global.field.id">Código</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th jh-sort-by="cdClassProduto" class="col-md-1 col-classificacao-codigoClassificacao"><span translate="gpwebApp.classProduto.cdClassProduto">Código da Classificação</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th jh-sort-by="dsClassProduto" class="col-md-9"><span translate="gpwebApp.classProduto.dsClassProduto">Nome</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
+                        <th jh-sort-by="id" class="col-md-1 col-classificacao-codigo"><span translate="global.field.id">Código</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="cdClassProduto" class="col-md-1 col-classificacao-codigo-classificacao"><span translate="gpwebApp.classProduto.cdClassProduto">Código da Classificação</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="nmClassProduto" class="col-md-9"><span translate="gpwebApp.classProduto.nmClassProduto">Nome</span> <span class="glyphicon glyphicon-sort"></span></th>
                         <th class="col-md-1 col-classificacao-acoes text-center" translate="global.field.actions">Ações</th>
                     </tr>
                 </thead>
@@ -50,25 +50,25 @@
                     <tr ng-repeat="classProduto in vm.classProdutos track by classProduto.id">
                         <td><a ui-sref="class-produto-detail({id:classProduto.id})">{{classProduto.id}}</a></td>
                         <td class="text-center text-uppercase">{{classProduto.cdClassProduto}}</td>
-                        <td class="text-uppercase">{{classProduto.dsClassProduto}}</td>
-                        <td class="text-right">
+                        <td class="text-uppercase">{{classProduto.nmClassProduto}}</td>
+                        <td>
                             <div>
                                 <button type="submit"
                                         ui-sref="class-produto-detail({id:classProduto.id})"
-                                        class="btn btn-success btn-sm ripple ripple-light"
-                                        data-toggle="tooltip" data-placement="top" title="Visualizar">
+                                        class="btn btn-success btn-outline btn-sm ripple ripple-light"
+                                        uib-tooltip="Visualizar">
                                     <span class="mdi mdi-eye"></span>
                                 </button>
                                 <button type="submit"
                                         ui-sref="class-produto.edit({id:classProduto.id})"
-                                        class="btn btn-primary btn-sm ripple ripple-light"
-                                        data-toggle="tooltip" data-placement="top" title="Editar">
+                                        class="btn btn-primary btn-outline btn-sm ripple ripple-light"
+                                        uib-tooltip="Editar">
                                     <span class="mdi mdi-pencil"></span>
                                 </button>
                                 <button type="submit"
                                         ui-sref="class-produto.delete({id:classProduto.id})"
-                                        class="btn btn-danger btn-sm ripple ripple-light"
-                                        data-toggle="tooltip" data-placement="top" title="Deletar">
+                                        class="btn btn-danger btn-outline btn-sm ripple ripple-light"
+                                        uib-tooltip="Deletar">
                                     <span class="mdi mdi-delete"></span>
                                 </button>
                             </div>

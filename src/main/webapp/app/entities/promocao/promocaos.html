@@ -1,11 +1,11 @@
 <div class="box">
-    <div class="box-header with-border">
+    <div class="box-header">
         <h1 class="box-title" translate="gpwebApp.promocao.home.title">Promoção</h1>
     </div><!-- /.box-header -->
     
     <jhi-alert></jhi-alert>
     
-    <div class="box-header">
+    <div class="box-body">
         <div class="row">
             <div class="col-xs-4 col-sm-5">
                 <button class="btn btn-success ripple ripple-light" ui-sref="promocao.new" >
@@ -15,7 +15,7 @@
                 </button>
             </div>
             
-            <div class="col-xs-8 col-sm-7 search-pad-col">
+            <div class="col-xs-8 col-sm-7">
                 <form name="searchForm" class="form-inline">
                     <div class="input-group pull-right" >
                         <input type="text" class="form-control text-uppercase" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'gpwebApp.promocao.home.search' | translate }}">
@@ -33,20 +33,20 @@
                 </form>
             </div>
         </div>
-    </div><!-- /.box-header -->
-    
-    <div class="box-body">
-        <div class="table-responsive">
-            <table class="jh-table table table-bordered table-hover">
+
+        <br>
+
+        <div class="table-responsive no-border-table-responsive">
+            <table class="jh-table table table-hover">
                 <thead>
                     <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                        <th class="col-md-1 col-promocao-codigo" jh-sort-by="id"><span translate="global.field.id">Código</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th class="col-md-3" jh-sort-by="dsPromocao"><span translate="gpwebApp.promocao.dsPromocao">Nome</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th class="col-md-1 col-promocao-ate" jh-sort-by="dtVencimento"><span translate="gpwebApp.promocao.dtVencimento">Até:</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th class="col-md-1 col-promocao-dia" jh-sort-by="nnDiaData"><span translate="gpwebApp.promocao.nnDiaData">Dia:</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th class="col-md-1 col-promocao-em" jh-sort-by="nnDiaSemana"><span translate="gpwebApp.promocao.nnDiaSemana">Em:</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>                        
-                        <th class="col-md-1 col-promocao-desconto" jh-sort-by="vlPromocao"><span translate="gpwebApp.promocao.vlPromocao">Desconto (%)</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th class="col-md-1 col-promocao-inativo" jh-sort-by="flInativo"><span translate="gpwebApp.promocao.flInativo">Inativo</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
+                        <th class="col-md-1 col-promocao-codigo" jh-sort-by="id"><span translate="global.field.id">Código</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th class="col-md-5" jh-sort-by="nmPromocao"><span translate="gpwebApp.promocao.nmPromocao">Nome</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th class="col-md-1 col-promocao-ate text-right" jh-sort-by="dtVencimento"><span translate="gpwebApp.promocao.dtVencimento">Até:</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th class="col-md-1 col-promocao-dia text-right" jh-sort-by="nnDiaData"><span translate="gpwebApp.promocao.nnDiaData">Dia:</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th class="col-md-1 col-promocao-em text-right" jh-sort-by="nnDiaSemana"><span translate="gpwebApp.promocao.nnDiaSemana">Em:</span> <span class="glyphicon glyphicon-sort"></span></th>                        
+                        <th class="col-md-1 col-promocao-desconto text-right" jh-sort-by="vlPromocao"><span translate="gpwebApp.promocao.vlPromocao">Desconto (%)</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th class="col-md-1 col-promocao-inativo text-center" jh-sort-by="flInativo"><span translate="gpwebApp.promocao.flInativo">Inativo</span> <span class="glyphicon glyphicon-sort"></span></th>
                         <th class="col-md-1 col-promocao-acoes text-center">
                         <span translate="global.field.actions">Ações</span></th>
                     </tr>
@@ -55,44 +55,42 @@
                 <tbody>
                     <tr ng-repeat="promocao in vm.promocaos track by promocao.id">
                         <td><a ui-sref="promocao-detail({id:promocao.id})">{{promocao.id}}</a></td>
-                        <td class="text-uppercase">{{promocao.dsPromocao}}</td>
-                        <td>
+                        <td class="text-uppercase">{{promocao.nmPromocao}}</td>
+                        <td class="text-right">
                             <span ng-show="promocao.nnTipo == 1">{{promocao.dtVencimento | date:'dd/MM/yyyy'}}</span>
                             <div ng-show="promocao.nnTipo != 1"> - </div>
                         </td>
-                        <td>
+                        <td class="text-right">
                             <span ng-show="promocao.nnTipo == 2">{{promocao.nnDiaData}}</span>
                             <div ng-show="promocao.nnTipo != 2"> - </div>
                         </td>
-                        <td class="text-uppercase">
+                        <td class="text-uppercase text-right">
                             <span ng-show="promocao.nnTipo == 3">{{promocao.nnDiaSemana}}</span>
                             <div ng-show="promocao.nnTipo != 3"> - </div>
                         </td>
-                        <td>{{promocao.vlPromocao | currency:'':2}}</td>                        
-                        <td class="text-center">
-                            <i class="mdi"
-                                ng-class="{'mdi-check text-success': promocao.flInativo,
-                                'mdi-close text-danger': !promocao.flInativo}">
-                            </i>
+                        <td class="text-right">{{promocao.vlPromocao | currency:'':2}}</td>                        
+                        <td class="text-uppercase text-center">
+                            <small ng-show="promocao.flInativo" class="label bg-green" translate="global.condition.true">Sim</small>
+                            <small ng-show="!promocao.flInativo" class="label bg-red" translate="global.condition.false">Não</small>
                         </td>
                         <td class="text-center">
                             <div>
                                 <button type="submit"
                                         ui-sref="promocao-detail({id:promocao.id})"
-                                        class="btn btn-success btn-sm ripple ripple-light"
-                                        data-toggle="tooltip" data-placement="top" title="Visualizar">
+                                        class="btn btn-success btn-outline btn-sm ripple ripple-light"
+                                        tooltip-placement="top" uib-tooltip="Visualizar">
                                     <span class="mdi mdi-eye"></span>
                                 </button>
                                 <button type="submit"
                                         ui-sref="promocao.edit({id:promocao.id})"
-                                        class="btn btn-primary btn-sm ripple ripple-light"
-                                        data-toggle="tooltip" data-placement="top" title="Editar">
+                                        class="btn btn-primary btn-outline btn-sm ripple ripple-light"
+                                        tooltip-placement="top" uib-tooltip="Editar">
                                     <span class="mdi mdi-pencil"></span>
                                 </button>
                                 <button type="submit"
                                         ui-sref="promocao.delete({id:promocao.id})"
-                                        class="btn btn-danger btn-sm ripple ripple-light"
-                                        data-toggle="tooltip" data-placement="top" title="Deletar">
+                                        class="btn btn-danger btn-outline btn-sm ripple ripple-light"
+                                        tooltip-placement="top" uib-tooltip="Deletar">
                                     <span class="mdi mdi-delete"></span>
                                 </button>
                             </div>

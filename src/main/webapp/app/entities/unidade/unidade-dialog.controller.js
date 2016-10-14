@@ -27,7 +27,7 @@
         
         var onBeforeSaveOrUpdate = function(){
             //Setting to uppercase
-        	vm.unidade.dsUnidade = angular.uppercase(vm.unidade.dsUnidade);
+        	vm.unidade.nmUnidade = angular.uppercase(vm.unidade.nmUnidade);
             vm.unidade.sgUnidade = angular.uppercase(vm.unidade.sgUnidade);
         };
 

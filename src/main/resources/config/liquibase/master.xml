@@ -7,13 +7,15 @@
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160509113901_added_entity_Grupo.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160603123751_added_entity_Subgrupo.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160606140409_added_entity_Promocao.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160607125732_added_entity_Filial.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160606140409_added_entity_Promocao.xml" relativeToChangelogFile="false"/>    
     <include file="classpath:config/liquibase/changelog/20160607135410_added_entity_Marca.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160609172401_added_entity_Unidade.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160609181446_added_entity_Produto.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160622124818_added_entity_ClassProduto.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160803113315_added_entity_ProdutoFilial.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20160609181446_added_entity_constraints_Produto.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160607125732_added_entity_Filial.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160803113315_added_entity_constraints_ProdutoFilial.xml" relativeToChangelogFile="false"/>    
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

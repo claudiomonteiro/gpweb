@@ -72,8 +72,42 @@
                 }],
                 entity: ['$stateParams', 'Grupo', function($stateParams, Grupo) {
                     return Grupo.get({id : $stateParams.id});
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'grupo',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
                 }]
             }
+        })
+        .state('grupo-detail.edit', {
+            parent: 'grupo-detail',
+            url: '/detail/edit',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/grupo/grupo-dialog.html',
+                    controller: 'GrupoDialogController',
+                    controllerAs: 'vm',
+                    animation: false,
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Grupo', function(Grupo) {
+                            return Grupo.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('^', {}, { reload: false });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
         })
         .state('grupo.new', {
             parent: 'grupo',
@@ -86,6 +120,7 @@
                     templateUrl: 'app/entities/grupo/grupo-dialog.html',
                     controller: 'GrupoDialogController',
                     controllerAs: 'vm',
+                    animation: false,
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
@@ -126,6 +161,7 @@
                     templateUrl: 'app/entities/grupo/grupo-dialog.html',
                     controller: 'GrupoDialogController',
                     controllerAs: 'vm',
+                    animation: false,
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
@@ -151,6 +187,7 @@
                     templateUrl: 'app/entities/grupo/grupo-delete-dialog.html',
                     controller: 'GrupoDeleteController',
                     controllerAs: 'vm',
+                    animation: false,
                     size: 'md',
                     resolve: {
                         entity: ['Grupo', function(Grupo) {

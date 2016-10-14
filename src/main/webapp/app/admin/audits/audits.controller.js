@@ -19,6 +19,8 @@
         vm.previousMonth = previousMonth;
         vm.toDate = null;
         vm.today = today;
+        vm.datePickerOpenStatus = {};
+        vm.openCalendar = openCalendar;
         vm.totalItems = null;
 
         vm.today();
@@ -58,6 +60,13 @@
         function loadPage (page) {
             vm.page = page;
             vm.onChangeDate();
+        }
+        
+        vm.datePickerOpenStatus.fromDate = false;
+        vm.datePickerOpenStatus.toDate = false;
+
+        function openCalendar (date) {
+            vm.datePickerOpenStatus[date] = true;
         }
     }
 })();

@@ -72,8 +72,42 @@
                 }],
                 entity: ['$stateParams', 'Promocao', function($stateParams, Promocao) {
                     return Promocao.get({id : $stateParams.id}).$promise;
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'promocao',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
                 }]
             }
+        })
+        .state('promocao-detail.edit', {
+            parent: 'promocao-detail',
+            url: '/detail/edit',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/promocao/promocao-dialog.html',
+                    controller: 'PromocaoDialogController',
+                    controllerAs: 'vm',
+                    animation: false,
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Promocao', function(Promocao) {
+                            return Promocao.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('^', {}, { reload: false });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
         })
         .state('promocao.new', {
             parent: 'promocao',
@@ -86,12 +120,13 @@
                     templateUrl: 'app/entities/promocao/promocao-dialog.html',
                     controller: 'PromocaoDialogController',
                     controllerAs: 'vm',
+                    animation: false,
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: function () {
                             return {
-                                dsPromocao: null,
+                                nmPromocao: null,
                                 dtVencimento: null,
                                 nnDiaData: null,
                                 nnDiaSemana: null,
@@ -120,6 +155,7 @@
                     templateUrl: 'app/entities/promocao/promocao-dialog.html',
                     controller: 'PromocaoDialogController',
                     controllerAs: 'vm',
+                    animation: false,
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
@@ -145,6 +181,7 @@
                     templateUrl: 'app/entities/promocao/promocao-delete-dialog.html',
                     controller: 'PromocaoDeleteController',
                     controllerAs: 'vm',
+                    animation: false,
                     size: 'md',
                     resolve: {
                         entity: ['Promocao', function(Promocao) {

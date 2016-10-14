@@ -1,0 +1,129 @@
+<div>
+    <h2 translate="gpwebApp.produtoFilial.home.title">Produto Filials</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="produto-filial.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs"  translate="gpwebApp.produtoFilial.home.createLabel">
+                        Create new Produto Filial
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'gpwebApp.produtoFilial.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="produto.id"><span translate="gpwebApp.produtoFilial.produto">Produto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="filial.id"><span translate="gpwebApp.produtoFilial.filial">Filial</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtEmbalagem"><span translate="gpwebApp.produtoFilial.qtEmbalagem">Qt Embalagem</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtMin"><span translate="gpwebApp.produtoFilial.qtMin">Qt Min</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtMax"><span translate="gpwebApp.produtoFilial.qtMax">Qt Max</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtSaldo"><span translate="gpwebApp.produtoFilial.qtSaldo">Qt Saldo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dtVencimento"><span translate="gpwebApp.produtoFilial.dtVencimento">Dt Vencimento</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="vlCompra"><span translate="gpwebApp.produtoFilial.vlCompra">Vl Compra</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="vlCusto"><span translate="gpwebApp.produtoFilial.vlCusto">Vl Custo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="vlCustoMedio"><span translate="gpwebApp.produtoFilial.vlCustoMedio">Vl Custo Medio</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="vlMarkpVenda"><span translate="gpwebApp.produtoFilial.vlMarkpVenda">Vl Markp Venda</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="vlMarkpAtacado"><span translate="gpwebApp.produtoFilial.vlMarkpAtacado">Vl Markp Atacado</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="vlAtaVista"><span translate="gpwebApp.produtoFilial.vlAtaVista">Vl Ata Vista</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="vlMarkpAprazo"><span translate="gpwebApp.produtoFilial.vlMarkpAprazo">Vl Markp Aprazo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="vlAprazo"><span translate="gpwebApp.produtoFilial.vlAprazo">Vl Aprazo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="vlMarkpAtaPrazo"><span translate="gpwebApp.produtoFilial.vlMarkpAtaPrazo">Vl Markp Ata Prazo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="vlAtaAPrazo"><span translate="gpwebApp.produtoFilial.vlAtaAPrazo">Vl Ata A Prazo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtAtacado"><span translate="gpwebApp.produtoFilial.qtAtacado">Qt Atacado</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtBonificacao"><span translate="gpwebApp.produtoFilial.qtBonificacao">Qt Bonificacao</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="flInativo"><span translate="gpwebApp.produtoFilial.flInativo">Fl Inativo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="flMateriaPrima"><span translate="gpwebApp.produtoFilial.flMateriaPrima">Fl Materia Prima</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="flComposto"><span translate="gpwebApp.produtoFilial.flComposto">Fl Composto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="nnPontos"><span translate="gpwebApp.produtoFilial.nnPontos">Nn Pontos</span> <span class="glyphicon glyphicon-sort"></span></th>                    
+                    <th jh-sort-by="promocao.id"><span translate="gpwebApp.produtoFilial.promocao">Promocao</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="produtoFilial in vm.produtoFilials track by produtoFilial.id">
+                    <td><a ui-sref="produto-filial-detail({id:produtoFilial.id})">{{produtoFilial.id}}</a></td>
+                     <td>
+                        <a ui-sref="produto-detail({id:produtoFilial.produto.id})">{{produtoFilial.produto.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="produto-detail({id:produtoFilial.filial.id})">{{produtoFilial.filial.id}}</a>
+                    </td>
+                    <td>{{produtoFilial.qtEmbalagem}}</td>
+                    <td>{{produtoFilial.qtMin}}</td>
+                    <td>{{produtoFilial.qtMax}}</td>
+                    <td>{{produtoFilial.qtSaldo}}</td>
+                        <td>{{produtoFilial.dtVencimento | date:'mediumDate'}}</td>
+                    <td>{{produtoFilial.vlCompra}}</td>
+                    <td>{{produtoFilial.vlCusto}}</td>
+                    <td>{{produtoFilial.vlCustoMedio}}</td>
+                    <td>{{produtoFilial.vlMarkpVenda}}</td>
+                    <td>{{produtoFilial.vlMarkpAtacado}}</td>
+                    <td>{{produtoFilial.vlAtaVista}}</td>
+                    <td>{{produtoFilial.vlMarkpAprazo}}</td>
+                    <td>{{produtoFilial.vlAprazo}}</td>
+                    <td>{{produtoFilial.vlMarkpAtaPrazo}}</td>
+                    <td>{{produtoFilial.vlAtaAPrazo}}</td>
+                    <td>{{produtoFilial.qtAtacado}}</td>
+                    <td>{{produtoFilial.qtBonificacao}}</td>
+                    <td>{{produtoFilial.flInativo}}</td>
+                    <td>{{produtoFilial.flMateriaPrima}}</td>
+                    <td>{{produtoFilial.flComposto}}</td>
+                    <td>{{produtoFilial.nnPontos}}</td>                   
+                    <td>
+                        <a ui-sref="promocao-detail({id:produtoFilial.promocao.id})">{{produtoFilial.promocao.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="produto-filial-detail({id:produtoFilial.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="produto-filial.edit({id:produtoFilial.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="produto-filial.delete({id:produtoFilial.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

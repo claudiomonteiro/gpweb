@@ -3,7 +3,7 @@
         "title": "Auditorias",
         "filter": {
             "title": "Filtro por data",
-            "from": "de",
+            "from": "de&nbsp;",
             "to": "até",
             "button": {
                 "weeks": "Semanas",

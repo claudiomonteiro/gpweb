@@ -17,7 +17,7 @@
                 "title": "Classificação do Produto"
             },
             "cdClassProduto": "Código Classificação",
-            "dsClassProduto": "Nome"
+            "nmClassProduto": "Nome"
         }
     }
 }

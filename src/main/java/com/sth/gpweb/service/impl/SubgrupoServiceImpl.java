@@ -104,4 +104,43 @@ public class SubgrupoServiceImpl implements SubgrupoService{
 	    log.debug("Request to...", descricao);
 	    return subgrupoRepository.findByNmSubgrupoStartingWithOrderByNmSubgrupoAsc(descricao, pageable);
     }
+    
+    /**
+     * Search for the id
+     * Used on product page
+     *
+     *  @param query the nmSubgrupo
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public Page<Subgrupo> findByIdStartingWithOrderByIdAsc(String id, Pageable pageable){
+    	log.debug("Request to...", id);
+        return subgrupoRepository.findByIdStartingWithOrderByIdAsc(id, pageable);
+    }
+    
+    /**
+     *  Get all the Subgrupos ordered by name.
+     *  
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true) 
+    public Page<Subgrupo> findAllOrderByNmSubgrupo(Pageable pageable) {
+        log.debug("Request to get all Subgrupos ordered by name");
+        Page<Subgrupo> result = subgrupoRepository.findAllOrderByNmSubgrupo(pageable); 
+        return result;
+    }
+    
+    /**
+     *  Get all the Subgrupos ordered by id.
+     *  
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    @Transactional(readOnly = true) 
+    public Page<Subgrupo> findAllOrderById(Pageable pageable) {
+        log.debug("Request to get all Subgrupos ordered by id");
+        Page<Subgrupo> result = subgrupoRepository.findAllOrderById(pageable); 
+        return result;
+    }
 }

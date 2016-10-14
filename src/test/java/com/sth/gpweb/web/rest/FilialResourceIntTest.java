@@ -54,13 +54,13 @@ public class FilialResourceIntTest {
     private static final String UPDATED_DS_COMPLEMENTO = "BBBBBBBBBBBBBBBBBBBB";
     private static final String DEFAULT_CD_CNPJ = "AAAAAAAAAAAAAA";
     private static final String UPDATED_CD_CNPJ = "BBBBBBBBBBBBBB";
-    private static final String DEFAULT_CD_CGF = "AAAAAAAAAAAAAAAAAA";
-    private static final String UPDATED_CD_CGF = "BBBBBBBBBBBBBBBBBB";
+    private static final String DEFAULT_CD_IE = "AAAAAAAAAAAAAAAAAA";
+    private static final String UPDATED_CD_IE = "BBBBBBBBBBBBBBBBBB";
     private static final String DEFAULT_DS_SITE = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     private static final String UPDATED_DS_SITE = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
 
-    private static final Boolean DEFAULT_FL_ATIVA = false;
-    private static final Boolean UPDATED_FL_ATIVA = true;
+    private static final Boolean DEFAULT_FL_INATIVO = false;
+    private static final Boolean UPDATED_FL_INATIVO = true;
     private static final String DEFAULT_NM_RAZAO = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     private static final String UPDATED_NM_RAZAO = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
     private static final String DEFAULT_CD_TEL = "AAAAAAAAAAAAA";
@@ -85,9 +85,13 @@ public class FilialResourceIntTest {
 
     private static final Integer DEFAULT_NN_MDF_VERSAO = 1;
     private static final Integer UPDATED_NN_MDF_VERSAO = 2;
-
+    
+    private static final String DEFAULT_DS_EMAIL = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    private static final String UPDATED_DS_EMAIL = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
     private static final Boolean DEFAULT_FL_ENVIA_EMAIL = false;
     private static final Boolean UPDATED_FL_ENVIA_EMAIL = true;
+    private static final Boolean DEFAULT_FL_MATRIZ = false;
+    private static final Boolean UPDATED_FL_MATRIZ = true;
     private static final String DEFAULT_DS_OBS = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     private static final String UPDATED_DS_OBS = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
 
@@ -128,20 +132,20 @@ public class FilialResourceIntTest {
         filial.setNnNumero(DEFAULT_NN_NUMERO);
         filial.setDsComplemento(DEFAULT_DS_COMPLEMENTO);
         filial.setCdCnpj(DEFAULT_CD_CNPJ);
-        filial.setCdCgf(DEFAULT_CD_CGF);
+        filial.setCdIe(DEFAULT_CD_IE);
         filial.setDsSite(DEFAULT_DS_SITE);
-        filial.setFlAtiva(DEFAULT_FL_ATIVA);
+        filial.setFlInativo(DEFAULT_FL_INATIVO);
         filial.setNmRazao(DEFAULT_NM_RAZAO);
         filial.setCdTel(DEFAULT_CD_TEL);
         filial.setCdTel1(DEFAULT_CD_TEL_1);
         filial.setCdTel2(DEFAULT_CD_TEL_2);
         filial.setCdFax(DEFAULT_CD_FAX);
         filial.setDtOperacao(DEFAULT_DT_OPERACAO);
-        filial.setNnVersao(DEFAULT_NN_VERSAO);
         filial.setFlTprec(DEFAULT_FL_TPREC);
         filial.setDsPisCofins(DEFAULT_DS_PIS_COFINS);
-        filial.setNnMdfVersao(DEFAULT_NN_MDF_VERSAO);
+        filial.setDsEmail(DEFAULT_DS_EMAIL);
         filial.setFlEnviaEmail(DEFAULT_FL_ENVIA_EMAIL);
+        filial.setFlMatriz(DEFAULT_FL_MATRIZ);
         filial.setDsObs(DEFAULT_DS_OBS);
     }
 
@@ -165,20 +169,20 @@ public class FilialResourceIntTest {
         assertThat(testFilial.getNnNumero()).isEqualTo(DEFAULT_NN_NUMERO);
         assertThat(testFilial.getDsComplemento()).isEqualTo(DEFAULT_DS_COMPLEMENTO);
         assertThat(testFilial.getCdCnpj()).isEqualTo(DEFAULT_CD_CNPJ);
-        assertThat(testFilial.getCdCgf()).isEqualTo(DEFAULT_CD_CGF);
+        assertThat(testFilial.getCdIe()).isEqualTo(DEFAULT_CD_IE);
         assertThat(testFilial.getDsSite()).isEqualTo(DEFAULT_DS_SITE);
-        assertThat(testFilial.isFlAtiva()).isEqualTo(DEFAULT_FL_ATIVA);
+        assertThat(testFilial.isFlInativo()).isEqualTo(DEFAULT_FL_INATIVO);
         assertThat(testFilial.getNmRazao()).isEqualTo(DEFAULT_NM_RAZAO);
         assertThat(testFilial.getCdTel()).isEqualTo(DEFAULT_CD_TEL);
         assertThat(testFilial.getCdTel1()).isEqualTo(DEFAULT_CD_TEL_1);
         assertThat(testFilial.getCdTel2()).isEqualTo(DEFAULT_CD_TEL_2);
         assertThat(testFilial.getCdFax()).isEqualTo(DEFAULT_CD_FAX);
         assertThat(testFilial.getDtOperacao()).isEqualTo(DEFAULT_DT_OPERACAO);
-        assertThat(testFilial.getNnVersao()).isEqualTo(DEFAULT_NN_VERSAO);
         assertThat(testFilial.isFlTprec()).isEqualTo(DEFAULT_FL_TPREC);
         assertThat(testFilial.getDsPisCofins()).isEqualTo(DEFAULT_DS_PIS_COFINS);
-        assertThat(testFilial.getNnMdfVersao()).isEqualTo(DEFAULT_NN_MDF_VERSAO);
+        assertThat(testFilial.getDsEmail()).isEqualTo(DEFAULT_DS_EMAIL);
         assertThat(testFilial.isFlEnviaEmail()).isEqualTo(DEFAULT_FL_ENVIA_EMAIL);
+        assertThat(testFilial.isFlMatriz()).isEqualTo(DEFAULT_FL_MATRIZ);
         assertThat(testFilial.getDsObs()).isEqualTo(DEFAULT_DS_OBS);
 
         // Validate the Filial in ElasticSearch
@@ -219,20 +223,20 @@ public class FilialResourceIntTest {
                 .andExpect(jsonPath("$.[*].nnNumero").value(hasItem(DEFAULT_NN_NUMERO)))
                 .andExpect(jsonPath("$.[*].dsComplemento").value(hasItem(DEFAULT_DS_COMPLEMENTO.toString())))
                 .andExpect(jsonPath("$.[*].cdCnpj").value(hasItem(DEFAULT_CD_CNPJ.toString())))
-                .andExpect(jsonPath("$.[*].cdCgf").value(hasItem(DEFAULT_CD_CGF.toString())))
+                .andExpect(jsonPath("$.[*].cdIe").value(hasItem(DEFAULT_CD_IE.toString())))
                 .andExpect(jsonPath("$.[*].dsSite").value(hasItem(DEFAULT_DS_SITE.toString())))
-                .andExpect(jsonPath("$.[*].flAtiva").value(hasItem(DEFAULT_FL_ATIVA.booleanValue())))
+                .andExpect(jsonPath("$.[*].flInativo").value(hasItem(DEFAULT_FL_INATIVO.booleanValue())))
                 .andExpect(jsonPath("$.[*].nmRazao").value(hasItem(DEFAULT_NM_RAZAO.toString())))
                 .andExpect(jsonPath("$.[*].cdTel").value(hasItem(DEFAULT_CD_TEL.toString())))
                 .andExpect(jsonPath("$.[*].cdTel1").value(hasItem(DEFAULT_CD_TEL_1.toString())))
                 .andExpect(jsonPath("$.[*].cdTel2").value(hasItem(DEFAULT_CD_TEL_2.toString())))
                 .andExpect(jsonPath("$.[*].cdFax").value(hasItem(DEFAULT_CD_FAX.toString())))
                 .andExpect(jsonPath("$.[*].dtOperacao").value(hasItem(DEFAULT_DT_OPERACAO.toString())))
-                .andExpect(jsonPath("$.[*].nnVersao").value(hasItem(DEFAULT_NN_VERSAO)))
                 .andExpect(jsonPath("$.[*].flTprec").value(hasItem(DEFAULT_FL_TPREC.booleanValue())))
                 .andExpect(jsonPath("$.[*].dsPisCofins").value(hasItem(DEFAULT_DS_PIS_COFINS.toString())))
-                .andExpect(jsonPath("$.[*].nnMdfVersao").value(hasItem(DEFAULT_NN_MDF_VERSAO)))
+                .andExpect(jsonPath("$.[*].dsEmail").value(hasItem(DEFAULT_DS_EMAIL.toString())))
                 .andExpect(jsonPath("$.[*].flEnviaEmail").value(hasItem(DEFAULT_FL_ENVIA_EMAIL.booleanValue())))
+                .andExpect(jsonPath("$.[*].flMatriz").value(hasItem(DEFAULT_FL_MATRIZ.booleanValue())))
                 .andExpect(jsonPath("$.[*].dsObs").value(hasItem(DEFAULT_DS_OBS.toString())));
     }
 
@@ -251,20 +255,20 @@ public class FilialResourceIntTest {
             .andExpect(jsonPath("$.nnNumero").value(DEFAULT_NN_NUMERO))
             .andExpect(jsonPath("$.dsComplemento").value(DEFAULT_DS_COMPLEMENTO.toString()))
             .andExpect(jsonPath("$.cdCnpj").value(DEFAULT_CD_CNPJ.toString()))
-            .andExpect(jsonPath("$.cdCgf").value(DEFAULT_CD_CGF.toString()))
+            .andExpect(jsonPath("$.cdIe").value(DEFAULT_CD_IE.toString()))
             .andExpect(jsonPath("$.dsSite").value(DEFAULT_DS_SITE.toString()))
-            .andExpect(jsonPath("$.flAtiva").value(DEFAULT_FL_ATIVA.booleanValue()))
+            .andExpect(jsonPath("$.flInativo").value(DEFAULT_FL_INATIVO.booleanValue()))
             .andExpect(jsonPath("$.nmRazao").value(DEFAULT_NM_RAZAO.toString()))
             .andExpect(jsonPath("$.cdTel").value(DEFAULT_CD_TEL.toString()))
             .andExpect(jsonPath("$.cdTel1").value(DEFAULT_CD_TEL_1.toString()))
             .andExpect(jsonPath("$.cdTel2").value(DEFAULT_CD_TEL_2.toString()))
             .andExpect(jsonPath("$.cdFax").value(DEFAULT_CD_FAX.toString()))
             .andExpect(jsonPath("$.dtOperacao").value(DEFAULT_DT_OPERACAO.toString()))
-            .andExpect(jsonPath("$.nnVersao").value(DEFAULT_NN_VERSAO))
             .andExpect(jsonPath("$.flTprec").value(DEFAULT_FL_TPREC.booleanValue()))
             .andExpect(jsonPath("$.dsPisCofins").value(DEFAULT_DS_PIS_COFINS.toString()))
-            .andExpect(jsonPath("$.nnMdfVersao").value(DEFAULT_NN_MDF_VERSAO))
+            .andExpect(jsonPath("$.dsEmail").value(DEFAULT_DS_EMAIL.toString()))
             .andExpect(jsonPath("$.flEnviaEmail").value(DEFAULT_FL_ENVIA_EMAIL.booleanValue()))
+            .andExpect(jsonPath("$.flMatriz").value(DEFAULT_FL_MATRIZ.booleanValue()))
             .andExpect(jsonPath("$.dsObs").value(DEFAULT_DS_OBS.toString()));
     }
 
@@ -291,20 +295,20 @@ public class FilialResourceIntTest {
         updatedFilial.setNnNumero(UPDATED_NN_NUMERO);
         updatedFilial.setDsComplemento(UPDATED_DS_COMPLEMENTO);
         updatedFilial.setCdCnpj(UPDATED_CD_CNPJ);
-        updatedFilial.setCdCgf(UPDATED_CD_CGF);
+        updatedFilial.setCdIe(UPDATED_CD_IE);
         updatedFilial.setDsSite(UPDATED_DS_SITE);
-        updatedFilial.setFlAtiva(UPDATED_FL_ATIVA);
+        updatedFilial.setFlInativo(UPDATED_FL_INATIVO);
         updatedFilial.setNmRazao(UPDATED_NM_RAZAO);
         updatedFilial.setCdTel(UPDATED_CD_TEL);
         updatedFilial.setCdTel1(UPDATED_CD_TEL_1);
         updatedFilial.setCdTel2(UPDATED_CD_TEL_2);
         updatedFilial.setCdFax(UPDATED_CD_FAX);
         updatedFilial.setDtOperacao(UPDATED_DT_OPERACAO);
-        updatedFilial.setNnVersao(UPDATED_NN_VERSAO);
         updatedFilial.setFlTprec(UPDATED_FL_TPREC);
         updatedFilial.setDsPisCofins(UPDATED_DS_PIS_COFINS);
-        updatedFilial.setNnMdfVersao(UPDATED_NN_MDF_VERSAO);
+        updatedFilial.setDsEmail(UPDATED_DS_EMAIL);
         updatedFilial.setFlEnviaEmail(UPDATED_FL_ENVIA_EMAIL);
+        updatedFilial.setFlMatriz(UPDATED_FL_MATRIZ);
         updatedFilial.setDsObs(UPDATED_DS_OBS);
 
         restFilialMockMvc.perform(put("/api/filials")
@@ -320,20 +324,20 @@ public class FilialResourceIntTest {
         assertThat(testFilial.getNnNumero()).isEqualTo(UPDATED_NN_NUMERO);
         assertThat(testFilial.getDsComplemento()).isEqualTo(UPDATED_DS_COMPLEMENTO);
         assertThat(testFilial.getCdCnpj()).isEqualTo(UPDATED_CD_CNPJ);
-        assertThat(testFilial.getCdCgf()).isEqualTo(UPDATED_CD_CGF);
+        assertThat(testFilial.getCdIe()).isEqualTo(UPDATED_CD_IE);
         assertThat(testFilial.getDsSite()).isEqualTo(UPDATED_DS_SITE);
-        assertThat(testFilial.isFlAtiva()).isEqualTo(UPDATED_FL_ATIVA);
+        assertThat(testFilial.isFlInativo()).isEqualTo(UPDATED_FL_INATIVO);
         assertThat(testFilial.getNmRazao()).isEqualTo(UPDATED_NM_RAZAO);
         assertThat(testFilial.getCdTel()).isEqualTo(UPDATED_CD_TEL);
         assertThat(testFilial.getCdTel1()).isEqualTo(UPDATED_CD_TEL_1);
         assertThat(testFilial.getCdTel2()).isEqualTo(UPDATED_CD_TEL_2);
         assertThat(testFilial.getCdFax()).isEqualTo(UPDATED_CD_FAX);
         assertThat(testFilial.getDtOperacao()).isEqualTo(UPDATED_DT_OPERACAO);
-        assertThat(testFilial.getNnVersao()).isEqualTo(UPDATED_NN_VERSAO);
         assertThat(testFilial.isFlTprec()).isEqualTo(UPDATED_FL_TPREC);
         assertThat(testFilial.getDsPisCofins()).isEqualTo(UPDATED_DS_PIS_COFINS);
-        assertThat(testFilial.getNnMdfVersao()).isEqualTo(UPDATED_NN_MDF_VERSAO);
+        assertThat(testFilial.getDsEmail()).isEqualTo(UPDATED_DS_EMAIL);
         assertThat(testFilial.isFlEnviaEmail()).isEqualTo(UPDATED_FL_ENVIA_EMAIL);
+        assertThat(testFilial.isFlMatriz()).isEqualTo(UPDATED_FL_MATRIZ);
         assertThat(testFilial.getDsObs()).isEqualTo(UPDATED_DS_OBS);
 
         // Validate the Filial in ElasticSearch
@@ -378,20 +382,20 @@ public class FilialResourceIntTest {
             .andExpect(jsonPath("$.[*].nnNumero").value(hasItem(DEFAULT_NN_NUMERO)))
             .andExpect(jsonPath("$.[*].dsComplemento").value(hasItem(DEFAULT_DS_COMPLEMENTO.toString())))
             .andExpect(jsonPath("$.[*].cdCnpj").value(hasItem(DEFAULT_CD_CNPJ.toString())))
-            .andExpect(jsonPath("$.[*].cdCgf").value(hasItem(DEFAULT_CD_CGF.toString())))
+            .andExpect(jsonPath("$.[*].cdIe").value(hasItem(DEFAULT_CD_IE.toString())))
             .andExpect(jsonPath("$.[*].dsSite").value(hasItem(DEFAULT_DS_SITE.toString())))
-            .andExpect(jsonPath("$.[*].flAtiva").value(hasItem(DEFAULT_FL_ATIVA.booleanValue())))
+            .andExpect(jsonPath("$.[*].flInativo").value(hasItem(DEFAULT_FL_INATIVO.booleanValue())))
             .andExpect(jsonPath("$.[*].nmRazao").value(hasItem(DEFAULT_NM_RAZAO.toString())))
             .andExpect(jsonPath("$.[*].cdTel").value(hasItem(DEFAULT_CD_TEL.toString())))
             .andExpect(jsonPath("$.[*].cdTel1").value(hasItem(DEFAULT_CD_TEL_1.toString())))
             .andExpect(jsonPath("$.[*].cdTel2").value(hasItem(DEFAULT_CD_TEL_2.toString())))
             .andExpect(jsonPath("$.[*].cdFax").value(hasItem(DEFAULT_CD_FAX.toString())))
             .andExpect(jsonPath("$.[*].dtOperacao").value(hasItem(DEFAULT_DT_OPERACAO.toString())))
-            .andExpect(jsonPath("$.[*].nnVersao").value(hasItem(DEFAULT_NN_VERSAO)))
             .andExpect(jsonPath("$.[*].flTprec").value(hasItem(DEFAULT_FL_TPREC.booleanValue())))
             .andExpect(jsonPath("$.[*].dsPisCofins").value(hasItem(DEFAULT_DS_PIS_COFINS.toString())))
-            .andExpect(jsonPath("$.[*].nnMdfVersao").value(hasItem(DEFAULT_NN_MDF_VERSAO)))
+            .andExpect(jsonPath("$.[*].dsEmail").value(hasItem(DEFAULT_DS_EMAIL.toString())))
             .andExpect(jsonPath("$.[*].flEnviaEmail").value(hasItem(DEFAULT_FL_ENVIA_EMAIL.booleanValue())))
+            .andExpect(jsonPath("$.[*].flMatriz").value(hasItem(DEFAULT_FL_MATRIZ.booleanValue())))
             .andExpect(jsonPath("$.[*].dsObs").value(hasItem(DEFAULT_DS_OBS.toString())));
     }
 }

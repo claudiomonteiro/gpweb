@@ -20,21 +20,21 @@
             "nnNumero": "Number",
             "dsComplemento": "Complement",
             "cdCnpj": "CNPJ",
-            "cdCgf": "State registration",
+            "cdIe": "State registration",
             "dsSite": "Website",
-            "flAtiva": "Active",
+            "flInativo": "Inactive",
             "nmRazao": "Company name",
             "cdTel": "Phone",
             "cdTel1": "Phone 2",
             "cdTel2": "Phone 3",
             "cdFax": "Fax",
-            "dtOperacao": "Date operation",
-            "nnVersao": "Version",            
+            "dtOperacao": "Date operation",            
             "dsPisCofins": "PIS/COFINS",
-            "nnMdfVersao": "Version MDF",
+            "dsEmail": "E-mail",
             "flEnviaEmail": "Send e-mail",
             "dsObs": "Obs.",
-            "flTprec": "Fl Tprec"
+            "flTprec": "Fl Tprec",
+            "flMatriz": "Matrix"
         }
     }
 }

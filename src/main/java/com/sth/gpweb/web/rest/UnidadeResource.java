@@ -1,12 +1,12 @@
 package com.sth.gpweb.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-import com.sth.gpweb.domain.Marca;
-import com.sth.gpweb.domain.Unidade;
-import com.sth.gpweb.service.UnidadeService;
-import com.sth.gpweb.web.rest.util.HeaderUtil;
-import com.sth.gpweb.web.rest.util.PaginationUtil;
-import com.sth.gpweb.web.rest.util.Selection;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
+
+import javax.inject.Inject;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,18 +16,20 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.inject.Inject;
-import javax.validation.Valid;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import com.codahale.metrics.annotation.Timed;
+import com.google.gson.Gson;
+import com.sth.gpweb.domain.Unidade;
+import com.sth.gpweb.service.UnidadeService;
+import com.sth.gpweb.web.rest.util.HeaderUtil;
+import com.sth.gpweb.web.rest.util.PaginationUtil;
+import com.sth.gpweb.web.rest.util.ScSelect;
 
 /**
  * REST controller for managing Unidade.
@@ -59,7 +61,7 @@ public class UnidadeResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("unidade", "idexists", "A new unidade cannot already have an ID")).body(null);
         }
         
-        if (unidadeService.findDsUnidadeExists(unidade.getDsUnidade()) != null) {
+        if (unidadeService.findNmUnidadeExists(unidade.getNmUnidade()) != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("unidade", "nmexists", "A new unidade cannot already have an ID")).body(null);
         }
         
@@ -172,7 +174,7 @@ public class UnidadeResource {
     }
     
     /**
-     * SEARCH  /_search/unidades/select?query=:query : search for the unidade corresponding
+     * SEARCH  /_search/unidade/select?query=:query : search for the unidade corresponding
      * to the query.
      *
      * @param query the query of the unidade search
@@ -182,31 +184,53 @@ public class UnidadeResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Selection> searchUnidadeNew(@RequestParam String query, Pageable pageable)
+    public ResponseEntity<String> searchUnidadeSelect(@RequestParam String query, @RequestParam String field, Pageable pageable)
         throws URISyntaxException {
     	
     	try{
     		Page<Unidade> page;
     		
     		if(query.trim().equalsIgnoreCase("*")){
-    			page = unidadeService.findAll(pageable);
-    		}else{
-    			page = unidadeService.findByDsUnidadeStartingWithOrderByDsUnidadeAsc(query, pageable);    			
-    		};	    	
-	    	
-	    	HttpHeaders headers = new HttpHeaders();
-	    	headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/unidades/select");
-	    	
-	        Selection sel = new Selection(page);	        
-	        
-	        return new ResponseEntity<Selection>(sel, headers, HttpStatus.OK);
-	        
-    	}catch(Exception e){
-    		log.error(e.getMessage());
+    			//Find all
+    			if(field.trim().equalsIgnoreCase("id")){
+    				//Find by id
+    				page = unidadeService.findAllOrderById(pageable); 
+    			}else{
+    				//Find by name
+    				page = unidadeService.findAllOrderByNmUnidade(pageable);
+    			} 
+    		}else{    			
+    			if(field.trim().equalsIgnoreCase("id")){
+    				//Find by id
+    				page = unidadeService.findByIdStartingWithOrderByIdAsc(query, pageable); 
+    			}else{
+    				//Find by name
+    				page = unidadeService.findByNmUnidadeStartingWithOrderByNmUnidadeAsc(query, pageable);
+    			}
+    		};
     		
+	    	HttpHeaders headers = new HttpHeaders();
+	    	headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/unidades/select");	        
+	        
+	        //Json modified to supply sc-select component on frontend
+	        ScSelect<Unidade> scSelect = new ScSelect<>(
+	        			// Query params:
+		        			"", 
+		        			"request", 
+		        			Integer.toString(page.getNumber()),
+	        			// ScTrackmatches params:	        
+		        			page.getContent(),
+	        			// Results params:
+		        			Long.toString(page.getTotalElements()), 
+							Integer.toString(page.getNumber() * page.getSize()), 
+		        			Integer.toString(page.getSize()) 
+					);
+	        
+	        Gson gson = new Gson();
+	        return new ResponseEntity<String>(gson.toJson(scSelect), headers, HttpStatus.OK);	        
+    	}catch(Exception e){
+    		log.error(e.getMessage());    		
     		return ResponseEntity.badRequest().header("Falha", e.getMessage()).body(null);
     	}
-		
-    }
-
+    }    
 }

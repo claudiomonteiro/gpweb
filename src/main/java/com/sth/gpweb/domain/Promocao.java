@@ -25,8 +25,8 @@ public class Promocao implements Serializable {
 
     @NotNull
     @Size(min = 1, max = 30)
-    @Column(name = "ds_promocao", length = 30, nullable = false, unique = true)
-    private String dsPromocao;
+    @Column(name = "nm_promocao", length = 30, nullable = false, unique = true)
+    private String nmPromocao;
 
     @Column(name = "dt_vencimento")
     private LocalDate dtVencimento;
@@ -54,12 +54,12 @@ public class Promocao implements Serializable {
         this.id = id;
     }
 
-    public String getDsPromocao() {
-        return dsPromocao;
+    public String getNmPromocao() {
+        return nmPromocao;
     }
 
-    public void setDsPromocao(String dsPromocao) {
-        this.dsPromocao = dsPromocao;
+    public void setNmPromocao(String nmPromocao) {
+        this.nmPromocao = nmPromocao;
     }
 
     public LocalDate getDtVencimento() {
@@ -134,7 +134,7 @@ public class Promocao implements Serializable {
     public String toString() {
         return "Promocao{" +
             "id=" + id +
-            ", dsPromocao='" + dsPromocao + "'" +
+            ", nmPromocao='" + nmPromocao + "'" +
             ", dtVencimento='" + dtVencimento + "'" +
             ", nnDiaData='" + nnDiaData + "'" +
             ", nnDiaSemana='" + nnDiaSemana + "'" +

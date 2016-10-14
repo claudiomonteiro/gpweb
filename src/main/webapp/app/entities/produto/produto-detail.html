@@ -4,7 +4,7 @@
         <a class=" btn btn-default btn-print pull-right hidden-xs" href="javascript:window.print();"><i class="mdi mdi-printer mdi-3x"></i></a>
     </div><!-- /.box-header -->
     
-    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
 
     <div class="box-body">   
         <div class="row">               
@@ -23,7 +23,7 @@
                 </dd>
             </dl>
             
-            <dl class="col-xs-12 col-sm-4">
+            <dl class="col-xs-12 col-sm-7">
                 <dt><span translate="gpwebApp.produto.nmProduto">Nome</span></dt>
                 <dd>
                     <span class="text-uppercase">{{vm.produto.nmProduto}}</span>
@@ -41,15 +41,6 @@
                 <div class="box-detail-divider"></div>
             </dl>
             
-            <dl class="col-xs-12 col-sm-3">
-                <dt><span translate="gpwebApp.produto.cdNcm">Código NCM</span></dt>
-                <dd>
-                    <span>{{vm.produto.cdNcm}}</span>
-                    <span ng-hide="vm.produto.cdNcm != null"> - </span>
-                </dd>
-                <div class="box-detail-divider"></div>
-            </dl>
-            
             <dl class="col-xs-12 col-sm-4">
                 <dt><span translate="gpwebApp.produto.cdBarras">Código de Barras</span></dt>
                 <dd>
@@ -60,14 +51,25 @@
             </dl>
             
             <dl class="col-xs-12 col-sm-3">
-                <dt><span translate="gpwebApp.produto.cdEan">Código EAN</span></dt>
+                <dt><span translate="gpwebApp.produto.cdNcm">Código NCM</span></dt>
                 <dd>
-                    <span>{{vm.produto.cdEan}}</span>
-                    <span ng-hide="vm.produto.cdEan != null"> - </span>
+                    <span>{{vm.produto.cdNcm}}</span>
+                    <span ng-hide="vm.produto.cdNcm != null"> - </span>
                 </dd>
                 <div class="box-detail-divider"></div>
             </dl>
             
+            <dl class="col-xs-12 col-sm-3">
+                <dt><span translate="gpwebApp.produto.cdGtin">Código GTIN</span></dt>
+                <dd>
+                    <span>{{vm.produto.cdGtin}}</span>
+                    <span ng-hide="vm.produto.cdGtin != null"> - </span>
+                </dd>
+                <div class="box-detail-divider"></div>
+            </dl>            
+        </div>
+        
+        <div class="row">
             <dl class="col-xs-12 col-sm-3">
                 <dt><span translate="gpwebApp.produto.cdAnp">Código ANP</span></dt>
                 <dd>
@@ -76,9 +78,7 @@
                 </dd>
                 <div class="box-detail-divider"></div>
             </dl>
-        </div>
-        
-        <div class="row">
+            
             <dl class="col-xs-12 col-sm-3">
                 <dt><span translate="gpwebApp.produto.dsAnp">Descrição ANP</span></dt>
                 <dd>
@@ -95,16 +95,7 @@
                     <span ng-hide="vm.produto.cdContaContabil != null"> - </span>
                 </dd>
                 <div class="box-detail-divider"></div>
-            </dl> 
-            
-            <dl class="col-xs-12 col-sm-3">
-                <dt><span translate="gpwebApp.produto.materiaPrima">Matéria Prima</span></dt>
-                <dd>
-                    <span class="text-uppercase">{{vm.produto.materiaPrima}}</span>
-                    <span ng-hide="vm.produto.materiaPrima != null"> - </span>
-                </dd>
-                <div class="box-detail-divider"></div>
-            </dl> 
+            </dl>  
             
             <dl class="col-xs-12 col-sm-3">
                 <dt><span translate="gpwebApp.produto.flBalanca">Balança</span></dt>
@@ -137,7 +128,7 @@
             <dl class="col-xs-12 col-sm-3">
                 <dt><span translate="gpwebApp.produto.marca">Marca</span></dt>
                 <dd>
-                    <a class="text-uppercase" ui-sref="marca-detail({id:vm.produto.marca.id})">{{vm.produto.marca.nmFabricante}}</a>
+                    <a class="text-uppercase" ui-sref="marca-detail({id:vm.produto.marca.id})">{{vm.produto.marca.nmMarca}}</a>
                     <span ng-hide="vm.produto.marca != null"> - </span>
                 </dd>
                 <div class="box-detail-divider"></div>
@@ -146,7 +137,7 @@
             <dl class="col-xs-12 col-sm-3">
                 <dt><span translate="gpwebApp.produto.unidade">Unidade</span></dt>
                 <dd>
-                    <a class="text-uppercase" ui-sref="unidade-detail({id:vm.produto.unidade.id})">{{vm.produto.unidade.dsUnidade}}</a>
+                    <a class="text-uppercase" ui-sref="unidade-detail({id:vm.produto.unidade.id})">{{vm.produto.unidade.nmUnidade}}</a>
                     <span ng-hide="vm.produto.unidade != null"> - </span>
                 </dd>
                 <div class="box-detail-divider"></div>
@@ -157,7 +148,7 @@
             <dl class="col-xs-12 col-sm-6">
                 <dt><span translate="gpwebApp.produto.classProduto">Classificação</span></dt>
                 <dd>
-                    <a class="text-uppercase" ui-sref="class-produto-detail({id:vm.produto.classProduto.id})">{{vm.produto.classProduto.dsClassProduto}}</a>
+                    <a class="text-uppercase" ui-sref="class-produto-detail({id:vm.produto.classProduto.id})">{{vm.produto.classProduto.nmClassProduto}}</a>
                     <span ng-hide="vm.produto.classProduto != null"> - </span>
                 </dd>
                 <div class="box-detail-divider"></div>
@@ -173,10 +164,10 @@
             </dl>
             
             <dl class="col-xs-12 col-sm-3">
-                <dt><span translate="gpwebApp.produto.vlReal">Valor Real</span></dt>
+                <dt><span translate="gpwebApp.produto.vlVenda">Valor Venda</span></dt>
                 <dd>
-                    <span>{{vm.produto.vlReal | currency:'':2}}</span>
-                    <span ng-hide="vm.produto.vlReal != null"> - </span>
+                    <span>{{vm.produto.vlVenda | currency:'':2}}</span>
+                    <span ng-hide="vm.produto.vlVenda != null"> - </span>
                 </dd>
                 <div class="box-detail-divider"></div>
             </dl>   
@@ -190,30 +181,21 @@
                 </dd>
                 <div class="box-detail-divider"></div>
             </dl>
-            
-            <dl class="col-xs-12 col-sm-3">
-                <dt><span translate="gpwebApp.produto.flMedProlonga">Uso Prolongado</span></dt>
+
+            <dl class="col-xs-12 col-sm-9">
+                <dt><span translate="gpwebApp.produto.flUsoProlongado">Uso Prolongado</span></dt>
                 <dd>
-                    <span class="text-uppercase">{{vm.produto.flMedProlonga ? 'Sim' : 'Não'}}</span>
+                    <span class="text-uppercase">{{vm.produto.flUsoProlongado ? 'Sim' : 'Não'}}</span>
                 </dd>
                 <div class="box-detail-divider"></div>
-            </dl> 
-            
-            <dl class="col-xs-12 col-sm-6">
-                <dt><span translate="gpwebApp.produto.dsClassTerapeutica">Classe Terapêutica</span></dt>
-                <dd>
-                    <span class="text-uppercase">{{vm.produto.dsClassTerapeutica}}</span>
-                    <span ng-hide="vm.produto.dsClassTerapeutica != null"> - </span>
-                </dd>
-                <div class="box-detail-divider"></div>
-            </dl>   
+            </dl>
         </div>
         
         <div class="row">
             <dl class="col-xs-12 col-sm-12">
                 <dt><span translate="gpwebApp.produto.dsInformacoes">Informações</span></dt>
                 <dd>
-                    <span class="text-uppercase">{{vm.produto.dsInformacoes}}</span>
+                    <span class="text-uppercase break">{{vm.produto.dsInformacoes}}</span>
                     <span ng-hide="vm.produto.dsInformacoes != null"> - </span>
                 </dd>
                 <div class="box-detail-divider"></div>
@@ -231,11 +213,15 @@
         </div>
     </div><!-- /.box-body -->
 
-    <div class="box-footer no-border">
+    <div class="box-footer no-border">        
         <button type="submit"
-                onclick="window.history.back()"
-                class="btn btn-info ripple ripple-light">
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info ripple ripple-light">
             <span translate="entity.action.back"> Voltar</span>
+        </button>
+        
+        <button type="button" ui-sref="produto-detail.edit({id:vm.produto.id})" class="btn btn-primary ripple ripple-light">
+            <span translate="entity.action.edit"> Editar</span>
         </button>
     </div><!-- /.box-footer -->
 </div><!-- /.box -->

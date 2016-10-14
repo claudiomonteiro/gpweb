@@ -9,91 +9,96 @@
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
         <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-3 col-md-2">
                 <div class="form-group">
                     <label for="id" translate="global.field.id">Código</label>
                     <input type="text" class="form-control" id="id" name="id"
-                            ng-model="vm.promocao.id" readonly />
+                           ng-model="vm.promocao.id" disabled />
                 </div>
             </div>
-            <div class="col-sm-7">
-                <div class="form-group">
-                    <label class="control-label" translate="gpwebApp.promocao.dsPromocao" for="field_dsPromocao">Nome</label>
-                    <input type="text" class="form-control text-uppercase" name="dsPromocao" id="field_dsPromocao"
-                            ng-model="vm.promocao.dsPromocao"
-                            required ng-minlength="1" ng-maxlength="30" />
-                    <div ng-show="editForm.dsPromocao.$invalid">
+            <div class="col-sm-6 col-md-7">
+                <div class="form-group no-margin-bottom">
+                    <label class="control-label" translate="gpwebApp.promocao.nmPromocao" for="field_nmPromocao">Nome</label>
+                    <input type="text" class="form-control text-uppercase" name="nmPromocao" id="field_nmPromocao"
+                           ng-model="vm.promocao.nmPromocao"
+                           required ng-minlength="1" ng-maxlength="30" />
+                    <div ng-show="editForm.nmPromocao.$invalid">
                         <p class="help-block"
-                            ng-show="editForm.dsPromocao.$error.required" translate="entity.validation.required">
+                           ng-show="editForm.nmPromocao.$error.required" translate="entity.validation.required">
                             O campo é obrigatório.
                         </p>
                         <p class="help-block"
-                            ng-show="editForm.dsPromocao.$error.minlength" translate="entity.validation.minlength" translate-value-min="1">
+                           ng-show="editForm.nmPromocao.$error.minlength" translate="entity.validation.minlength" translate-value-min="1">
                             Este campo não pode ter menos que 1 caractere.
                         </p>
                         <p class="help-block"
-                            ng-show="editForm.dsPromocao.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="30">
+                           ng-show="editForm.nmPromocao.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="30">
                             Este campo não pode ter mais que 30 caracteres.
                         </p>
                     </div>
                 </div>    
             </div>			
-            <div class="col-sm-3">
+            <div class="col-sm-3 col-md-3">
                 <div class="form-group">
-                    <label class="control-label" translate="gpwebApp.promocao.vlPromocao" for="field_vlPromocao">Desconto Promocional (%)</label>
+                    <label class="control-label" translate="gpwebApp.promocao.vlPromocao" for="field_vlPromocao">Desconto (%)</label>
                     <input type="number" class="form-control" name="vlPromocao" id="field_vlPromocao"
-                            ng-model="vm.promocao.vlPromocao"
-                             />
+                           ng-model="vm.promocao.vlPromocao"
+                           />
                 </div>
             </div>
         </div>
 
-        <div class="row padding-bottom-15" ng-init="rgAux1 = false; rgAux2 = false; rgAux3 = false;">
-            <div class="col-sm-4">
-                <div class="row">
-                    <div class="col-xs-3 col-sm-3 radio">
-                        <label>
-                            <input type="radio" name="nn_tipo" id="field_nn_tipo1" value="1" ng-model="vm.promocao.nnTipo" ng-click="rgAux2 = false; rgAux3 = false;"/>
-                            <span class="radio__label" translate="gpwebApp.promocao.dtVencimento">Até:</span>
-                      </label>
-                    </div>
-                    <div class="col-xs-9 col-sm-9">
-                        <div class="input-group"> 
-                            <input type="text" class="form-control" name="dtVencimento"	uib-datepicker-popup="dd/MM/yyyy"
-                            ng-model="vm.promocao.dtVencimento" is-open="vm.datePickerOpenStatus.dtVencimento" ng-disabled="vm.promocao.nnTipo != 1"/>
-                            <div class="input-group-addon">
-                                <i class="mdi mdi-calendar" ng-click="vm.openCalendar('dtVencimento')"></i>
-                            </div>
+        <div ng-init="rgAux1 = false; rgAux2 = false; rgAux3 = false;">
+            <div class="row padding-bottom-15">
+                <div class="col-sm-4 col-md-3 mob-padding-bottom-15">
+                    <label class="control-label" translate="gpwebApp.promocao.dtVencimento">Até:</label>
+
+                    <div class="input-group">
+                        <span class="input-group-btn radio">
+                            <label>
+                                <input type="radio" name="nn_tipo" id="field_nn_tipo1" value="1" ng-model="vm.promocao.nnTipo" ng-click="rgAux2 = false; rgAux3 = false;">                        
+                                <span class="radio__label"></span>
+                            </label>    
+                        </span>
+                        <input type="text" class="form-control" name="dtVencimento"	uib-datepicker-popup="dd/MM/yyyy"
+                               ng-model="vm.promocao.dtVencimento" is-open="vm.datePickerOpenStatus.dtVencimento" ng-disabled="vm.promocao.nnTipo != 1"/>
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dtVencimento')" ng-disabled="vm.promocao.nnTipo != 1">
+                                <i class="mdi mdi-calendar"></i>
+                            </button>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="row">   
-                    <div class="col-xs-3 col-sm-3 radio">
-                        <label>
-                            <input type="radio" name="nn_tipo" id="field_nn_tipo2" value="2" ng-model="vm.promocao.nnTipo" ng-click="rgAux1 = false; rgAux3 = false;"/>
-                            <span class="radio__label" translate="gpwebApp.promocao.nnDiaData">Dia:</span>
-                        </label>
-                    </div>
-                    <div class="col-xs-9 col-sm-9">
-                        <input class="form-control" type="number" name="nDay" id="nDay" ng-model="vm.promocao.nnDiaData" 
-                         ng-disabled="vm.promocao.nnTipo != 2" min="1" max="31"/>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="row">     
-                    <div class="col-xs-3 col-sm-3 radio">
-                        <label>
-                            <input type="radio" name="nn_tipo" id="field_nn_tipo3" value="3" ng-model="vm.promocao.nnTipo" ng-click="rgAux1 = false; rgAux2 = false;"/>
-                            <span class="radio__label" translate="gpwebApp.promocao.nnDiaSemana">Em:</span>
-                        </label>
-                    </div>
-                    <div class="col-xs-9 col-sm-9">
-                        <div class="input-group col-xs-12 col-sm-12">
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+
+                <div class="col-sm-4 col-md-3 mob-padding-bottom-15">
+                    <label class="control-label" translate="gpwebApp.promocao.nnDiaData">Dia:</label>
+
+                    <div class="input-group">
+                        <span class="input-group-btn radio">
+                            <label>
+                                <input type="radio" name="nn_tipo" id="field_nn_tipo2" value="2" ng-model="vm.promocao.nnTipo" ng-click="rgAux1 = false; rgAux3 = false;">                        
+                                <span class="radio__label"></span>
+                            </label>    
+                        </span>
+
+                        <input  class="form-control" type="number" name="nDay" id="nDay" ng-model="vm.promocao.nnDiaData" 
+                               ng-disabled="vm.promocao.nnTipo != 2" min="1" max="31"/>        
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+
+                <div class="col-sm-4 col-md-3">
+                    <label class="control-label" translate="gpwebApp.promocao.nnDiaSemana">Em:</label>
+
+                    <div class="input-group">
+                        <span class="input-group-btn radio">
+                            <label>
+                                <input type="radio" name="nn_tipo" id="field_nn_tipo3" value="3" ng-model="vm.promocao.nnTipo" ng-click="rgAux1 = false; rgAux2 = false;">                        
+                                <span class="radio__label"></span>
+                            </label>    
+                        </span>
+                        <div class="input-group col-xs-12 col-md-12">
                             <select class="form-control" id="selDay" ng-model="vm.promocao.nnDiaSemana"  
-                                ng-disabled="vm.promocao.nnTipo != 3">
+                                    ng-disabled="vm.promocao.nnTipo != 3">
                                 <option value="DOMINGOS">DOMINGOS</option>
                                 <option value="SEGUNDAS">SEGUNDAS</option>
                                 <option value="TERCAS">TERÇAS</option>
@@ -103,13 +108,13 @@
                                 <option value="SABADOS">SÁBADOS</option>
                             </select>
                         </div>
-                    </div>					
-                </div>
-            </div>
-        </div>
-        
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+        </div><!-- /.ng-init -->
+
         <div class="row">			
-            <div class="col-sm-3">
+            <div class="col-md-3">
                 <div class="form-group">
                     <div class="checkbox">
                         <label>

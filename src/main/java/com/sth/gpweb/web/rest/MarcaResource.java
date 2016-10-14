@@ -1,12 +1,13 @@
 package com.sth.gpweb.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-import com.sth.gpweb.domain.Grupo;
-import com.sth.gpweb.domain.Marca;
-import com.sth.gpweb.service.MarcaService;
-import com.sth.gpweb.web.rest.util.HeaderUtil;
-import com.sth.gpweb.web.rest.util.PaginationUtil;
-import com.sth.gpweb.web.rest.util.Selection;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+import javax.inject.Inject;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,19 +17,20 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.inject.Inject;
-import javax.validation.Valid;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import com.codahale.metrics.annotation.Timed;
+import com.google.gson.Gson;
+import com.sth.gpweb.domain.Marca;
+import com.sth.gpweb.service.MarcaService;
+import com.sth.gpweb.web.rest.util.HeaderUtil;
+import com.sth.gpweb.web.rest.util.PaginationUtil;
+import com.sth.gpweb.web.rest.util.ScSelect;
 
 /**
  * REST controller for managing Marca.
@@ -60,7 +62,7 @@ public class MarcaResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("marca", "idexists", "A new marca cannot already have an ID")).body(null);
         }
         
-        if (marcaService.findNmFabricanteExists(marca.getNmFabricante()) != null) {
+        if (marcaService.findNmMarcaExists(marca.getNmMarca()) != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("marca", "nmexists", "A new marca cannot already have an ID")).body(null);
         }
         
@@ -184,7 +186,7 @@ public class MarcaResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Selection> searchMarcaNew(@RequestParam String query, Pageable pageable)
+    public ResponseEntity<String> searchMarcaSelect(@RequestParam String query, @RequestParam String field, Pageable pageable)
         throws URISyntaxException {
     	
     	try{
@@ -192,24 +194,46 @@ public class MarcaResource {
     		Page<Marca> page;
     		
     		if(query.trim().equalsIgnoreCase("*")){
-    			page = marcaService.findAll(pageable);
-    		}else{
-    			page = marcaService.findByNmFabricanteStartingWithOrderByNmFabricanteAsc(query, pageable);    			
-    		};    	
+    			//Find all
+    			if(field.trim().equalsIgnoreCase("id")){
+    				//Find by id
+    				page = marcaService.findAllOrderById(pageable); 
+    			}else{
+    				//Find by name
+    				page = marcaService.findAllOrderByNmMarca(pageable);
+    			} 
+    		}else{    			
+    			if(field.trim().equalsIgnoreCase("id")){
+    				//Find by id
+    				page = marcaService.findByIdStartingWithOrderByIdAsc(query, pageable); 
+    			}else{
+    				//Find by name
+    				page = marcaService.findByNmMarcaStartingWithOrderByNmMarcaAsc(query, pageable);
+    			}
+    		};  	
 	    	
-	    	HttpHeaders headers = new HttpHeaders();
-	    	headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/marcas/select");
-	    	
-	        Selection sel = new Selection(page);	        
+    		HttpHeaders headers = new HttpHeaders();
+	    	headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/marcas/select");	        
 	        
-	        return new ResponseEntity<Selection>(sel, headers, HttpStatus.OK);
+	        //Json modified to supply sc-select component on frontend
+	        ScSelect<Marca> scSelect = new ScSelect<>(
+	        			// Query params:
+		        			"", 
+		        			"request", 
+		        			Integer.toString(page.getNumber()),
+	        			// ScTrackmatches params:	        
+		        			page.getContent(),
+	        			// Results params:
+		        			Long.toString(page.getTotalElements()), 
+							Integer.toString(page.getNumber() * page.getSize()), 
+		        			Integer.toString(page.getSize()) 
+					);
 	        
+	        Gson gson = new Gson();
+	        return new ResponseEntity<String>(gson.toJson(scSelect), headers, HttpStatus.OK);	        
     	}catch(Exception e){
-    		log.error(e.getMessage());
-    		
+    		log.error(e.getMessage());    		
     		return ResponseEntity.badRequest().header("Falha", e.getMessage()).body(null);
     	}
-		
-    }
-
+    }    
 }

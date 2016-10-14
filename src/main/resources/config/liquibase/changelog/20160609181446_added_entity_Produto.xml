@@ -37,7 +37,7 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="cd_ean" type="varchar(20)">
+            <column name="cd_gtin" type="varchar(20)">
                 <constraints nullable="true" />
             </column>
             
@@ -53,10 +53,6 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="materia_prima" type="varchar(1)">
-                <constraints nullable="true" />
-            </column>
-            
             <column name="fl_balanca" type="bit">
                 <constraints nullable="true" />
             </column>
@@ -69,15 +65,11 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="fl_med_prolonga" type="bit">
+            <column name="fl_uso_prolongado" type="bit">
                 <constraints nullable="true" />
             </column>
             
-            <column name="ds_class_terapeutica" type="varchar(30)">
-                <constraints nullable="true" />
-            </column>
-            
-            <column name="vl_real" type="decimal(10,2)">
+            <column name="vl_venda" type="decimal(10,2)">
                 <constraints nullable="true" />
             </column>
             

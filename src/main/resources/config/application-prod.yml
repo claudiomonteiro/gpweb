@@ -20,8 +20,8 @@ spring:
     datasource:
         url: jdbc:postgresql://localhost:5432/gpweb
         name:
-        username: gpweb
-        password:
+        username: posgres
+        password: root
     jpa:
         database-platform: com.sth.gpweb.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL

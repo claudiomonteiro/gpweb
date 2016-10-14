@@ -1,6 +1,8 @@
 package com.sth.gpweb.service;
 
 import com.sth.gpweb.domain.ClassProduto;
+import com.sth.gpweb.domain.Unidade;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -59,12 +61,12 @@ public interface ClassProdutoService {
      String findCdClassProdutoExists(String cdClassProduto);   
     
     /**
-      * Search for the dsClassProduto already exists.
+      * Search for the nmClassProduto already exists.
       * 
-      *  @param query the dsClassProduto
+      *  @param query the nmClassProduto
       *  @return the list of entities
       */
-     String findDsClassProdutoExists(String dsClassProduto);
+     String findnmClassProdutoExists(String nmClassProduto);
     
     /**
      * Search for the classproduto corresponding to the query name.
@@ -72,5 +74,30 @@ public interface ClassProdutoService {
      *  @param description query for the name
      *  @return the list of entities
      */
-     Page<ClassProduto> findByDsClassProdutoStartingWithOrderByDsClassProdutoAsc(String descricao, Pageable pageable);  
+     Page<ClassProduto> findBynmClassProdutoStartingWithOrderBynmClassProdutoAsc(String descricao, Pageable pageable);  
+     
+     /**
+      * Search for the ClassProduto corresponding to the query name.
+      * Used on product page
+      * 
+      *  @param description query for the name
+      *  @return the list of entities
+      */
+     Page<ClassProduto> findByIdStartingWithOrderByIdAsc(String id, Pageable pageable);
+     
+     /**
+      *  Get all the ClassProdutos ordered by name.
+      *  
+      *  @param pageable the pagination information
+      *  @return the list of entities
+      */
+     Page<ClassProduto> findAllOrderByNmClassProduto(Pageable pageable);
+     
+     /**
+      *  Get all the ClassProdutos ordered by id.
+      *  
+      *  @param pageable the pagination information
+      *  @return the list of entities
+      */
+     Page<ClassProduto> findAllOrderById(Pageable pageable);	
 }

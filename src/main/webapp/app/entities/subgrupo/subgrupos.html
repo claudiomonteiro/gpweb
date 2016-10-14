@@ -1,12 +1,12 @@
 <div class="box">
-    <div class="box-header with-border">
+    <div class="box-header">
         <h1 class="box-title" translate="gpwebApp.subgrupo.home.title">Subgrupos</h1>
     </div><!-- /.box-header -->
    
     <jhi-alert></jhi-alert>
-    
-    <div class="box-header">
-        <div class="row">
+
+    <div class="box-body">
+    	<div class="row">
             <div class="col-xs-4 col-sm-5">
                 <button class="btn btn-success ripple ripple-light" ui-sref="subgrupo.new" >
                     <span translate="gpwebApp.subgrupo.home.createLabel">
@@ -15,7 +15,7 @@
                 </button>
             </div>
             
-            <div class="col-xs-8 col-sm-7 search-pad-col">
+            <div class="col-xs-8 col-sm-7">
                 <form name="searchForm" class="form-inline">
                     <div class="input-group pull-right" >
                         <input type="text" class="form-control text-uppercase" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'gpwebApp.subgrupo.home.search' | translate }}">
@@ -33,15 +33,15 @@
                 </form>
             </div>
         </div>
-    </div><!-- /.box-header -->
 
-    <div class="box-body">
-        <div class="table-responsive">
-            <table class="jh-table table table-bordered table-hover">
+        <br>
+
+        <div class="table-responsive no-border-table-responsive">
+            <table class="jh-table table table-hover">
                 <thead>
                     <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                        <th jh-sort-by="id" class="col-md-1 col-subgrupo-codigo"><span translate="global.field.id">Código</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th jh-sort-by="nmSubgrupo"><span translate="gpwebApp.subgrupo.nmSubgrupo">Nome</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
+                        <th jh-sort-by="id" class="col-md-1 col-subgrupo-codigo"><span translate="global.field.id">Código</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="nmSubgrupo"><span translate="gpwebApp.subgrupo.nmSubgrupo">Nome</span> <span class="glyphicon glyphicon-sort"></span></th>
                         <th class="col-md-1 col-subgrupo-acoes text-center"><span translate="global.field.actions">Ações</span></th>
                     </tr>
                 </thead>
@@ -50,24 +50,24 @@
                     <tr ng-repeat="subgrupo in vm.subgrupos track by subgrupo.id">
                         <td><a ui-sref="subgrupo-detail({id:subgrupo.id})">{{subgrupo.id}}</a></td>
                         <td class="text-uppercase">{{subgrupo.nmSubgrupo}}</td>
-                        <td class="text-center">
+                        <td>
                             <div>
                                 <button type="submit"
                                         ui-sref="subgrupo-detail({id:subgrupo.id})"
-                                        class="btn btn-success btn-sm ripple ripple-light"
-                                        data-toggle="tooltip" data-placement="top" title="Visualizar">
+                                        class="btn btn-success btn-outline btn-sm ripple ripple-light"
+                                        tooltip-placement="top" uib-tooltip="Visualizar">
                                     <span class="mdi mdi-eye"></span>
                                 </button>
                                 <button type="submit"
                                         ui-sref="subgrupo.edit({id:subgrupo.id})"
-                                        class="btn btn-primary btn-sm ripple ripple-light"
-                                        data-toggle="tooltip" data-placement="top" title="Editar">
+                                        class="btn btn-primary btn-outline btn-sm ripple ripple-light"
+                                        tooltip-placement="top" uib-tooltip="Editar">
                                     <span class="mdi mdi-pencil"></span>
                                 </button>
                                 <button type="submit"
                                         ui-sref="subgrupo.delete({id:subgrupo.id})"
-                                        class="btn btn-danger btn-sm ripple ripple-light"
-                                        data-toggle="tooltip" data-placement="top" title="Deletar">
+                                        class="btn btn-danger btn-outline btn-sm ripple ripple-light"
+                                        tooltip-placement="top" uib-tooltip="Deletar">
                                     <span class="mdi mdi-delete"></span>
                                 </button>
                             </div>
@@ -75,7 +75,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div><!-- /.table-responsive -->
     </div><!-- /.box-body -->
     
     <!-- paginação -->

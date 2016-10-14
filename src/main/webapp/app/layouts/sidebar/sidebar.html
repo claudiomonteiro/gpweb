@@ -1,218 +1,232 @@
 <!-- Menu Lateral -->
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
-	<!-- sidebar: style can be found in sidebar.less -->	
-	<section class="sidebar">
-		<div class="sidebar-scroll">
-			<ul class="sidebar-menu">
-				<li>
-					<a data-toggle="offcanvas" role="button">
-    					<i class="mdi mdi-window-close pull-right"></i>
-    				</a>
-				</li>
-			</ul><!-- /.sidebar-menu -->
-			
-			<div class="sistech-logo-sidebar img-responsive"></div>
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <div class="sidebar-scroll">
+            <!-- Close Sidebar -->
+            <div class="close-panel">
+                <div class="btn btn-link ripple close-hide pull-right padding-right-7" data-toggle="offcanvas" role="button">
+                    <i class="mdi mdi-window-close mdi-28px"></i>
+                </div>
+            </div>
+            
+            <!-- Logomarca -->
+            <div class="logo-panel">
+                <div class="logo-sidebar img-responsive"></div>
+            </div>
 
-			<!-- Sidebar Menu -->
-			<ul class="sidebar-menu" ng-switch="vm.isAuthenticated()">
-				<li ui-sref-active="active" class="active ripple">
-					<span data-toggle="offcanvas">
-						<a ui-sref="home">
-							<i class="mdi mdi-home"></i> 
-							<span translate="global.menu.home">Inicio</span>
-						</a>
-					</span>
-				</li>
-				<li class="treeview" ng-switch-when="true">
-					<a href="" id="entity-menu" class="ripple">
-						<i class="mdi mdi-file-document-box"></i> 
-						<span translate="global.menu.entities.records">Cadastros</span> 
-						<i class="mdi mdi-chevron-left pull-right"></i>
-					</a>
-					<ul class="treeview-menu">
-						<li ui-sref-active="active">
-							<a href="" class="ripple">
-								<i class="mdi mdi-account"></i> 
-								<span translate="global.menu.entities.person">Pessoa</span> 
-								<i class="mdi mdi-chevron-left pull-right"></i>
-							</a>
-							<ul class="treeview-menu">
-								<li ui-sref-active="active">
-									<span data-toggle="offcanvas">
-										<a ui-sref="tipocliente">
-											Tipo de Cliente
-										</a>
-									</span>
-								</li>
-								<li ui-sref-active="active">
-									<span data-toggle="offcanvas">
-										<a ui-sref="cliente">Cliente</a>
-									</span>
-								</li>							
-							</ul>
-						</li>
+            <div class="divider"></div>
+            
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu" ng-switch="vm.isAuthenticated()">
+                <li ui-sref-active="active" class="active ripple">
+                    <span>
+                        <a ui-sref="home">
+                            <i class="mdi mdi-home"></i> 
+                            <span translate="global.menu.home">Inicio</span>
+                        </a>
+                    </span>
+                </li>
+                <li class="treeview" ng-switch-when="true">
+                    <a href="" id="entity-menu" class="ripple">
+                        <i class="mdi mdi-file-document-box"></i>
+                        <span translate="global.menu.entities.records">Cadastros</span>
+                        <i class="mdi mdi-chevron-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <!-- <li ui-sref-active="active">
+                            <a href="" class="ripple">
+                                <i class="mdi mdi-account"></i> 
+                                <span translate="global.menu.entities.person">Pessoa</span> 
+                                <i class="mdi mdi-chevron-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li ui-sref-active="active">
+                                    <span data-toggle="offcanvas">
+                                        <a ui-sref="tipocliente">
+                                            Tipo de Cliente
+                                        </a>
+                                    </span>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <span data-toggle="offcanvas">
+                                        <a ui-sref="cliente">Cliente</a>
+                                    </span>
+                                </li>							
+                            </ul>
+                        </li> -->
 
-						<li ui-sref-active="active">
-							<a href="" class="ripple">
-								<i class="mdi mdi-package"></i> 
-								<span translate="global.menu.entities.stock">Estoque</span> 
-								<i class="mdi mdi-chevron-left pull-right"></i>
-							</a>
-							<ul class="treeview-menu">
-								<li ui-sref-active="active">
-									<span data-toggle="offcanvas">
-										<a ui-sref="grupo">
+                        <li ui-sref-active="active">
+                            <a href="" class="ripple">
+                                <i class="mdi mdi-package"></i>
+                                <span translate="global.menu.entities.stock">Estoque</span>
+                                <i class="mdi mdi-chevron-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li ui-sref-active="active">
+                                    <span>
+                                        <a ui-sref="grupo">
                                             <span translate="global.menu.entities.grupo">Grupo</span>
                                         </a>
-									</span>
-								</li>
-								<li ui-sref-active="active">
-									<span data-toggle="offcanvas">
-										<a ui-sref="subgrupo">
-										    <span translate="global.menu.entities.subgrupo">Subgrupo</span>
-										</a>
-									</span>
-								</li>
-								<li ui-sref-active="active">
-									<span data-toggle="offcanvas">
-										<a ui-sref="promocao">
-										    <span translate="global.menu.entities.promocao">Promoção</span>
-										</a>
-									</span>
-								</li>
-								<li ui-sref-active="active">
-									<span data-toggle="offcanvas">
-										<a ui-sref="filial">
-										    <span translate="global.menu.entities.filial">Filial</span>
-										</a>
-									</span>
-								</li>
-								<li ui-sref-active="active">
-									<span data-toggle="offcanvas">
-										<a ui-sref="marca">
-											<span translate="global.menu.entities.marca">Marca</span>
-										</a>
-									</span>
-								</li>
-								<li ui-sref-active="active">
-									<span data-toggle="offcanvas">
-										<a ui-sref="unidade">
-											<span translate="global.menu.entities.unidade">Unidade</span>
-										</a>
-									</span>
-								</li>
-								<li ui-sref-active="active">
-									<span data-toggle="offcanvas">
-										<a ui-sref="produto">
-											<span translate="global.menu.entities.catalogo">Catálogo</span>
-										</a>
-									</span>
-								</li>
-								<li ui-sref-active="active" >
-									<span data-toggle="offcanvas">
-			                            <a ui-sref="class-produto">			                                
-			                                <span translate="global.menu.entities.classProduto">Classificação</span>
-			                            </a>
-			                        </span>    
-                        		</li>
-							</ul>
-						</li>
-						<li ui-sref-active="active">
-							<a href="" class="ripple">
-								<i class="mdi mdi-cash-multiple"></i> 
-								<span translate="global.menu.entities.payments">Pagamentos</span> 
-								<i class="mdi mdi-chevron-left pull-right"></i>
-							</a>
-							<ul class="treeview-menu">
-								<li ui-sref-active="active">
-									<span data-toggle="offcanvas">
-										<a ui-sref="prazo">Prazo</a>
-									</span>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
+                                    </span>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <span>
+                                        <a ui-sref="subgrupo">
+                                            <span translate="global.menu.entities.subgrupo">Subgrupo</span>
+                                        </a>
+                                    </span>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <span>
+                                        <a ui-sref="promocao">
+                                            <span translate="global.menu.entities.promocao">Promoção</span>
+                                        </a>
+                                    </span>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <span>
+                                        <a ui-sref="filial">
+                                            <span translate="global.menu.entities.filial">Filial</span>
+                                        </a>
+                                    </span>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <span>
+                                        <a ui-sref="marca">
+                                            <span translate="global.menu.entities.marca">Marca</span>
+                                        </a>
+                                    </span>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <span>
+                                        <a ui-sref="unidade">
+                                            <span translate="global.menu.entities.unidade">Unidade</span>
+                                        </a>
+                                    </span>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <span>
+                                        <a ui-sref="produto">
+                                            <span translate="global.menu.entities.produto">Produto</span>
+                                        </a>
+                                    </span>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <span>
+                                        <a ui-sref="produto-filial">
+                                            <span translate="global.menu.entities.produtoFilial">Produto Filial</span>
+                                        </a>
+                                    </span>
+                                </li>
+                                <li ui-sref-active="active">
+                                    <span>
+                                        <a ui-sref="class-produto">			                                
+                                            <span translate="global.menu.entities.classProduto">Classificação</span>
+                                        </a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- <li ui-sref-active="active">
+                            <a href="" class="ripple">
+                                <i class="mdi mdi-cash-multiple"></i> 
+                                <span translate="global.menu.entities.payments">Pagamentos</span> 
+                                <i class="mdi mdi-chevron-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li ui-sref-active="active">
+                                    <span data-toggle="offcanvas">
+                                        <a ui-sref="prazo">Prazo</a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </li> -->
+                    </ul>
+                </li>
 
-				<li ng-class="{active: vm.$state.includes('admin')}"  ng-switch-when="true" has-authority="ROLE_ADMIN">
-					<a href="" id="admin-menu" class="ripple">
-						<i class="mdi mdi-wan"></i> 
-						<span translate="global.menu.admin.main">Administration</span>
-						<i class="mdi mdi-chevron-left pull-right"></i>
-					</a>
-					<ul class="treeview-menu">
-						<li ui-sref-active="active">
-							<span data-toggle="offcanvas">
-								<a ui-sref="user-management">
-									<i class="mdi mdi-account"></i> 
-									<span translate="global.menu.admin.userManagement">User management</span> 
-								</a>
-							</span>
-						</li>
-						<li ui-sref-active="active">
-							<span data-toggle="offcanvas">
-								<a ui-sref="jhi-metrics">
-									<i class="mdi mdi-timer"></i>
-									<span class="mdi-icon-text" translate="global.menu.admin.metrics">Metrics</span>
-								</a>
-							</span>
-						</li>
-						<li ui-sref-active="active">
-							<span data-toggle="offcanvas">
-								<a ui-sref="jhi-health">
-									<i class="mdi mdi-heart"></i>
-									<span class="mdi-icon-text" translate="global.menu.admin.health">Health</span>
-								</a>
-							</span>
-						</li>
-						<li ui-sref-active="active">
-							<span data-toggle="offcanvas">
-								<a ui-sref="jhi-configuration">
-									<span class="mdi mdi-settings"></span>
-									<span class="mdi-icon-text" translate="global.menu.admin.configuration">Configuration</span>
-								</a>
-							</span>
-						</li>
-						<li ui-sref-active="active">
-							<span data-toggle="offcanvas">
-								<a ui-sref="audits">
-									<i class="mdi mdi-bell"></i>
-									<span class="mdi-icon-text" translate="global.menu.admin.audits">Audits</span>
-								</a>
-							</span>
-						</li>
-						<li ui-sref-active="active">
-							<span data-toggle="offcanvas">
-								<a ui-sref="logs">
-									<i class="mdi mdi-server"></i>
-									<span class="mdi-icon-text" translate="global.menu.admin.logs">Logs</span>
-								</a>
-							</span>
-						</li>
-						<li ng-hide="vm.inProduction || vm.swaggerDisabled" ui-sref-active="active">
-							<span data-toggle="offcanvas">
-								<a ui-sref="docs">
-									<i class="mdi mdi-book"></i>
-									<span class="mdi-icon-text" translate="global.menu.admin.apidocs">API</span>
-								</a>
-							</span>
-						</li>
-						<li ui-sref-active="active" ng-controller="JhiLanguageController as languageVm">
+                <li ng-class="{active: vm.$state.includes('admin')}" ng-switch-when="true" has-authority="ROLE_ADMIN">
+                    <a href="" id="admin-menu" class="ripple">
+                        <i class="mdi mdi-wan"></i>
+                        <span translate="global.menu.admin.main">Administration</span>
+                        <i class="mdi mdi-chevron-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li ui-sref-active="active">
+                            <span>
+                                <a ui-sref="user-management">
+                                    <i class="mdi mdi-account"></i> 
+                                    <span translate="global.menu.admin.userManagement">User management</span>
+                                </a>
+                            </span>
+                        </li>
+                        <li ui-sref-active="active">
+                            <span>
+                                <a ui-sref="jhi-metrics">
+                                    <i class="mdi mdi-timer"></i>
+                                    <span class="mdi-icon-text" translate="global.menu.admin.metrics">Metrics</span>
+                                </a>
+                            </span>
+                        </li>
+                        <li ui-sref-active="active">
+                            <span>
+                                <a ui-sref="jhi-health">
+                                    <i class="mdi mdi-heart"></i>
+                                    <span class="mdi-icon-text" translate="global.menu.admin.health">Health</span>
+                                </a>
+                            </span>
+                        </li>
+                        <li ui-sref-active="active">
+                            <span>
+                                <a ui-sref="jhi-configuration">
+                                    <span class="mdi mdi-settings"></span>
+                                    <span class="mdi-icon-text" translate="global.menu.admin.configuration">Configuration</span>
+                                </a>
+                            </span>
+                        </li>
+                        <li ui-sref-active="active">
+                            <span>
+                                <a ui-sref="audits">
+                                    <i class="mdi mdi-bell"></i>
+                                    <span class="mdi-icon-text" translate="global.menu.admin.audits">Audits</span>
+                                </a>
+                            </span>
+                        </li>
+                        <li ui-sref-active="active">
+                            <span>
+                                <a ui-sref="logs">
+                                    <i class="mdi mdi-server"></i>
+                                    <span class="mdi-icon-text" translate="global.menu.admin.logs">Logs</span>
+                                </a>
+                            </span>
+                        </li>
+                        <li ng-hide="vm.inProduction || vm.swaggerDisabled" ui-sref-active="active">
+                            <span>
+                                <a ui-sref="docs">
+                                    <i class="mdi mdi-book"></i>
+                                    <span class="mdi-icon-text" translate="global.menu.admin.apidocs">API</span>
+                                </a>
+                            </span>
+                        </li>
+                        <li ui-sref-active="active" ng-controller="JhiLanguageController as languageVm">
                             <a href="" ng-if="languageVm.languages.length > 1" class="ripple">
                                 <i class="mdi mdi-server"></i>
                                 <span class="mdi-icon-text" translate="global.menu.language">Language</span>
                                 <i class="mdi mdi-chevron-left pull-right"></i>
                             </a>
-							<ul class="treeview-menu" ng-if="languageVm.languages.length > 1">
+                            <ul class="treeview-menu" ng-if="languageVm.languages.length > 1">
                                 <li active-menu="{{language}}" ng-repeat="language in languageVm.languages">
                                     <a href="" ng-click="languageVm.changeLanguage(language);vm.collapseNavbar();">{{language | findLanguageFromKey}}</a>
                                 </li>
                             </ul>
-						</li>
-					</ul>
-				</li>
-			</ul><!-- /.sidebar-menu -->
-		</div><!-- /.sidebar-scroll -->
-	</section><!-- /.sidebar -->
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar-scroll -->
+    </section>
+    <!-- /.sidebar -->
 </aside>

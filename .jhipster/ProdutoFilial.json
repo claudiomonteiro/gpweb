@@ -1,0 +1,117 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "produto",
+            "otherEntityName": "produto",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "produtoFilial"
+        },
+        {
+            "relationshipName": "filial",
+            "otherEntityName": "filial",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "produtoFilial"
+        },
+        {
+            "relationshipName": "promocao",
+            "otherEntityName": "promocao",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "produtoFilial"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "qtEmbalagem",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "qtMin",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "qtMax",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "qtSaldo",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "dtVencimento",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "vlCompra",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "vlCusto",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "vlCustoMedio",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "vlMarkpVenda",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "vlMarkpAtacado",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "vlAtaVista",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "vlMarkpAprazo",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "vlAprazo",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "vlMarkpAtaPrazo",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "vlAtaAPrazo",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "qtAtacado",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "qtBonificacao",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "flInativo",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "flMateriaPrima",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "flComposto",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "nnPontos",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20160803113315",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "produto_filial",
+    "pagination": "pagination"
+}

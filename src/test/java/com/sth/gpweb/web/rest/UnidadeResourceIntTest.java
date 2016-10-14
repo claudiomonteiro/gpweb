@@ -81,7 +81,7 @@ public class UnidadeResourceIntTest {
     public void initTest() {
         unidadeSearchRepository.deleteAll();
         unidade = new Unidade();
-        unidade.setDsUnidade(DEFAULT_DS_UNIDADE);
+        unidade.setNmUnidade(DEFAULT_DS_UNIDADE);
         unidade.setSgUnidade(DEFAULT_SG_UNIDADE);
     }
 
@@ -101,7 +101,7 @@ public class UnidadeResourceIntTest {
         List<Unidade> unidades = unidadeRepository.findAll();
         assertThat(unidades).hasSize(databaseSizeBeforeCreate + 1);
         Unidade testUnidade = unidades.get(unidades.size() - 1);
-        assertThat(testUnidade.getDsUnidade()).isEqualTo(DEFAULT_DS_UNIDADE);
+        assertThat(testUnidade.getNmUnidade()).isEqualTo(DEFAULT_DS_UNIDADE);
         assertThat(testUnidade.getSgUnidade()).isEqualTo(DEFAULT_SG_UNIDADE);
 
         // Validate the Unidade in ElasticSearch
@@ -111,10 +111,10 @@ public class UnidadeResourceIntTest {
 
     @Test
     @Transactional
-    public void checkDsUnidadeIsRequired() throws Exception {
+    public void checkNmUnidadeIsRequired() throws Exception {
         int databaseSizeBeforeTest = unidadeRepository.findAll().size();
         // set the field null
-        unidade.setDsUnidade(null);
+        unidade.setNmUnidade(null);
 
         // Create the Unidade, which fails.
 
@@ -138,7 +138,7 @@ public class UnidadeResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(unidade.getId().intValue())))
-                .andExpect(jsonPath("$.[*].dsUnidade").value(hasItem(DEFAULT_DS_UNIDADE.toString())))
+                .andExpect(jsonPath("$.[*].nmUnidade").value(hasItem(DEFAULT_DS_UNIDADE.toString())))
                 .andExpect(jsonPath("$.[*].sgUnidade").value(hasItem(DEFAULT_SG_UNIDADE.toString())));
     }
 
@@ -153,7 +153,7 @@ public class UnidadeResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(unidade.getId().intValue()))
-            .andExpect(jsonPath("$.dsUnidade").value(DEFAULT_DS_UNIDADE.toString()))
+            .andExpect(jsonPath("$.nmUnidade").value(DEFAULT_DS_UNIDADE.toString()))
             .andExpect(jsonPath("$.sgUnidade").value(DEFAULT_SG_UNIDADE.toString()));
     }
 
@@ -176,7 +176,7 @@ public class UnidadeResourceIntTest {
         // Update the unidade
         Unidade updatedUnidade = new Unidade();
         updatedUnidade.setId(unidade.getId());
-        updatedUnidade.setDsUnidade(UPDATED_DS_UNIDADE);
+        updatedUnidade.setNmUnidade(UPDATED_DS_UNIDADE);
         updatedUnidade.setSgUnidade(UPDATED_SG_UNIDADE);
 
         restUnidadeMockMvc.perform(put("/api/unidades")
@@ -188,7 +188,7 @@ public class UnidadeResourceIntTest {
         List<Unidade> unidades = unidadeRepository.findAll();
         assertThat(unidades).hasSize(databaseSizeBeforeUpdate);
         Unidade testUnidade = unidades.get(unidades.size() - 1);
-        assertThat(testUnidade.getDsUnidade()).isEqualTo(UPDATED_DS_UNIDADE);
+        assertThat(testUnidade.getNmUnidade()).isEqualTo(UPDATED_DS_UNIDADE);
         assertThat(testUnidade.getSgUnidade()).isEqualTo(UPDATED_SG_UNIDADE);
 
         // Validate the Unidade in ElasticSearch
@@ -229,7 +229,7 @@ public class UnidadeResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.[*].id").value(hasItem(unidade.getId().intValue())))
-            .andExpect(jsonPath("$.[*].dsUnidade").value(hasItem(DEFAULT_DS_UNIDADE.toString())))
+            .andExpect(jsonPath("$.[*].nmUnidade").value(hasItem(DEFAULT_DS_UNIDADE.toString())))
             .andExpect(jsonPath("$.[*].sgUnidade").value(hasItem(DEFAULT_SG_UNIDADE.toString())));
     }
 }

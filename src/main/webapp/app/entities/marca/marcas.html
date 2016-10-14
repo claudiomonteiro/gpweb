@@ -1,11 +1,11 @@
 <div class="box">
-    <div class="box-header with-border">
+    <div class="box-header">
         <h1 class="box-title" translate="gpwebApp.marca.home.title">Marcas</h1>
     </div><!-- /.box-header -->
     
     <jhi-alert></jhi-alert>
-    
-    <div class="box-header">
+
+    <div class="box-body">
         <div class="row">
             <div class="col-xs-4 col-sm-5">
                 <button class="btn btn-success ripple ripple-light" ui-sref="marca.new" >
@@ -33,17 +33,17 @@
                 </form>
             </div>
         </div>
-    </div><!-- /.box-header -->
 
-    <div class="box-body">
-        <div class="table-responsive">
-            <table class="jh-table table table-bordered table-hover">
+        <br>
+
+        <div class="table-responsive no-border-table-responsive">
+            <table class="jh-table table table-hover">
                 <thead>
                     <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                        <th jh-sort-by="id" class="col-md-1 col-marca-codigo"><span translate="global.field.id">Código</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th jh-sort-by="nmFabricante"><span translate="gpwebApp.marca.nmFabricante2">Nome</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th jh-sort-by="cdTel" class="col-md-1 col-marca-telefone"><span translate="gpwebApp.marca.cdTel">Telefone</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>
-                        <th jh-sort-by="flInativo" class="col-md-1 col-marca-inativo"><span translate="gpwebApp.marca.flInativo">Inativo</span> <span class="glyphicon glyphicon-sort pull-right"></span></th>                    
+                        <th jh-sort-by="id" class="col-md-1 col-marca-codigo"><span translate="global.field.id">Código</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="nmMarca" class="col-md-8"><span translate="gpwebApp.marca.nmMarca2">Nome</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="cdTel" class="col-md-1 col-marca-telefone text-right"><span translate="gpwebApp.marca.cdTel">Telefone</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="flInativo" class="col-md-1 col-marca-inativo text-center"><span translate="gpwebApp.marca.flInativo">Inativo</span> <span class="glyphicon glyphicon-sort"></span></th>                    
                         <th class="col-md-1 col-marca-acoes text-center" translate="global.field.actions">Ações</th>
                     </tr>
                 </thead>
@@ -51,32 +51,33 @@
                 <tbody>
                     <tr ng-repeat="marca in vm.marcas track by marca.id">
                         <td><a ui-sref="marca-detail({id:marca.id})">{{marca.id}}</a></td>
-                        <td class="text-uppercase">{{marca.nmFabricante}}</td>
-                        <td>{{marca.cdTel | brPhoneNumber}}</td>
-                        <td class="text-center">
-                            <i class="mdi"
-                                ng-class="{'mdi-check text-success': marca.flInativo,
-                                'mdi-close text-danger': !marca.flInativo}">
-                            </i>
+                        <td class="text-uppercase">{{marca.nmMarca}}</td>
+                        <td class="text-right">
+                            <span ng-show="marca.cdTel">{{marca.cdTel | brPhoneNumber}}</span>
+                            <span ng-show="!marca.cdTel"> - </span>
+                        </td>
+                        <td class="text-uppercase text-center">
+                            <small ng-show="marca.flInativo" class="label bg-green" translate="global.condition.true">Sim</small>
+                            <small ng-show="!marca.flInativo" class="label bg-red" translate="global.condition.false">Não</small>
                         </td>                   
-                        <td class="text-center">
+                        <td>
                             <div>
                                 <button type="submit"
                                         ui-sref="marca-detail({id:marca.id})"
-                                        class="btn btn-success btn-sm ripple ripple-light"
-                                        data-toggle="tooltip" data-placement="top" title="Visualizar">
+                                        class="btn btn-success btn-outline btn-sm ripple ripple-light"
+                                        uib-tooltip="Visualizar">
                                     <span class="mdi mdi-eye"></span>
                                 </button>
                                 <button type="submit"
                                         ui-sref="marca.edit({id:marca.id})"
-                                        class="btn btn-primary btn-sm ripple ripple-light"
-                                        data-toggle="tooltip" data-placement="top" title="Editar">
+                                        class="btn btn-primary btn-outline btn-sm ripple ripple-light"
+                                        uib-tooltip="Editar">
                                     <span class="mdi mdi-pencil"></span>
                                 </button>
                                 <button type="submit"
                                         ui-sref="marca.delete({id:marca.id})"
-                                        class="btn btn-danger btn-sm ripple ripple-light"
-                                        data-toggle="tooltip" data-placement="top" title="Deletar">
+                                        class="btn btn-danger btn-outline btn-sm ripple ripple-light"
+                                        uib-tooltip="Deletar">
                                     <span class="mdi mdi-delete"></span>
                                 </button>
                             </div>

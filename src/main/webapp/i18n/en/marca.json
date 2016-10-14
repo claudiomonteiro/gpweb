@@ -16,10 +16,10 @@
             "detail": {
                 "title": "Brand"
             },
-            "nmFabricante": "Company Name",
-            "nmFabricante2": "Name",
-            "cdCgc": "CNPJ",
-            "cdCgf": "State Registration",
+            "nmMarca": "Company Name",
+            "nmMarca2": "Name",
+            "cdCnpj": "CNPJ",
+            "cdIe": "State Registration",
             "nnNumero": "Number",
             "dsComplemento": "Complement",
             "cdTel": "Phone",

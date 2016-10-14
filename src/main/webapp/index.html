@@ -8,28 +8,19 @@
     <meta name="google" value="notranslate">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#3949ab">
+	
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css -->    
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
-    <link rel="stylesheet" href="bower_components/mdi/css/materialdesignicons.min.css">
-    <!-- endbowerinject -->
-    <!-- endbuild -->    
-    <!-- font:roboto -->
-    <link rel="stylesheet" href="content/fonts/roboto/roboto.css">
-    <!-- template -->
-    <link rel="stylesheet" href="content/css/AdminLTE.css">
-    <link rel="stylesheet" href="content/css/skins/skin-blue-light.css">
-    <!-- endtemplate -->    
-    <!-- component -->
-    <link rel="stylesheet" href="app/components/select2/dist/css/select2.css"/>
-    <!-- endcomponent -->
+    <!-- build:css content/css/vendor.css -->    
+    <!-- bower:css -->	
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">	
+    <!-- endinject -->
+	<link rel="stylesheet" href="content/css/vendor.css">
+    <!-- endbuild -->
     <!-- build:css content/css/main.css -->
-    <link rel="stylesheet" href="content/css/main.css">
+    <link rel="stylesheet" href="content/css/main.css">    
     <!-- endbuild -->
 </head>
-<body ng-app="gpwebApp" class="hold-transition skin-blue-light fixed sidebar-mini sidebar-collapse">
+<body ng-app="gpwebApp" class="hold-transition skin-blue-light fixed sidebar-collapse">
     <!--[if lt IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -75,7 +66,6 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
@@ -168,7 +158,14 @@
     <script src="app/entities/produto/produto.state.js"></script>
     <script src="app/entities/produto/produto.service.js"></script>
     <script src="app/entities/produto/produto.search.service.js"></script>
-    <script src="app/entities/produto/produto.controller.js"></script>    
+    <script src="app/entities/produto/produto.controller.js"></script>        
+    <script src="app/entities/produto-filial/produto-filial-dialog.controller.js"></script>
+    <script src="app/entities/produto-filial/produto-filial-detail.controller.js"></script>
+    <script src="app/entities/produto-filial/produto-filial-delete-dialog.controller.js"></script>
+    <script src="app/entities/produto-filial/produto-filial.state.js"></script>
+    <script src="app/entities/produto-filial/produto-filial.service.js"></script>
+    <script src="app/entities/produto-filial/produto-filial.search.service.js"></script>
+    <script src="app/entities/produto-filial/produto-filial.controller.js"></script>    
     <script src="app/entities/class-produto/class-produto-dialog.controller.js"></script>
     <script src="app/entities/class-produto/class-produto-detail.controller.js"></script>
     <script src="app/entities/class-produto/class-produto-delete-dialog.controller.js"></script>
@@ -200,10 +197,11 @@
     <script src="app/components/form/maxbytes.directive.js"></script>
     <script src="app/components/alert/alert-error.directive.js"></script>
     <script src="app/components/alert/alert.service.js"></script>
-    <script src="app/components/alert/alert.directive.js"></script>    
-    <script src="app/components/select2/dist/js/select2.full.js"></script>
-    <script src="app/components/select2our/ourselect.directive.js"></script>
-    <script src="app/components/select2/dist/js/i18n/pt-BR.js"></script>
+    <script src="app/components/alert/alert.directive.js"></script>
+	<script src="app/components/newselect/select.js"></script>
+    <script src="app/components/newselect/sc-select.js"></script> 
+    <script src="app/components/newselect/newSelect.service.js"></script>
+    <script src="app/components/dualmultiselect/dualmultiselect.js"></script>
     <script src="app/components/angular-input-masks/angular-input-masks-standalone.min.js"></script>
     <script src="app/components/angular-br-filters/release/angular-br-filters.min.js"></script>    
     <script src="app/blocks/interceptor/notification.interceptor.js"></script>
@@ -260,7 +258,7 @@
     <script src="app/account/password/password.controller.js"></script>
     <script src="app/account/activate/activate.state.js"></script>
     <script src="app/account/activate/activate.controller.js"></script>
-    <script src="app/account/account.state.js"></script>
+    <script src="app/account/account.state.js"></script>    
     <!-- endinject -->
     <!-- endbuild -->
 </body>
